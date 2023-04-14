@@ -11,8 +11,7 @@ public static class GameHelper
 {
     public static bool IsUsingMapEditor()
     {
-        return SceneManager.GetActiveScene().name == "Editor" ||
-            SceneManager.GetActiveScene().name == "Test";
+        return SceneManager.GetActiveScene().name == "Editor";
     }
 
     public static bool IsTesting()

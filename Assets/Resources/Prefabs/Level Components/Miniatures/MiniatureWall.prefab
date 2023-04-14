@@ -105,6 +105,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 8904677999099155778}
   collider2D: {fileID: 2925409951855163087}
   initialMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  isDragging: 0
 --- !u!114 &441588054735182747
 MonoBehaviour:
   m_ObjectHideFlags: 0

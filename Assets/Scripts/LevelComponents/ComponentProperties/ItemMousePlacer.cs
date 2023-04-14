@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class ItemMousePlacer : MonoBehaviour
 {
+    private ItemMover itemMover;
+
     private void Start()
     {
-        var itemMover = gameObject.GetComponent<ItemMover>();
+        itemMover = gameObject.GetComponent<ItemMover>();
         itemMover.canMove = true;
         itemMover.SetDragging(true);
         itemMover.UpdateMaterial();
@@ -16,7 +18,15 @@ public class ItemMousePlacer : MonoBehaviour
 
     private void ItemMover_FinishedMovingItem(GameObject movedGameObject)
     {
+        if (!GameHelper.IsUsingMapEditor())
+            gameObject.transform.SetParent(GameObject.Find("AddedObjects").transform);
+
         Destroy(this);
+    }
+
+    private void OnDestroy()
+    {
+        itemMover.FinishedMovingItem -= ItemMover_FinishedMovingItem;
     }
 
     void Update()

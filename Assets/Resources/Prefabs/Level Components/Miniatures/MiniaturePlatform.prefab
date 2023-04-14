@@ -100,12 +100,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69a64982bd9eeb04c9ed9b4afdb69958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canMoveMaterial: {fileID: 2100000, guid: 93d283e7b17ea25429f0239459b5e1ac, type: 2}
-  canMove: 0
   spriteRenderer: {fileID: 8589690008127946942}
   collider2D: {fileID: 2611617336310031155}
-  initialMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   isDragging: 0
+  initialMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  canMoveMaterial: {fileID: 2100000, guid: 93d283e7b17ea25429f0239459b5e1ac, type: 2}
+  canMove: 0
 --- !u!114 &758756500665601639
 MonoBehaviour:
   m_ObjectHideFlags: 0

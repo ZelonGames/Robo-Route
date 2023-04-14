@@ -10,25 +10,30 @@ public class ItemMover : MonoBehaviour
     public static event MovedItemEventHandler FinishedMovingAnyItem;
     public event MovedItemEventHandler StartedMovingItem;
 
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private new Collider2D collider2D;
+    [SerializeField] private bool isDragging = false;
+
+    public Material initialMaterial;
     public Material canMoveMaterial;
     public bool canMove = false;
 
-    [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private new Collider2D collider2D;
-
-    public Material initialMaterial;
-
+    private GameObject gridWorld;
+    private GameObject movedObjects;
     private LevelComponentSettings levelComponentSettings;
     private Vector3 initialMousePos;
     private Vector3 initialObjectPos;
 
     private static bool isDraggingAnyObject = false;
+
+    public Vector2 SpawnPosition { get; private set; }
     public bool IsDragging { get; private set; }
 
-    [SerializeField] private bool isDragging = false;
 
     private void Start()
     {
+        SpawnPosition = gameObject.transform.position;
+
         if (GameController.gameController != null)
             GameController.gameController.StartedLevel += GameController_StartedGame;
 
@@ -41,6 +46,12 @@ public class ItemMover : MonoBehaviour
             if (levelComponentSettings.settings.ContainsKey(nameof(canMove)))
                 canMove = (bool)levelComponentSettings.settings[nameof(canMove)];
             OnValidate();
+        }
+
+        if (!GameHelper.IsUsingMapEditor())
+        {
+            movedObjects = GameObject.Find("MovedObjects");
+            gridWorld = GameObject.Find("GridWorld");
         }
     }
 
@@ -71,7 +82,7 @@ public class ItemMover : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!GameHelper.IsUsingMapEditor() && !GameController.hasStartedGame)
+        if (!GameHelper.IsUsingMapEditor() && !GameHelper.IsTesting() && !GameController.hasStartedGame)
             return;
         if ((canMove || (GameHelper.IsUsingMapEditor() && !GameHelper.IsTesting())) && !isDraggingAnyObject && !IsDragging)
         {
@@ -130,8 +141,10 @@ public class ItemMover : MonoBehaviour
             }
 
             IsDragging = isDraggingAnyObject = false;
-            if (!GameHelper.IsUsingMapEditor() && gameObject.transform.parent != GameObject.Find("GridWorld").transform)
-                gameObject.transform.SetParent(GameObject.Find("AddedObjects").transform);
+
+            if (movedObjects != null && gameObject.transform.parent == gridWorld.transform)
+                gameObject.transform.SetParent(movedObjects.transform);
+
             FinishedMovingItem?.Invoke(gameObject);
             FinishedMovingAnyItem?.Invoke(gameObject);
         }

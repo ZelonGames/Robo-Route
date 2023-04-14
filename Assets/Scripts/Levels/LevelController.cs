@@ -113,6 +113,12 @@ public class LevelController : MonoBehaviour
 
         foreach (Transform child in GameObject.Find("AddedObjects").transform)
             Destroy(child.gameObject);
+
+        foreach (Transform child in GameObject.Find("MovedObjects").transform)
+        {
+            var itemMover = child.gameObject.GetComponent<ItemMover>();
+            child.gameObject.transform.position = itemMover.SpawnPosition;
+        }
     }
 
     private void ItemAdder_TryAddItem(GameObject addedObject)
