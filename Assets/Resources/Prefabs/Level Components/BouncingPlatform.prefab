@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 3599016943677713730}
   - component: {fileID: 1688855875005330596}
   - component: {fileID: 3467340136021680674}
+  - component: {fileID: -6422830344163257107}
   m_Layer: 0
   m_Name: BouncingPlatform
   m_TagString: BouncingPlatform
@@ -153,12 +154,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69a64982bd9eeb04c9ed9b4afdb69958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canMoveMaterial: {fileID: 2100000, guid: 93d283e7b17ea25429f0239459b5e1ac, type: 2}
-  canMove: 0
   spriteRenderer: {fileID: 6227018333392670366}
   collider2D: {fileID: 2098634715669690295}
   initialMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  isDragging: 0
+  canMoveMaterial: {fileID: 2100000, guid: 93d283e7b17ea25429f0239459b5e1ac, type: 2}
+  canMove: 0
 --- !u!114 &1964066281534634815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,3 +220,15 @@ MonoBehaviour:
   - {fileID: 2204458955635052636}
   - {fileID: 2098634715669690295}
   itemMover: {fileID: 3204366358852962601}
+--- !u!114 &-6422830344163257107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6919071706929604754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09f6605a373e843478e7bed6f155c9bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

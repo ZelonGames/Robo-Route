@@ -47,6 +47,9 @@ public class RobotDamager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.TryGetComponent<NoDamage>(out var noDamage))
+            return;
+
         if ((itemMover != null && !itemMover.IsDragging || itemMover == null) && Mathf.Abs(rigidbody2D.velocity.y) > maxVelocity)
             hp -= damage;
     }
