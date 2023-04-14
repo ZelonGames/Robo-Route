@@ -116,6 +116,10 @@ public class LevelController : MonoBehaviour
         foreach (Transform child in GameObject.Find("MovedObjects").transform)
         {
             var itemMover = child.gameObject.GetComponent<ItemMover>();
+            itemMover.allowedMovesCount = itemMover.initialAllowedMovesCount;
+            itemMover.canMove = itemMover.initialCanMove;
+            itemMover.UpdateMaterial();
+            itemMover.UpdateAllowedMovesCountText();
             child.gameObject.transform.position = itemMover.SpawnPosition;
         }
     }

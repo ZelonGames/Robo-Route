@@ -277,8 +277,8 @@ MonoBehaviour:
   initialMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   canMoveMaterial: {fileID: 2100000, guid: 93d283e7b17ea25429f0239459b5e1ac, type: 2}
   usingLimitedMoves: 0
-  allowedMovesCount: 1
-  initialAllowedMovesCount: 1
+  allowedMovesCount: 0
+  initialAllowedMovesCount: 0
   canMove: 0
 --- !u!114 &758756500665601639
 MonoBehaviour:

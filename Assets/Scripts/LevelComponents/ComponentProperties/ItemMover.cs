@@ -26,6 +26,7 @@ public class ItemMover : MonoBehaviour
     [HideInInspector] public int initialAllowedMovesCount = 0;
 
     public bool canMove = false;
+    public bool initialCanMove = false;
 
     private GameObject gridWorld;
     private GameObject movedObjects;
@@ -51,7 +52,7 @@ public class ItemMover : MonoBehaviour
         if (levelComponentSettings != null)
         {
             if (levelComponentSettings.settings.ContainsKey(nameof(canMove)))
-                canMove = (bool)levelComponentSettings.settings[nameof(canMove)];
+                canMove = initialCanMove = (bool)levelComponentSettings.settings[nameof(canMove)];
 
             if (levelComponentSettings.settings.ContainsKey(nameof(usingLimitedMoves)))
                 usingLimitedMoves = (bool)levelComponentSettings.settings[nameof(usingLimitedMoves)];
@@ -75,6 +76,16 @@ public class ItemMover : MonoBehaviour
             spriteRenderer.material = canMove ? canMoveMaterial : initialMaterial;
     }
 
+    public void UpdateAllowedMovesCountText()
+    {
+        if (textAllowedMovesCount != null)
+        {
+            textAllowedMovesCount.text = usingLimitedMoves ? allowedMovesCount.ToString() : "";
+            if (allowedMovesCount <= 0)
+                textAllowedMovesCount.text = "";
+        }
+    }
+
     private void OnValidate()
     {
         if (levelComponentSettings != null)
@@ -84,12 +95,7 @@ public class ItemMover : MonoBehaviour
             levelComponentSettings.UpdateSetting(nameof(allowedMovesCount), allowedMovesCount);
         }
 
-        if (textAllowedMovesCount != null)
-        {
-            textAllowedMovesCount.text = usingLimitedMoves ? allowedMovesCount.ToString() : "";
-            if (allowedMovesCount <= 0)
-                textAllowedMovesCount.text = "";
-        }
+        UpdateAllowedMovesCountText();
 
         initialAllowedMovesCount = allowedMovesCount;
 

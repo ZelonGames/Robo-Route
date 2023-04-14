@@ -41,7 +41,7 @@ public class CursorObjectQueue : MonoBehaviour
         var addedGameObjectItemMover = addedGameObject.GetComponent<ItemMover>();
 
         addedGameObjectItemMover.usingLimitedMoves = itemMover.usingLimitedMoves;
-        addedGameObjectItemMover.allowedMovesCount = addedGameObjectItemMover.initialAllowedMovesCount = itemMover.allowedMovesCount + 1;
+        addedGameObjectItemMover.allowedMovesCount = addedGameObjectItemMover.initialAllowedMovesCount = itemMover.allowedMovesCount;
         
         addedGameObject.AddComponent(typeof(ItemMousePlacer));
         placingGameObject = addedGameObject;
