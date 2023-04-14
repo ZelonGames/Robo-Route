@@ -156,8 +156,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 6227018333392670366}
   collider2D: {fileID: 2098634715669690295}
+  textAllowedMovesCount: {fileID: 0}
   initialMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   canMoveMaterial: {fileID: 2100000, guid: 93d283e7b17ea25429f0239459b5e1ac, type: 2}
+  usingLimitedMoves: 0
+  allowedMovesCount: 0
   canMove: 0
 --- !u!114 &1964066281534634815
 MonoBehaviour:

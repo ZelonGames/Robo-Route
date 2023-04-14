@@ -1,7 +1,11 @@
 using Assets.Scripts;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEditor;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class ItemMover : MonoBehaviour
 {
@@ -12,9 +16,16 @@ public class ItemMover : MonoBehaviour
 
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private new Collider2D collider2D;
+    [SerializeField] private TextMeshPro textAllowedMovesCount;
 
     public Material initialMaterial;
     public Material canMoveMaterial;
+
+    public bool usingLimitedMoves = false;
+    [SerializeField]
+    private int allowedMovesCount = 0;
+    public int AllowedMovesCount => allowedMovesCount;
+
     public bool canMove = false;
 
     private GameObject gridWorld;
@@ -44,6 +55,13 @@ public class ItemMover : MonoBehaviour
 
             if (levelComponentSettings.settings.ContainsKey(nameof(canMove)))
                 canMove = (bool)levelComponentSettings.settings[nameof(canMove)];
+
+            if (levelComponentSettings.settings.ContainsKey(nameof(usingLimitedMoves)))
+                usingLimitedMoves = (bool)levelComponentSettings.settings[nameof(usingLimitedMoves)];
+
+            if (levelComponentSettings.settings.ContainsKey(nameof(allowedMovesCount)))
+                allowedMovesCount = Convert.ToInt32(levelComponentSettings.settings[nameof(allowedMovesCount)]);
+
             OnValidate();
         }
 
@@ -63,7 +81,16 @@ public class ItemMover : MonoBehaviour
     private void OnValidate()
     {
         if (levelComponentSettings != null)
+        {
             levelComponentSettings.UpdateSetting(nameof(canMove), canMove);
+            levelComponentSettings.UpdateSetting(nameof(usingLimitedMoves), usingLimitedMoves);
+            levelComponentSettings.UpdateSetting(nameof(allowedMovesCount), allowedMovesCount);
+        }
+
+        if (textAllowedMovesCount != null)
+        {
+            textAllowedMovesCount.text = usingLimitedMoves ? allowedMovesCount.ToString() : "";
+        }
 
         UpdateMaterial();
     }
@@ -81,18 +108,39 @@ public class ItemMover : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!GameHelper.IsUsingMapEditor() && !GameHelper.IsTesting() && !GameController.hasStartedGame)
-            return;
-        if ((canMove || (GameHelper.IsUsingMapEditor() && !GameHelper.IsTesting())) && !isDraggingAnyObject && !IsDragging)
+        if (!GameHelper.IsUsingMapEditor() && !GameHelper.IsTesting())
         {
-            IsDragging = isDraggingAnyObject = true;
-            initialMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            initialObjectPos = gameObject.transform.position;
+            if (!GameController.hasStartedGame)
+                return;
+        }
 
-            StartedMovingItem?.Invoke(gameObject);
+        if (canMove || (GameHelper.IsUsingMapEditor() && !GameHelper.IsTesting()))
+        {
+            if (!isDraggingAnyObject && !IsDragging)
+            {
+                if (!usingLimitedMoves || usingLimitedMoves && allowedMovesCount > 0)
+                {
+                    IsDragging = isDraggingAnyObject = true;
+                    initialMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    initialObjectPos = gameObject.transform.position;
+
+                    StartedMovingItem?.Invoke(gameObject);
+                }
+            }
         }
     }
 
+    private void DecreaseAllowedMovesCount()
+    {
+        if (GameHelper.IsUsingMapEditor() || !canMove)
+            return;
+
+        if (usingLimitedMoves && allowedMovesCount > 0)
+        {
+            allowedMovesCount--;
+            textAllowedMovesCount.text = allowedMovesCount.ToString();
+        }
+    }
 
     private void Update()
     {
@@ -143,6 +191,7 @@ public class ItemMover : MonoBehaviour
             if (movedObjects != null && gameObject.transform.parent == gridWorld.transform)
                 gameObject.transform.SetParent(movedObjects.transform);
 
+            DecreaseAllowedMovesCount();
             FinishedMovingItem?.Invoke(gameObject);
             FinishedMovingAnyItem?.Invoke(gameObject);
         }

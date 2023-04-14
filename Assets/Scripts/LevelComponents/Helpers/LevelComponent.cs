@@ -15,6 +15,8 @@ public class LevelComponent
     [JsonIgnore] public CustomPosition startingPosition;
     [JsonIgnore] public bool isFlipped = false;
     [JsonIgnore] public bool canMove = false;
+    [JsonIgnore] public bool usingLimitedMoves = false;
+    [JsonIgnore] public int allowedMovesCount = 0;
 
     [JsonIgnore] public GameObject Prefab { get; protected set; }
 
@@ -42,6 +44,10 @@ public class LevelComponent
             isFlipped = (bool)GetArgument(nameof(isFlipped));
         if (args.ContainsKey(nameof(canMove)))
             canMove = (bool)GetArgument(nameof(canMove));
+        if (args.ContainsKey(nameof(allowedMovesCount)))
+            allowedMovesCount = Convert.ToInt32(args[nameof(allowedMovesCount)]);
+        if (args.ContainsKey(nameof(usingLimitedMoves)))
+            usingLimitedMoves = (bool)args[nameof(usingLimitedMoves)];
     }
 
     public virtual void LoadPrefab()
