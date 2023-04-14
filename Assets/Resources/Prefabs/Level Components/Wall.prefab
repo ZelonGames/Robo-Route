@@ -127,7 +127,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 7227047839969079624}
   collider2D: {fileID: 3781138888097259488}
-  isDragging: 0
   initialMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   canMoveMaterial: {fileID: 2100000, guid: 93d283e7b17ea25429f0239459b5e1ac, type: 2}
   canMove: 0

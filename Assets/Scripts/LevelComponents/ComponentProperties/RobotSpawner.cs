@@ -10,6 +10,7 @@ public class RobotSpawner : MonoBehaviour
     [SerializeField] private SpriteFlipper spriteFlipper;
     [SerializeField] private bool testMode = false;
 
+    [HideInInspector]
     public LevelComponentSettings levelComponentSettings;
 
     public Spawner spawnerRelation;
