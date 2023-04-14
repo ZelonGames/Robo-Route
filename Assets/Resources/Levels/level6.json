@@ -1,1 +1,301 @@
-{"startingLevelComponents":[{"typeName":"Spawner","args":{"canMove":false,"isFlipped":true,"spawnTimeInSeconds":2.5,"robotsToSpawn":9,"startingPosition":{"x":2.5,"y":1.51757813}}},{"typeName":"Platform","args":{"canMove":false,"startingPosition":{"x":2.0,"y":1.0}}},{"typeName":"Platform","args":{"canMove":false,"startingPosition":{"x":1.0,"y":-0.5}}},{"typeName":"Wall","args":{"canMove":false,"startingPosition":{"x":5.5,"y":1.5}}},{"typeName":"Platform","args":{"canMove":true,"startingPosition":{"x":-0.5,"y":1.0}}},{"typeName":"Wall","args":{"canMove":false,"startingPosition":{"x":-4.0,"y":1.5}}},{"typeName":"Platform","args":{"canMove":false,"startingPosition":{"x":3.5,"y":-0.5}}},{"typeName":"Goal","args":{"canMove":false,"isFlipped":true,"requiredRobotsToSave":1,"startingPosition":{"x":4.0,"y":0.03302002}}},{"typeName":"Wall","args":{"canMove":false,"startingPosition":{"x":4.5,"y":0.0}}},{"typeName":"Platform","args":{"canMove":false,"startingPosition":{"x":-2.0,"y":-2.0}}},{"typeName":"Goal","args":{"canMove":false,"isFlipped":false,"requiredRobotsToSave":1,"startingPosition":{"x":-2.5,"y":-1.39376831}}},{"typeName":"Platform","args":{"canMove":true,"startingPosition":{"x":0.5,"y":-2.0}}},{"typeName":"Platform","args":{"canMove":false,"startingPosition":{"x":3.0,"y":-2.0}}},{"typeName":"Goal","args":{"canMove":false,"isFlipped":true,"requiredRobotsToSave":1,"startingPosition":{"x":3.5,"y":-1.452301}}},{"typeName":"Wall","args":{"canMove":false,"startingPosition":{"x":4.0,"y":-1.5}}},{"typeName":"Platform","args":{"canMove":false,"startingPosition":{"x":-4.5,"y":-3.5}}},{"typeName":"MiniatureWall","args":{"canMove":false,"startingPosition":{"x":0.5,"y":-2.766571}}},{"typeName":"Goal","args":{"canMove":false,"isFlipped":true,"requiredRobotsToSave":1,"startingPosition":{"x":3.5,"y":-2.95193481}}},{"typeName":"Platform","args":{"canMove":false,"startingPosition":{"x":3.0,"y":-3.5}}},{"typeName":"Wall","args":{"canMove":false,"startingPosition":{"x":4.0,"y":-3.0}}},{"typeName":"Platform","args":{"canMove":false,"startingPosition":{"x":-2.0,"y":-5.0}}},{"typeName":"Platform","args":{"canMove":false,"startingPosition":{"x":-4.5,"y":-5.0}}},{"typeName":"Wall","args":{"canMove":false,"startingPosition":{"x":-5.5,"y":-4.5}}},{"typeName":"Goal","args":{"canMove":false,"isFlipped":false,"requiredRobotsToSave":5,"startingPosition":{"x":-5.0,"y":-4.368103}}},{"typeName":"Wall","args":{"canMove":false,"startingPosition":{"x":-5.5,"y":-3.0}}},{"typeName":"Platform","args":{"canMove":false,"startingPosition":{"x":-3.0,"y":1.0}}},{"typeName":"Platform","args":{"canMove":false,"startingPosition":{"x":4.5,"y":1.0}}},{"typeName":"Wall","args":{"canMove":false,"startingPosition":{"x":-1.0,"y":-3.0}}}],"levelName":"level6","levelNumber":6,"highestPosition":1.58993948,"lowestPosition":-5.0}
+{
+    "startingLevelComponents": [
+        {
+            "typeName": "Spawner",
+            "args": {
+                "canMove": false,
+                "isFlipped": true,
+                "spawnTimeInSeconds": 2.5,
+                "robotsToSpawn": 9,
+                "startingPosition": {
+                    "x": 2.5,
+                    "y": 1.51757813
+                }
+            }
+        },
+        {
+            "typeName": "Platform",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": 2.0,
+                    "y": 1.0
+                }
+            }
+        },
+        {
+            "typeName": "Platform",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": 1.0,
+                    "y": -0.5
+                }
+            }
+        },
+        {
+            "typeName": "Wall",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": 5.5,
+                    "y": 1.5
+                }
+            }
+        },
+        {
+            "typeName": "Platform",
+            "args": {
+                "canMove": true,
+                "startingPosition": {
+                    "x": -0.5,
+                    "y": 1.0
+                }
+            }
+        },
+        {
+            "typeName": "Wall",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": -4.0,
+                    "y": 1.5
+                }
+            }
+        },
+        {
+            "typeName": "Platform",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": 3.5,
+                    "y": -0.5
+                }
+            }
+        },
+        {
+            "typeName": "Goal",
+            "args": {
+                "canMove": false,
+                "isFlipped": true,
+                "requiredRobotsToSave": 1,
+                "startingPosition": {
+                    "x": 4.0,
+                    "y": 0.03302002
+                }
+            }
+        },
+        {
+            "typeName": "Wall",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": 4.5,
+                    "y": 0.0
+                }
+            }
+        },
+        {
+            "typeName": "Platform",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": -2.0,
+                    "y": -2.0
+                }
+            }
+        },
+        {
+            "typeName": "Goal",
+            "args": {
+                "canMove": false,
+                "isFlipped": false,
+                "requiredRobotsToSave": 1,
+                "startingPosition": {
+                    "x": -2.5,
+                    "y": -1.39376831
+                }
+            }
+        },
+        {
+            "typeName": "Platform",
+            "args": {
+                "canMove": true,
+                "startingPosition": {
+                    "x": 0.5,
+                    "y": -2.0
+                }
+            }
+        },
+        {
+            "typeName": "Platform",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": 3.0,
+                    "y": -2.0
+                }
+            }
+        },
+        {
+            "typeName": "Goal",
+            "args": {
+                "canMove": false,
+                "isFlipped": true,
+                "requiredRobotsToSave": 1,
+                "startingPosition": {
+                    "x": 3.5,
+                    "y": -1.452301
+                }
+            }
+        },
+        {
+            "typeName": "Wall",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": 4.0,
+                    "y": -1.5
+                }
+            }
+        },
+        {
+            "typeName": "Platform",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": -4.5,
+                    "y": -3.5
+                }
+            }
+        },
+        {
+            "typeName": "MiniatureWall",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": 0.5,
+                    "y": -2.766571
+                }
+            }
+        },
+        {
+            "typeName": "Goal",
+            "args": {
+                "canMove": false,
+                "isFlipped": true,
+                "requiredRobotsToSave": 1,
+                "startingPosition": {
+                    "x": 3.5,
+                    "y": -2.95193481
+                }
+            }
+        },
+        {
+            "typeName": "Platform",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": 3.0,
+                    "y": -3.5
+                }
+            }
+        },
+        {
+            "typeName": "Wall",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": 4.0,
+                    "y": -3.0
+                }
+            }
+        },
+        {
+            "typeName": "Platform",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": -2.0,
+                    "y": -5.0
+                }
+            }
+        },
+        {
+            "typeName": "Platform",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": -4.5,
+                    "y": -5.0
+                }
+            }
+        },
+        {
+            "typeName": "Wall",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": -5.5,
+                    "y": -4.5
+                }
+            }
+        },
+        {
+            "typeName": "Goal",
+            "args": {
+                "canMove": false,
+                "isFlipped": false,
+                "requiredRobotsToSave": 5,
+                "startingPosition": {
+                    "x": -5.0,
+                    "y": -4.368103
+                }
+            }
+        },
+        {
+            "typeName": "Wall",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": -5.5,
+                    "y": -3.0
+                }
+            }
+        },
+        {
+            "typeName": "Platform",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": -3.0,
+                    "y": 1.0
+                }
+            }
+        },
+        {
+            "typeName": "Platform",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": 4.5,
+                    "y": 1.0
+                }
+            }
+        },
+        {
+            "typeName": "Wall",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": -1.0,
+                    "y": -3.0
+                }
+            }
+        }
+    ],
+    "levelName": "Moveable Objects 3",
+    "levelNumber": 6,
+    "highestPosition": 1.58993948,
+    "lowestPosition": -5.0
+}

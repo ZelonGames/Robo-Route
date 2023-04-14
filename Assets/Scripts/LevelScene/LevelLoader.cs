@@ -33,6 +33,7 @@ public class LevelLoader : MonoBehaviour
             
             var buttonLevel = button.GetComponent<ButtonLevel>();
             buttonLevel.levelNumber = convertedLevel.levelNumber;
+            buttonLevel.buttonText.text = convertedLevel.levelName;
 
             if (finishedLevelInfo != null && finishedLevelInfo.finishedLevels.ContainsKey(buttonLevel.levelNumber))
                 button.GetComponent<Image>().color = Color.green;

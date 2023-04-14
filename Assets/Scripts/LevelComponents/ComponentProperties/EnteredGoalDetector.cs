@@ -66,6 +66,7 @@ public class EnteredGoalDetector : MonoBehaviour
     {
         savedRobots = 0;
         hasInvokedReachedRequirement = false;
+        UpdateText();
     }
 
     private void UpdateText()

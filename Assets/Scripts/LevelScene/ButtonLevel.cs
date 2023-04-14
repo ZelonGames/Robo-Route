@@ -29,7 +29,6 @@ public class ButtonLevel : MonoBehaviour
         float canvasWidth = 0;
         float canvasHeight = 0;
 
-        // get the canvas width and height in pixels
 #if UNITY_EDITOR
         canvasWidth = canvasRect.width * canvas.scaleFactor;
         canvasHeight = canvasRect.height * canvas.scaleFactor;
