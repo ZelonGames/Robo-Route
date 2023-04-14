@@ -301,7 +301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMeshPro: {fileID: 2045071952}
   spriteFlipper: {fileID: 1088019961479509148}
-  testMode: 1
+  testMode: 0
   levelComponentSettings: {fileID: 0}
   launchSpeed: 2
   spawnTimeInSeconds: 1
