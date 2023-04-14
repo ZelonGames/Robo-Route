@@ -1,0 +1,123 @@
+{
+    "startingLevelComponents": [
+        {
+            "typeName": "Platform",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": -3.5,
+                    "y": 2.0
+                }
+            }
+        },
+        {
+            "typeName": "Wall",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": -4.5,
+                    "y": 2.5
+                }
+            }
+        },
+        {
+            "typeName": "Spawner",
+            "args": {
+                "canMove": false,
+                "isFlipped": false,
+                "spawnTimeInSeconds": 1.0,
+                "robotsToSpawn": 20,
+                "startingPosition": {
+                    "x": -4.0,
+                    "y": 2.464878
+                }
+            }
+        },
+        {
+            "typeName": "Platform",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": -1.0,
+                    "y": 2.0
+                }
+            }
+        },
+        {
+            "typeName": "Platform",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": 1.5,
+                    "y": 0.5
+                }
+            }
+        },
+        {
+            "typeName": "Platform",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": 4.0,
+                    "y": -1.0
+                }
+            }
+        },
+        {
+            "typeName": "MiniatureWall",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": 4.0,
+                    "y": -0.584202051
+                }
+            }
+        },
+        {
+            "typeName": "Platform",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": -1.0,
+                    "y": 0.5
+                }
+            }
+        },
+        {
+            "typeName": "Platform",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": -3.5,
+                    "y": 0.5
+                }
+            }
+        },
+        {
+            "typeName": "Goal",
+            "args": {
+                "canMove": false,
+                "isFlipped": false,
+                "requiredRobotsToSave": 5,
+                "startingPosition": {
+                    "x": -4.0,
+                    "y": 1.04797614
+                }
+            }
+        },
+        {
+            "typeName": "Wall",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": -4.5,
+                    "y": 1.0
+                }
+            }
+        }
+    ],
+    "levelName": "level2",
+    "levelNumber": 2,
+    "highestPosition": 2.5,
+    "lowestPosition": -1.0
+}

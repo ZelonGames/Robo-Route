@@ -1,0 +1,133 @@
+{
+    "startingLevelComponents": [
+        {
+            "typeName": "Platform",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": -3.0,
+                    "y": 1.5
+                }
+            }
+        },
+        {
+            "typeName": "Wall",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": -4.0,
+                    "y": 2.0
+                }
+            }
+        },
+        {
+            "typeName": "Spawner",
+            "args": {
+                "spawnTimeInSeconds": 1.0,
+                "robotsToSpawn": 5,
+                "canMove": false,
+                "isFlipped": false,
+                "startingPosition": {
+                    "x": -3.5,
+                    "y": 1.95401645
+                }
+            }
+        },
+        {
+            "typeName": "Platform",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": -0.5,
+                    "y": 1.5
+                }
+            }
+        },
+        {
+            "typeName": "Platform",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": 2.0,
+                    "y": 1.5
+                }
+            }
+        },
+        {
+            "typeName": "Platform",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": 4.5,
+                    "y": 0.0
+                }
+            }
+        },
+        {
+            "typeName": "Wall",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": 5.5,
+                    "y": 0.5
+                }
+            }
+        },
+        {
+            "typeName": "Platform",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": 2.0,
+                    "y": 0.0
+                }
+            }
+        },
+        {
+            "typeName": "MiniaturePlatform",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": -0.5,
+                    "y": 1.90249813
+                }
+            }
+        },
+        {
+            "typeName": "Platform",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": -3.0,
+                    "y": 0.0
+                }
+            }
+        },
+        {
+            "typeName": "Wall",
+            "args": {
+                "canMove": false,
+                "startingPosition": {
+                    "x": -4.0,
+                    "y": 0.5
+                }
+            }
+        },
+        {
+            "typeName": "Goal",
+            "args": {
+                "canMove": false,
+                "isFlipped": false,
+                "requiredRobotsToSave": 5,
+                "startingPosition": {
+                    "x": -3.5,
+                    "y": 0.453275323
+                }
+            }
+        }
+    ],
+    "levelName": "eragreager 1",
+    "levelNumber": 1,
+    "highestPosition": 2.0,
+    "lowestPosition": 0.0
+}
