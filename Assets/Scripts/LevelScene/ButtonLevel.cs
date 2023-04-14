@@ -24,14 +24,20 @@ public class ButtonLevel : MonoBehaviour
     public void Update()
     {
         Rect canvasRect = canvas.GetComponent<RectTransform>().rect;
-
         float buttonWidth = rectTransform.rect.width * rectTransform.localScale.x;
-        int maxColumns = Mathf.FloorToInt(canvasRect.width / buttonWidth) - 1;
+
+        float canvasWidth = 0;
+        float canvasHeight = 0;
 
         // get the canvas width and height in pixels
-        float canvasWidth = canvasRect.width * canvas.scaleFactor;
-        float canvasHeight = canvasRect.height * canvas.scaleFactor;
-
+#if UNITY_EDITOR
+        canvasWidth = canvasRect.width * canvas.scaleFactor;
+        canvasHeight = canvasRect.height * canvas.scaleFactor;
+#else
+        canvasWidth = Screen.width * Screen.dpi / 160.0f;
+        canvasHeight = Screen.height * Screen.dpi / 160.0f;
+#endif
+        int maxColumns = Mathf.FloorToInt(canvasWidth / buttonWidth) - 1;
         int columnPosition = levelNumber - 1;
 
         // calculate the row and column for the current button
