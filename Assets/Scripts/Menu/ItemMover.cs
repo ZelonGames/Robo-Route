@@ -12,7 +12,6 @@ public class ItemMover : MonoBehaviour
 
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private new Collider2D collider2D;
-    [SerializeField] private bool isDragging = false;
 
     public Material initialMaterial;
     public Material canMoveMaterial;
@@ -97,7 +96,6 @@ public class ItemMover : MonoBehaviour
 
     private void Update()
     {
-        isDragging = IsDragging;
         if (IsDragging)
         {
             spriteRenderer.color = new Color(
