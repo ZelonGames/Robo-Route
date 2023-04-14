@@ -22,9 +22,8 @@ public class ItemMover : MonoBehaviour
     public Material canMoveMaterial;
 
     public bool usingLimitedMoves = false;
-    [SerializeField]
-    private int allowedMovesCount = 0;
-    public int AllowedMovesCount => allowedMovesCount;
+    public int allowedMovesCount = 0;
+    [HideInInspector] public int initialAllowedMovesCount = 0;
 
     public bool canMove = false;
 
@@ -42,6 +41,7 @@ public class ItemMover : MonoBehaviour
 
     private void Start()
     {
+        initialAllowedMovesCount = allowedMovesCount;
         SpawnPosition = gameObject.transform.position;
 
         if (GameController.gameController != null)
@@ -50,9 +50,6 @@ public class ItemMover : MonoBehaviour
         levelComponentSettings = gameObject.GetComponent<LevelComponentSettings>();
         if (levelComponentSettings != null)
         {
-            if (!GameHelper.IsUsingMapEditor())
-                levelComponentSettings.UpdateSetting(nameof(canMove), true);
-
             if (levelComponentSettings.settings.ContainsKey(nameof(canMove)))
                 canMove = (bool)levelComponentSettings.settings[nameof(canMove)];
 
@@ -90,7 +87,14 @@ public class ItemMover : MonoBehaviour
         if (textAllowedMovesCount != null)
         {
             textAllowedMovesCount.text = usingLimitedMoves ? allowedMovesCount.ToString() : "";
+            if (allowedMovesCount <= 0)
+                textAllowedMovesCount.text = "";
         }
+
+        initialAllowedMovesCount = allowedMovesCount;
+
+        if (usingLimitedMoves && allowedMovesCount <= 0)
+            spriteRenderer.material = initialMaterial;
 
         UpdateMaterial();
     }
@@ -130,6 +134,14 @@ public class ItemMover : MonoBehaviour
         }
     }
 
+    public void ResetAllowedMovesCount()
+    {
+        if (!usingLimitedMoves)
+            return;
+
+        allowedMovesCount = initialAllowedMovesCount;
+    }
+
     private void DecreaseAllowedMovesCount()
     {
         if (GameHelper.IsUsingMapEditor() || !canMove)
@@ -139,6 +151,13 @@ public class ItemMover : MonoBehaviour
         {
             allowedMovesCount--;
             textAllowedMovesCount.text = allowedMovesCount.ToString();
+        }
+
+        if (allowedMovesCount <= 0)
+        {
+            canMove = false;
+            spriteRenderer.material = initialMaterial;
+            textAllowedMovesCount.text = "";
         }
     }
 

@@ -98,7 +98,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 3
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -304,6 +304,7 @@ MonoBehaviour:
   canMoveMaterial: {fileID: 2100000, guid: 93d283e7b17ea25429f0239459b5e1ac, type: 2}
   usingLimitedMoves: 0
   allowedMovesCount: 0
+  initialAllowedMovesCount: 0
   canMove: 0
 --- !u!114 &1570330859292890592
 MonoBehaviour:

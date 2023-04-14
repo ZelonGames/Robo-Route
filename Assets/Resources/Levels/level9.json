@@ -1,0 +1,83 @@
+{
+    "startingLevelComponents": [
+        {
+            "typeName": "Spawner",
+            "args": {
+                "canMove": false,
+                "usingLimitedMoves": false,
+                "allowedMovesCount": 0,
+                "isFlipped": false,
+                "spawnTimeInSeconds": 1.0,
+                "robotsToSpawn": 5,
+                "startingPosition": {
+                    "x": -4.0,
+                    "y": -0.452187419
+                }
+            }
+        },
+        {
+            "typeName": "Platform",
+            "args": {
+                "canMove": false,
+                "usingLimitedMoves": false,
+                "allowedMovesCount": 0,
+                "startingPosition": {
+                    "x": -3.5,
+                    "y": -1.0
+                }
+            }
+        },
+        {
+            "typeName": "Wall",
+            "args": {
+                "canMove": false,
+                "usingLimitedMoves": true,
+                "allowedMovesCount": 1,
+                "startingPosition": {
+                    "x": -4.5,
+                    "y": -0.5
+                }
+            }
+        },
+        {
+            "typeName": "Platform",
+            "args": {
+                "canMove": false,
+                "usingLimitedMoves": false,
+                "allowedMovesCount": 0,
+                "startingPosition": {
+                    "x": -1.0,
+                    "y": -1.0
+                }
+            }
+        },
+        {
+            "typeName": "Platform",
+            "args": {
+                "canMove": false,
+                "usingLimitedMoves": false,
+                "allowedMovesCount": 0,
+                "startingPosition": {
+                    "x": 1.5,
+                    "y": -1.0
+                }
+            }
+        },
+        {
+            "typeName": "MiniatureWall",
+            "args": {
+                "canMove": false,
+                "usingLimitedMoves": true,
+                "allowedMovesCount": 2,
+                "startingPosition": {
+                    "x": -2.0,
+                    "y": -0.452441216
+                }
+            }
+        }
+    ],
+    "levelName": "level9",
+    "levelNumber": 9,
+    "highestPosition": -0.452133477,
+    "lowestPosition": -1.0
+}

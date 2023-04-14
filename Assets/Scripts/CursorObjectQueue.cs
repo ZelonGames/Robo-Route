@@ -5,6 +5,7 @@ using UnityEngine;
 public class CursorObjectQueue : MonoBehaviour
 {
     [SerializeField] private Queue<GameObject> gameObjects = new Queue<GameObject>();
+    [SerializeField] private Queue<ItemMover> itemMovers = new Queue<ItemMover>();
 
     private GameObject placingGameObject = null;
 
@@ -13,9 +14,10 @@ public class CursorObjectQueue : MonoBehaviour
         ItemMover.FinishedMovingAnyItem += CursorObjectQueue_FinishedMovingItem;
     }
 
-    public void AddGameObject(GameObject gameObject)
+    public void AddGameObjectToQueue(GameObject largeObjectPrefab, ItemMover itemMover)
     {
-        gameObjects.Enqueue(gameObject);
+        gameObjects.Enqueue(largeObjectPrefab);
+        itemMovers.Enqueue(itemMover);
 
         if (placingGameObject == null)
             MoveNextGameObject();
@@ -35,6 +37,12 @@ public class CursorObjectQueue : MonoBehaviour
     private void MoveNextGameObject()
     {
         GameObject addedGameObject = Instantiate(gameObjects.Dequeue());
+        var itemMover = itemMovers.Dequeue();
+        var addedGameObjectItemMover = addedGameObject.GetComponent<ItemMover>();
+
+        addedGameObjectItemMover.usingLimitedMoves = itemMover.usingLimitedMoves;
+        addedGameObjectItemMover.allowedMovesCount = addedGameObjectItemMover.initialAllowedMovesCount = itemMover.allowedMovesCount + 1;
+        
         addedGameObject.AddComponent(typeof(ItemMousePlacer));
         placingGameObject = addedGameObject;
         placingGameObject.transform.SetParent(GameObject.Find("CursorObjectQueue").transform);

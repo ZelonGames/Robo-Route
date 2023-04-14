@@ -33,11 +33,10 @@ public class LevelController : MonoBehaviour
                 for (int i = 0; i < currentLevel.startingLevelComponents.Count; i++)
                 {
                     var levelComponent = currentLevel.startingLevelComponents[i];
-                    var itemMover = levelComponent.spawnedGameObject.GetComponent<ItemMover>();
+                    var itemMover = currentLevel.startingLevelComponents[i].spawnedGameObject.GetComponent<ItemMover>();
                     GameController.hasStartedGame = false;
-                    if (!levelComponent.canMove)
-                        Destroy(itemMover);
-                    Destroy(levelComponent.spawnedGameObject.GetComponent<LevelComponentRemover>());
+
+                    Destroy(currentLevel.startingLevelComponents[i].spawnedGameObject.GetComponent<LevelComponentRemover>());
                 }
             }
         }

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ItemMiniature : MonoBehaviour
 {
+    [SerializeField] private ItemMover itemMover;
     [SerializeField] private GameObject largeVersion;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
@@ -18,7 +19,7 @@ public class ItemMiniature : MonoBehaviour
         if (!collision.CompareTag("Robot"))
             return;
 
-        GameObject.Find("CursorObjectQueue").GetComponent<CursorObjectQueue>().AddGameObject(largeVersion);
+        GameObject.Find("CursorObjectQueue").GetComponent<CursorObjectQueue>().AddGameObjectToQueue(largeVersion, itemMover);
         Destroy(gameObject);
     }
 }

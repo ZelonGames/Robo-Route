@@ -100,11 +100,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69a64982bd9eeb04c9ed9b4afdb69958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canMoveMaterial: {fileID: 2100000, guid: 93d283e7b17ea25429f0239459b5e1ac, type: 2}
-  canMove: 0
   spriteRenderer: {fileID: 7710192242258886160}
   collider2D: {fileID: 4038316347390860701}
+  textAllowedMovesCount: {fileID: 0}
   initialMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  canMoveMaterial: {fileID: 2100000, guid: 93d283e7b17ea25429f0239459b5e1ac, type: 2}
+  usingLimitedMoves: 0
+  allowedMovesCount: 0
+  canMove: 0
 --- !u!114 &1635662597926777033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,6 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71829ad8b2d8714448f1d4b18de8a45b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemMover: {fileID: 6256682196026648446}
   largeVersion: {fileID: 6919071706929604754, guid: 62e3bfc9889f8404a9a395d69d0a9573, type: 3}
   spriteRenderer: {fileID: 7710192242258886160}
 --- !u!61 &4038316347390860701
