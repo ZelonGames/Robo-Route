@@ -19,7 +19,7 @@ public class RobotSpawner : MonoBehaviour
     public float spawnTimeInSeconds = 1;
     public int robotsToSpawn = 1;
 
-    private LevelController levelController;
+    private LevelControllerNew levelController;
     private GameObject robotsGameObject;
 
     private readonly List<Robot> spawnedRobots = new List<Robot>();
@@ -32,14 +32,12 @@ public class RobotSpawner : MonoBehaviour
         var levelControllerGameObject = GameObject.Find("LevelController");
         if (levelControllerGameObject != null)
         {
-            levelController = levelControllerGameObject.GetComponent<LevelController>();
+            levelController = levelControllerGameObject.GetComponent<LevelControllerNew>();
             levelController.FailedLevel += LevelController_FailedLevel;
         }
 
         if (testMode)
-            GameController_StartedLevel();
-        else if (GameController.gameController != null)
-            GameController.gameController.StartedLevel += GameController_StartedLevel;
+            StartSpawning();
 
         levelComponentSettings = gameObject.GetComponent<LevelComponentSettings>();
 
@@ -54,6 +52,16 @@ public class RobotSpawner : MonoBehaviour
         }
 
         UpdateText();
+    }
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
     }
 
     private void OnValidate()
@@ -82,7 +90,7 @@ public class RobotSpawner : MonoBehaviour
         StopAllCoroutines();
     }
 
-    private void GameController_StartedLevel()
+    public void StartSpawning()
     {
         if (robotsToSpawn == 0)
             return;

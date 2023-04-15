@@ -12,14 +12,20 @@ public class ComponentToggler : MonoBehaviour
 
     void Start()
     {
-        itemMover.StartedMovingItem += ItemMover_StartedMovingItem;
-        itemMover.FinishedMovingItem += ItemMover_MovedItem;
+        if (itemMover != null)
+        {
+            itemMover.StartedMovingItem += ItemMover_StartedMovingItem;
+            itemMover.FinishedMovingItem += ItemMover_MovedItem;
+        }
     }
 
     private void OnDestroy()
     {
-        itemMover.StartedMovingItem -= ItemMover_StartedMovingItem;
-        itemMover.FinishedMovingItem -= ItemMover_MovedItem;
+        if (itemMover != null)
+        {
+            itemMover.StartedMovingItem -= ItemMover_StartedMovingItem;
+            itemMover.FinishedMovingItem -= ItemMover_MovedItem;
+        }
     }
 
     private void ItemMover_MovedItem(GameObject movedGameObject)

@@ -118,13 +118,10 @@ public class ItemMover : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!GameHelper.IsUsingMapEditor() && !GameHelper.IsTesting())
-        {
-            if (!GameController.hasStartedGame)
-                return;
-        }
+        if (!GameControllerNew.hasStartedGame)
+            return;
 
-        if (canMove || (GameHelper.IsUsingMapEditor() && !GameHelper.IsTesting()))
+        if (canMove)
         {
             if (!isDraggingAnyObject && !IsDragging)
             {
@@ -150,10 +147,10 @@ public class ItemMover : MonoBehaviour
 
     private void DecreaseAllowedMovesCount()
     {
-        if (GameHelper.IsUsingMapEditor() || !canMove)
+        if (!canMove || !usingLimitedMoves)
             return;
 
-        if (usingLimitedMoves && allowedMovesCount > 0)
+        if (allowedMovesCount > 0)
         {
             allowedMovesCount--;
             textAllowedMovesCount.text = allowedMovesCount.ToString();

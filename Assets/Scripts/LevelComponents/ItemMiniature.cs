@@ -9,9 +9,14 @@ public class ItemMiniature : MonoBehaviour
     [SerializeField] private GameObject largeVersion;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
-    void Awake()
+    public Vector2 StartingPosition { get; private set; }
+
+    public GameObject LargeVersion => largeVersion;
+
+    void Start()
     {
         spriteRenderer.sprite = largeVersion.GetComponent<SpriteRenderer>().sprite;
+        StartingPosition = gameObject.transform.position;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

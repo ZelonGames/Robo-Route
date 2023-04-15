@@ -6,7 +6,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameController : MonoBehaviour
+public class GameControllerNew : MonoBehaviour
 {
     public enum LevelState
     {
@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
         Finished,
     }
 
-    [SerializeField] private LevelController levelController;
+    [SerializeField] private LevelControllerNew levelController;
 
     public static string FinishedLevelsFile => Application.persistentDataPath + "/finishedLevels.json";
 
@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour
 
     public LevelState CurrentLevelState { get; private set; }
 
-    public static GameController gameController;
+    public static GameControllerNew gameController;
     private void Awake()
     {
         gameController = this;
@@ -39,11 +39,6 @@ public class GameController : MonoBehaviour
         levelController.FailedLevel += LevelController_FailedLevel;
     }
 
-    public void LoadLevelScene()
-    {
-        SceneManager.LoadScene("LevelMenu");
-    }
-
     private void LevelController_FailedLevel(LevelBase failedLevel)
     {
         foreach (Transform child in GameObject.Find("AddedObjects").transform)
@@ -52,6 +47,12 @@ public class GameController : MonoBehaviour
 
     private void LevelController_FinishedLevel(LevelBase finishedLevel)
     {
+        if (finishedLevel == null)
+        {
+            SceneManager.LoadScene("LevelMenu");
+            return;
+        }
+
         string data = "";
 
         var finishedLevelInfo = new FinishedLevelInfo();
