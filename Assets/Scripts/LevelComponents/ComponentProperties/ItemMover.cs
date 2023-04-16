@@ -111,8 +111,10 @@ public class ItemMover : MonoBehaviour
                     IsDragging = isDraggingAnyObject = true;
                     initialMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     initialObjectPos = gameObject.transform.position;
-                    cursorObjectQueue.AddGameObjectToQueue(gameObject, this, false);
-                    //StartedMovingItem?.Invoke(gameObject);
+                    if (cursorObjectQueue != null)
+                        cursorObjectQueue.AddGameObjectToQueue(gameObject, this, false);
+                    else
+                        StartedMovingItem?.Invoke(gameObject);
                 }
             }
         }
