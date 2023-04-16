@@ -28,6 +28,7 @@ public class ItemMover : MonoBehaviour
     public bool canMove = false;
     public bool initialCanMove = false;
 
+    private CursorObjectQueue cursorObjectQueue;
     private GameObject gridWorld;
     private GameObject movedObjects;
     private LevelComponentSettings levelComponentSettings;
@@ -44,30 +45,10 @@ public class ItemMover : MonoBehaviour
     {
         initialAllowedMovesCount = allowedMovesCount;
         SpawnPosition = gameObject.transform.position;
+        cursorObjectQueue = FindObjectOfType<CursorObjectQueue>();
 
         if (GameController.gameController != null)
             GameController.gameController.StartedLevel += GameController_StartedGame;
-
-        levelComponentSettings = gameObject.GetComponent<LevelComponentSettings>();
-        if (levelComponentSettings != null)
-        {
-            if (levelComponentSettings.settings.ContainsKey(nameof(canMove)))
-                canMove = initialCanMove = (bool)levelComponentSettings.settings[nameof(canMove)];
-
-            if (levelComponentSettings.settings.ContainsKey(nameof(usingLimitedMoves)))
-                usingLimitedMoves = (bool)levelComponentSettings.settings[nameof(usingLimitedMoves)];
-
-            if (levelComponentSettings.settings.ContainsKey(nameof(allowedMovesCount)))
-                allowedMovesCount = Convert.ToInt32(levelComponentSettings.settings[nameof(allowedMovesCount)]);
-
-            OnValidate();
-        }
-
-        if (!GameHelper.IsUsingMapEditor())
-        {
-            movedObjects = GameObject.Find("MovedObjects");
-            gridWorld = GameObject.Find("GridWorld");
-        }
     }
 
     public void UpdateMaterial()
@@ -130,8 +111,8 @@ public class ItemMover : MonoBehaviour
                     IsDragging = isDraggingAnyObject = true;
                     initialMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     initialObjectPos = gameObject.transform.position;
-
-                    StartedMovingItem?.Invoke(gameObject);
+                    cursorObjectQueue.AddGameObjectToQueue(gameObject, this, false);
+                    //StartedMovingItem?.Invoke(gameObject);
                 }
             }
         }

@@ -14,13 +14,13 @@ public class CursorObjectQueue : MonoBehaviour
         ItemMover.FinishedMovingAnyItem += CursorObjectQueue_FinishedMovingItem;
     }
 
-    public void AddGameObjectToQueue(GameObject largeObjectPrefab, ItemMover itemMover)
+    public void AddGameObjectToQueue(GameObject largeObjectPrefab, ItemMover itemMover, bool instantiate = true)
     {
         gameObjects.Enqueue(largeObjectPrefab);
         itemMovers.Enqueue(itemMover);
 
         if (placingGameObject == null)
-            MoveNextGameObject();
+            MoveNextGameObject(instantiate);
     }
 
     private void CursorObjectQueue_FinishedMovingItem(GameObject movedGameObject)
@@ -34,9 +34,9 @@ public class CursorObjectQueue : MonoBehaviour
             placingGameObject = null;
     }
 
-    private void MoveNextGameObject()
+    private void MoveNextGameObject(bool instantiate = true)
     {
-        GameObject addedGameObject = Instantiate(gameObjects.Dequeue());
+        GameObject addedGameObject = instantiate ? Instantiate(gameObjects.Dequeue()) : gameObjects.Dequeue();
         var itemMover = itemMovers.Dequeue();
         var addedGameObjectItemMover = addedGameObject.GetComponent<ItemMover>();
 
