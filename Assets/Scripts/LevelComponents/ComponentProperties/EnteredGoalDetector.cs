@@ -20,6 +20,11 @@ public class EnteredGoalDetector : MonoBehaviour
     private bool hasInvokedReachedRequirement = false;
     public int requiredRobotsToSave;
 
+    public static Delegate[] GetInvocationList()
+    {
+        return GoalEntered?.GetInvocationList();
+    }
+
     void Start()
     {
         levelComponentSettings = gameObject.GetComponent<LevelComponentSettings>();

@@ -4775,6 +4775,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2136044631}
+    - target: {fileID: 1358676997856145742, guid: 679d9288ef2de6f4889829828fedb0d2, type: 3}
+      propertyPath: enteringPortal
+      value: 
+      objectReference: {fileID: 8300000, guid: de0bc2221d6d9c94a970826916de1040, type: 3}
     - target: {fileID: 1444594175202960742, guid: 679d9288ef2de6f4889829828fedb0d2, type: 3}
       propertyPath: m_Name
       value: Level Template

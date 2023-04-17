@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -7,6 +8,9 @@ using UnityEngine.SceneManagement;
 
 public class ButtonLevel : MonoBehaviour
 {
+    public static event Action<ButtonLevel> MouseEnter;
+    public static event Action<ButtonLevel> StoppedShaking;
+
     [SerializeField] private GameObject linePrefab;
     [SerializeField] private TextMeshPro text;
     [SerializeField] public List<ButtonLevel> unlockingLevels = new();
@@ -25,6 +29,7 @@ public class ButtonLevel : MonoBehaviour
     private Color lockedColor = Color.gray;
     private Color completedColor = Color.green;
 
+    private byte colorChange = 100;
     private bool previousAddLines = false;
     private bool canClick = true;
 
@@ -52,6 +57,13 @@ public class ButtonLevel : MonoBehaviour
             lineBetweenPoints.fromObject = gameObject;
             lineBetweenPoints.toObject = unlockingLevel.gameObject;
         }
+
+        shaker.StoppedShaking += Shaker_StoppedShaking;
+    }
+
+    private void Shaker_StoppedShaking()
+    {
+        StoppedShaking?.Invoke(this);
     }
 
     private void OnDestroy()
@@ -94,13 +106,21 @@ public class ButtonLevel : MonoBehaviour
 
     private void OnMouseEnter()
     {
+        spriteRenderer.color = new Color(0.5f, 0.5f, 0.5f);
+        text.color = Color.white;
+
         shaker.enabled = true;
         verticalFloater.enabled = false;
         horizontalFloater.enabled = false;
+
+        MouseEnter?.Invoke(this);
     }
 
     private void OnMouseExit()
     {
+        spriteRenderer.color = Color.white;
+        text.color = Color.black;
+
         verticalFloater.enabled = true;
         horizontalFloater.enabled = true;
         shaker.enabled = false;
