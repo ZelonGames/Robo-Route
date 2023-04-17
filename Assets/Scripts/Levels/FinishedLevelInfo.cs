@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 public class FinishedLevelInfo
 {
-    public Dictionary<int, LevelInfo> finishedLevels = new Dictionary<int, LevelInfo>();
+    public Dictionary<string, LevelInfo> finishedLevels = new();
 
     public FinishedLevelInfo()
     {
@@ -17,9 +17,8 @@ public class FinishedLevelInfo
 public class LevelInfo
 {
     public string levelName;
-    public int levelNumber;
     public int stars;
-    public bool cleared;
+    public bool completed;
 
     public LevelInfo()
     {

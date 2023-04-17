@@ -187,6 +187,7 @@ GameObject:
   - component: {fileID: 577192974019643483}
   - component: {fileID: -5885904209489738146}
   - component: {fileID: -4958505957907171234}
+  - component: {fileID: 8969607896334103042}
   m_Layer: 0
   m_Name: Platform
   m_TagString: Platform
@@ -201,14 +202,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5572229354970825140}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 0, z: 0}
-  m_LocalScale: {x: 0.28962746, y: 0.28962746, z: 0.28962746}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.28963, y: 0.28963, z: 0.28963}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1917609448}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2580592738224044355
 SpriteRenderer:
@@ -370,3 +371,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxCollider: {fileID: 1035007149}
   maxHeightDistance: 0.2
+--- !u!114 &8969607896334103042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5572229354970825140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b9b4873eb9a0424f83fed566f3cb1be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -2,46 +2,57 @@ using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class LevelLoader : MonoBehaviour
 {
-    public Canvas canvas;
-    public Button buttonLevel;
-
+    [SerializeField] private Camera camera;
     private FinishedLevelInfo finishedLevelInfo = null;
 
+    public static string LastPlayedLevelFile => Application.persistentDataPath + "/lastPlayedLevel.txt";
     public static string LevelDirectoryPath => "Levels";
 
     void Start()
     {
-        TextAsset[] levels = Resources.LoadAll<TextAsset>(LevelDirectoryPath);
+        if (!File.Exists(GameController.FinishedLevelsFile))
+            return;
 
-        if (File.Exists(GameController.FinishedLevelsFile))
+        string data = File.ReadAllText(GameController.FinishedLevelsFile);
+        finishedLevelInfo = JsonConvert.DeserializeObject<FinishedLevelInfo>(data);
+
+        var tutorial = GameObject.Find("Tutorial").GetComponent<ButtonLevel>();
+
+        UpdateLevelStatusRecursive(tutorial);
+
+        if (!File.Exists(LastPlayedLevelFile))
+            return;
+
+        try
         {
-            string data = File.ReadAllText(GameController.FinishedLevelsFile);
-            finishedLevelInfo = JsonConvert.DeserializeObject<FinishedLevelInfo>(data);
+            string lastPlayedLevel = File.ReadLines(LastPlayedLevelFile).First();
+            Vector2 lastPlayedLevelPosition = GameObject.Find(lastPlayedLevel).transform.position;
+            camera.transform.position = new Vector3(lastPlayedLevelPosition.x, lastPlayedLevelPosition.y, camera.transform.position.z);
         }
-
-        foreach (var level in levels)
+        catch
         {
-            LevelBase convertedLevel = JsonConvert.DeserializeObject<LevelBase>(level.text);
-            Button button = Instantiate(this.buttonLevel);
-            button.transform.SetParent(canvas.transform, false);
-            
-            var buttonLevel = button.GetComponent<ButtonLevel>();
-            buttonLevel.levelNumber = convertedLevel.levelNumber;
-            buttonLevel.buttonText.text = convertedLevel.levelName;
 
-            if (finishedLevelInfo != null && finishedLevelInfo.finishedLevels.ContainsKey(buttonLevel.levelNumber))
-                button.GetComponent<Image>().color = Color.green;
         }
     }
 
-    public void ChangeScene()
+    private void UpdateLevelStatusRecursive(ButtonLevel currentButton)
     {
-        SceneManager.LoadScene("Gameplay");
+        if (finishedLevelInfo.finishedLevels.TryGetValue(currentButton.gameObject.name, out var levelInfo))
+        {
+            currentButton.Complete();
+            foreach (ButtonLevel buttonLevel in currentButton.unlockingLevels)
+            {
+                buttonLevel.Unlock();
+                UpdateLevelStatusRecursive(buttonLevel);
+            }
+        }
     }
 }

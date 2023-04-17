@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class CameraScroller : MonoBehaviour
 {
-    [SerializeField] private LevelController levelController;
     [SerializeField] private float scrollSpeed = 1f;
 
     private float minY = 0f;
@@ -43,17 +42,9 @@ public class CameraScroller : MonoBehaviour
         if (!canScroll)
             return;
 
-        if (levelController != null && levelController.currentLevel != null)
-        {
-            minY = levelController.currentLevel.lowestPosition.Value;
-            maxY = levelController.currentLevel.highestPosition.Value;
-        }
-
         float scrollAmount = Input.GetAxis("Mouse ScrollWheel");
         float newY = transform.position.y + scrollAmount * scrollSpeed;
 
-        if (levelController != null)
-            newY = Mathf.Clamp(newY, minY, maxY);
         newY = GridHelper.SnapToGrid(new Vector2(0, newY)).y;
         transform.position = new Vector3(transform.position.x, newY, transform.position.z);
     }

@@ -3,19 +3,27 @@ using UnityEngine;
 
 public class Floater : MonoBehaviour
 {
+    public enum Direction
+    {
+        Vertical,
+        Horizontal,
+    }
+
     public float minDuration = 1f;
     public float maxDuration = 2f;
     public float floatHeight = 0.1f;
 
     private Vector3 startPos;
     private float floatDuration = 0;
-    private int direction;
+    private int startDirection;
+
+    public Direction direction = Direction.Vertical;
 
     private void Start()
     {
         floatDuration = Random.Range(minDuration, maxDuration);
         startPos = transform.position;
-        direction = 1;
+        startDirection = 1;
         StartCoroutine(FloatingCoroutine());
     }
 
@@ -23,7 +31,7 @@ public class Floater : MonoBehaviour
     {
         floatDuration = Random.Range(minDuration, maxDuration);
         startPos = transform.position;
-        direction = 1;
+        startDirection = 1;
         StartCoroutine(FloatingCoroutine());
     }
 
@@ -42,7 +50,17 @@ public class Floater : MonoBehaviour
             float t = (Time.time - startTime) / floatDuration;
 
             Vector3 newPos = transform.position;
-            newPos.y = startPos.y + direction * floatHeight * Mathf.Sin(t * Mathf.PI);
+            switch (direction)
+            {
+                case Direction.Vertical:
+                    newPos.y = startPos.y + startDirection * floatHeight * Mathf.Sin(t * Mathf.PI);
+                    break;
+                case Direction.Horizontal:
+                    newPos.x = startPos.x + startDirection * floatHeight * Mathf.Sin(t * Mathf.PI);
+                    break;
+                default:
+                    break;
+            }
             transform.position = newPos;
 
             yield return null;

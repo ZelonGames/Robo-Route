@@ -408,6 +408,7 @@ MonoBehaviour:
   minDuration: 1
   maxDuration: 2
   floatHeight: 0.1
+  direction: 0
 --- !u!114 &3467340136021680674
 MonoBehaviour:
   m_ObjectHideFlags: 0

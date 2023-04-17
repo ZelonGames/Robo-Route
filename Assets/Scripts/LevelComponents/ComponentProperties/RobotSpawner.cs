@@ -19,7 +19,7 @@ public class RobotSpawner : MonoBehaviour
     public float spawnTimeInSeconds = 1;
     public int robotsToSpawn = 1;
 
-    private LevelControllerNew levelController;
+    private LevelController levelController;
     private GameObject robotsGameObject;
 
     private readonly List<Robot> spawnedRobots = new List<Robot>();
@@ -32,7 +32,7 @@ public class RobotSpawner : MonoBehaviour
         var levelControllerGameObject = GameObject.Find("LevelController");
         if (levelControllerGameObject != null)
         {
-            levelController = levelControllerGameObject.GetComponent<LevelControllerNew>();
+            levelController = levelControllerGameObject.GetComponent<LevelController>();
             levelController.FailedLevel += LevelController_FailedLevel;
         }
 

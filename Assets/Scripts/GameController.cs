@@ -39,9 +39,10 @@ public class GameController : MonoBehaviour
         levelController.FailedLevel += LevelController_FailedLevel;
     }
 
-    public void LoadLevelScene()
+    private void OnDestroy()
     {
-        SceneManager.LoadScene("LevelMenu");
+        levelController.FinishedLevel -= LevelController_FinishedLevel;
+        levelController.FailedLevel -= LevelController_FailedLevel;
     }
 
     private void LevelController_FailedLevel(LevelBase failedLevel)
@@ -67,27 +68,26 @@ public class GameController : MonoBehaviour
 
         var levelInfo = new LevelInfo
         {
-            levelName = finishedLevel.levelName,
-            levelNumber = finishedLevel.levelNumber,
-            cleared = true,
+            levelName = SceneManager.GetActiveScene().name,
+            completed = true,
             stars = 3
         };
 
         if (finishedLevelInfo == null)
         {
             finishedLevelInfo = new FinishedLevelInfo();
-            finishedLevelInfo.finishedLevels.Add(levelInfo.levelNumber, levelInfo);
+            finishedLevelInfo.finishedLevels.Add(levelInfo.levelName, levelInfo);
         }
-        else if (!finishedLevelInfo.finishedLevels.ContainsKey(levelInfo.levelNumber))
-            finishedLevelInfo.finishedLevels.Add(levelInfo.levelNumber, levelInfo);
+        else if (!finishedLevelInfo.finishedLevels.ContainsKey(levelInfo.levelName))
+            finishedLevelInfo.finishedLevels.Add(levelInfo.levelName, levelInfo);
         else
-            finishedLevelInfo.finishedLevels[levelInfo.levelNumber] = levelInfo;
+            finishedLevelInfo.finishedLevels[levelInfo.levelName] = levelInfo;
 
-        using StreamWriter streamWriter = new StreamWriter(FinishedLevelsFile, false);
+        using StreamWriter streamWriter = new(FinishedLevelsFile, false);
         data = JsonConvert.SerializeObject(finishedLevelInfo);
         streamWriter.WriteLine(data);
 
-        SceneManager.LoadScene("LevelMenu");
+        SceneManager.LoadScene("LevelWorld");
     }
 
     public void StartGame()
@@ -95,6 +95,11 @@ public class GameController : MonoBehaviour
         CurrentLevelState = LevelState.Running;
         hasStartedGame = true;
         StartedLevel?.Invoke();
+    }
+
+    public void ExitLevel()
+    {
+        SceneManager.LoadScene("LevelWorld");
     }
 
     // Update is called once per frame

@@ -31,8 +31,8 @@ public class RobotDamager : MonoBehaviour
         if (levelController == null)
             return;
 
-        if (levelController.currentLevel != null && transform.position.y < levelController.currentLevel.lowestPosition - 5)
-            hp = 0;
+        //if (transform.position.y < levelController.currentLevel.lowestPosition - 5)
+          //  hp = 0;
 
         if (hp <= 0 && !killed)
         {

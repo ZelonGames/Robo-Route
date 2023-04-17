@@ -1,59 +1,134 @@
-using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class ButtonLevel : MonoBehaviour
 {
-    [SerializeField] private RectTransform rectTransform;
-    private Canvas canvas;
+    [SerializeField] private GameObject linePrefab;
+    [SerializeField] private TextMeshPro text;
+    [SerializeField] public List<ButtonLevel> unlockingLevels = new();
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Floater verticalFloater;
+    [SerializeField] private Floater horizontalFloater;
+    [SerializeField] private Shaker shaker;
+    [SerializeField] private SpriteRenderer padLock;
+    [SerializeField] private SpriteRenderer star;
+    [SerializeField] private bool unlocked = false;
+    [SerializeField] private bool completed = false;
+    [SerializeField] private bool addLines = false;
+    private SwipeMove cameraSwipeMove;
 
-    public Text buttonText;
+    private Color unlockedColor = Color.white;
+    private Color lockedColor = Color.gray;
+    private Color completedColor = Color.green;
 
-    public int levelNumber;
-    public static int selectedLevelNumber;
+    private bool previousAddLines = false;
+    private bool canClick = true;
 
-    void Start()
+    private void Start()
     {
-        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        GameObject.Find("Main Camera").TryGetComponent(out cameraSwipeMove);
+        if (cameraSwipeMove != null)
+        {
+            cameraSwipeMove.StartedMovingObject += CameraSwipeMove_StartedMovingObject;
+            cameraSwipeMove.StoppedMovingObject += CameraSwipeMove_StoppedMovingObject;
+        }
+
+        text.text = gameObject.name;
+
+        UpdateAppearance();
+
+        foreach (var unlockingLevel in unlockingLevels)
+        {
+            if (unlockingLevel == null)
+                continue;
+
+            GameObject line = Instantiate(linePrefab);
+            line.transform.SetParent(GameObject.Find("Lines").transform);
+            var lineBetweenPoints = line.GetComponent<LineBetweenPoints>();
+            lineBetweenPoints.fromObject = gameObject;
+            lineBetweenPoints.toObject = unlockingLevel.gameObject;
+        }
     }
 
-    public void Update()
+    private void OnDestroy()
     {
-        Rect canvasRect = canvas.GetComponent<RectTransform>().rect;
-        float buttonWidth = rectTransform.rect.width * rectTransform.localScale.x;
-
-        float canvasWidth = 0;
-        float canvasHeight = 0;
-
-#if UNITY_EDITOR
-        canvasWidth = canvasRect.width * canvas.scaleFactor;
-        canvasHeight = canvasRect.height * canvas.scaleFactor;
-#else
-        canvasWidth = Screen.width * Screen.dpi / 160.0f;
-        canvasHeight = Screen.height * Screen.dpi / 160.0f;
-#endif
-        int maxColumns = Mathf.FloorToInt(canvasWidth / buttonWidth) - 1;
-        int columnPosition = levelNumber - 1;
-
-        // calculate the row and column for the current button
-        int row = columnPosition / maxColumns;
-        int column = columnPosition % maxColumns;
-
-        // calculate the x and y position of the button in pixels
-        float x = (buttonWidth / 2f - canvasWidth / 2f) + (column * buttonWidth) + (column * 20f) + (buttonWidth / 2f);
-        float y = (canvasHeight / 2f - rectTransform.rect.height / 2f) - (row * rectTransform.rect.height) - (row * 20f) - (rectTransform.rect.height / 2f);
-
-        // set the position of the button
-        rectTransform.anchoredPosition = new Vector2(x, y);
+        if (cameraSwipeMove != null)
+        {
+            cameraSwipeMove.StartedMovingObject -= CameraSwipeMove_StartedMovingObject;
+            cameraSwipeMove.StoppedMovingObject -= CameraSwipeMove_StoppedMovingObject;
+        }
     }
 
-    public void LoadLevel()
+    private void OnValidate()
     {
-        selectedLevelNumber = levelNumber;
-        SceneManager.LoadScene("Gameplay");
+        text.text = gameObject.name;
+    }
+
+    private void CameraSwipeMove_StoppedMovingObject()
+    {
+        canClick = true;
+    }
+
+    private void CameraSwipeMove_StartedMovingObject()
+    {
+        canClick = false;
+    }
+
+
+    private void OnMouseUp()
+    {
+        if (!unlocked || !canClick)
+            return;
+
+        SceneManager.LoadScene(gameObject.name);
+
+        if (!File.Exists(LevelLoader.LastPlayedLevelFile))
+            File.Create(LevelLoader.LastPlayedLevelFile).Dispose();
+        using StreamWriter streamWriter = new(LevelLoader.LastPlayedLevelFile, false);
+        streamWriter.WriteLine(name);
+    }
+
+    private void OnMouseEnter()
+    {
+        shaker.enabled = true;
+        verticalFloater.enabled = false;
+        horizontalFloater.enabled = false;
+    }
+
+    private void OnMouseExit()
+    {
+        verticalFloater.enabled = true;
+        horizontalFloater.enabled = true;
+        shaker.enabled = false;
+    }
+
+    public void Complete()
+    {
+        completed = true;
+        UpdateAppearance();
+    }
+
+    public void Unlock()
+    {
+        unlocked = true;
+        UpdateAppearance();
+    }
+
+    public void UpdateAppearance()
+    {
+        if (completed)
+        {
+            padLock.enabled = false;
+            star.enabled = true;
+        }
+        else
+        {
+            star.enabled = false;
+            padLock.enabled = !unlocked;
+        }
     }
 }

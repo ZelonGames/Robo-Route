@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,38 +11,25 @@ public class LevelController : MonoBehaviour
 {
     public delegate void RequestAddItemHandler(GameObject parentObject, GameObject prefab);
     public event RequestAddItemHandler RequestedAddItem;
+    public event Action FinishedGeneratingGameObjects;
 
     public delegate void LevelEventHandler(LevelBase currentLevel);
     public event LevelEventHandler FinishedLevel;
     public event LevelEventHandler FailedLevel;
 
-    public LevelBase currentLevel;
+    [SerializeField] private GameObject cursorObjectQueue;
+    [SerializeField] private GameObject robots;
+    [SerializeField] private GameObject addedObjects;
+    [SerializeField] private GameObject movedObjects;
+    [SerializeField] private GameObject backupGridWorld;
+    [SerializeField] private GameObject gridWorld;
+
     public int goalsToReach = 0;
     public int completedGoals = 0;
 
     void Start()
     {
         completedGoals = 0;
-        if (!GameHelper.IsUsingMapEditor())
-        {
-            currentLevel = LevelEditor.Load("level" + ButtonLevel.selectedLevelNumber);
-
-            if (currentLevel != null)
-            {
-                goalsToReach = currentLevel.startingLevelComponents.Where(x => x.GetType() == typeof(Goal)).Count();
-
-                for (int i = 0; i < currentLevel.startingLevelComponents.Count; i++)
-                {
-                    var levelComponent = currentLevel.startingLevelComponents[i];
-                    var itemMover = currentLevel.startingLevelComponents[i].spawnedGameObject.GetComponent<ItemMover>();
-                    GameController.hasStartedGame = false;
-
-                    Destroy(currentLevel.startingLevelComponents[i].spawnedGameObject.GetComponent<LevelComponentRemover>());
-                }
-            }
-        }
-        else
-            currentLevel = new LevelBase();
 
         ItemAdder.TryAddItem += ItemAdder_TryAddItem;
 
@@ -50,11 +38,24 @@ public class LevelController : MonoBehaviour
         RobotDamager.DestroyedRobot += RobotDamager_DestroyedRobot;
         if (GameController.gameController != null)
             GameController.gameController.StartedLevel += GameController_StartedLevel;
+
+        foreach (Transform child in gridWorld.transform)
+        {
+            // Get a reference to the prefab that was used to create the original GameObject
+            // Instantiate a new copy of the prefab
+            GameObject levelComponent = Instantiate(child.gameObject);
+
+            // Set the position, rotation, and other properties of the new GameObject to match the original GameObject
+            levelComponent.transform.SetParent(backupGridWorld.transform);
+            levelComponent.transform.position = child.gameObject.transform.position;
+            levelComponent.transform.rotation = child.gameObject.transform.rotation;
+            levelComponent.transform.localScale = child.gameObject.transform.localScale;
+            levelComponent.SetActive(false);
+        }
     }
 
     private void OnDestroy()
     {
-        currentLevel = null;
         ItemAdder.TryAddItem -= ItemAdder_TryAddItem;
         EnteredGoalDetector.GoalEntered -= EnteredGoalDetector_GoalEntered;
 
@@ -66,6 +67,7 @@ public class LevelController : MonoBehaviour
     private void GameController_StartedLevel()
     {
         RestartLevel();
+        FinishedGeneratingGameObjects?.Invoke();
     }
 
     private void RobotDamager_DestroyedRobot(GameObject gameObject)
@@ -76,11 +78,10 @@ public class LevelController : MonoBehaviour
     private void EnteredGoalDetector_ReachedRequirement(EnteredGoalDetector enteredGoalDetector)
     {
         completedGoals++;
-        if (currentLevel != null &&
-            completedGoals >= goalsToReach)
+        if (completedGoals >= goalsToReach)
         {
             completedGoals = 0;
-            FinishedLevel?.Invoke(currentLevel);
+            FinishedLevel?.Invoke(null);
         }
     }
 
@@ -90,37 +91,35 @@ public class LevelController : MonoBehaviour
 
     public void RestartLevel()
     {
-        foreach (var miniature in currentLevel.miniatures)
-        {
-            if (miniature.spawnedGameObject == null)
-            {
-                miniature.spawnedGameObject = Instantiate(miniature.Prefab);
-                miniature.spawnedGameObject.transform.position =
-                    new Vector2(miniature.startingPosition.x, miniature.startingPosition.y);
-            }
-        }
-
         completedGoals = 0;
         foreach (var enteredGoalDetector in FindObjectsOfType<EnteredGoalDetector>())
             enteredGoalDetector.ResetStats();
-
-        foreach (Transform child in GameObject.Find("CursorObjectQueue").transform)
-            Destroy(child.gameObject);
-
-        foreach (Transform child in GameObject.Find("Robots").transform)
-            Destroy(child.gameObject);
-
-        foreach (Transform child in GameObject.Find("AddedObjects").transform)
-            Destroy(child.gameObject);
-
-        foreach (Transform child in GameObject.Find("MovedObjects").transform)
+        
+        foreach (Transform child in gridWorld.transform)
         {
-            var itemMover = child.gameObject.GetComponent<ItemMover>();
-            itemMover.allowedMovesCount = itemMover.initialAllowedMovesCount;
-            itemMover.canMove = itemMover.initialCanMove;
-            itemMover.UpdateMaterial();
-            itemMover.UpdateAllowedMovesCountText();
-            child.gameObject.transform.position = itemMover.SpawnPosition;
+            Destroy(child.gameObject);
+        }
+
+        foreach (Transform child in cursorObjectQueue.transform)
+            Destroy(child.gameObject);
+
+        foreach (Transform child in robots.transform)
+            Destroy(child.gameObject);
+
+        foreach (Transform child in addedObjects.transform)
+            Destroy(child.gameObject);
+
+        foreach (Transform child in movedObjects.transform)
+            Destroy(child.gameObject);
+
+        foreach (Transform child in backupGridWorld.transform)
+        {
+            GameObject levelComponent = Instantiate(child.gameObject);
+            levelComponent.transform.SetParent(gridWorld.transform);
+            levelComponent.SetActive(true);
+
+            if (levelComponent.TryGetComponent<RobotSpawner>(out var robotSpawner))
+                robotSpawner.StartSpawning();
         }
     }
 
