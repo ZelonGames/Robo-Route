@@ -25,8 +25,7 @@ public class GameSoundPlayer : MonoBehaviour
 
     private void PlaySound(AudioClip audioClip)
     {
-        audioSource.clip = audioClip;
-        audioSource.Play();
+        audioSource.PlayOneShot(audioClip);
     }
 
     public void PlayRobotLandingSound()

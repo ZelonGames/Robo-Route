@@ -21,21 +21,18 @@ public class LevelWorldSoundPlayer : MonoBehaviour
         ButtonLevel.StoppedShaking -= PlayStoppedShakingSound;
     }
 
+    private void PlaySound(AudioClip audioClip)
+    {
+        audioSource.PlayOneShot(audioClip);
+    }
+
     private void PlayStoppedShakingSound(ButtonLevel obj)
     {
-        if (audioSource.isPlaying)
-            audioSource.Stop();
-
-        audioSource.clip = stoppedShakingButtonSound;
-        audioSource.Play();
+        PlaySound(stoppedShakingButtonSound);
     }
 
     private void PlayShakingSound(ButtonLevel obj)
     {
-        if (audioSource.isPlaying)
-            audioSource.Stop();
-
-        audioSource.clip = shakingButtonSound;
-        audioSource.Play();
+        PlaySound(shakingButtonSound);
     }
 }
