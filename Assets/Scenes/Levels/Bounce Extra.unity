@@ -7452,6 +7452,23 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 5
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1642715112 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2527830698250443916, guid: 679d9288ef2de6f4889829828fedb0d2, type: 3}
+  m_PrefabInstance: {fileID: 2052039845}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1642715117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642715112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e34a368f3dce94843809c1dce54f9e40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1649346208
 GameObject:
   m_ObjectHideFlags: 0
@@ -10346,7 +10363,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 13272817934217276, guid: 679d9288ef2de6f4889829828fedb0d2, type: 3}
       propertyPath: field of view
-      value: 28.7
+      value: 59.696613
+      objectReference: {fileID: 0}
+    - target: {fileID: 13272817934217276, guid: 679d9288ef2de6f4889829828fedb0d2, type: 3}
+      propertyPath: m_FOVAxisMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 13272817934217276, guid: 679d9288ef2de6f4889829828fedb0d2, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 13272817934217276, guid: 679d9288ef2de6f4889829828fedb0d2, type: 3}
+      propertyPath: m_NormalizedViewPortRect.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 13272817934217276, guid: 679d9288ef2de6f4889829828fedb0d2, type: 3}
+      propertyPath: m_NormalizedViewPortRect.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 13272817934217276, guid: 679d9288ef2de6f4889829828fedb0d2, type: 3}
+      propertyPath: m_NormalizedViewPortRect.width
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 13272817934217276, guid: 679d9288ef2de6f4889829828fedb0d2, type: 3}
+      propertyPath: m_NormalizedViewPortRect.height
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1444594175202960742, guid: 679d9288ef2de6f4889829828fedb0d2, type: 3}
       propertyPath: m_Name
@@ -10408,7 +10449,10 @@ PrefabInstance:
     - {fileID: 4591610580957484222, guid: 679d9288ef2de6f4889829828fedb0d2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2527830698250443916, guid: 679d9288ef2de6f4889829828fedb0d2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1642715117}
   m_SourcePrefab: {fileID: 100100000, guid: 679d9288ef2de6f4889829828fedb0d2, type: 3}
 --- !u!1 &2068324967
 GameObject:

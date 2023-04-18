@@ -15,8 +15,6 @@ public class CameraScroller : MonoBehaviour
 
     private void Start()
     {
-
-
         ScrollViewState.MouseEntered += ScrollViewState_MouseEntered;
         ScrollViewState.MouseExit += ScrollViewState_MouseExit;
     }
