@@ -30,6 +30,7 @@ public class CameraAspectController : MonoBehaviour
     {
         cameraComponent.clearFlags = CameraClearFlags.SolidColor;
 
+
         float currentAspectRatio = (float)Screen.width / Screen.height;
         float targetAspectRatio = fixedAspectRatio;
 
