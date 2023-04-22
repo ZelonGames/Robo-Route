@@ -11,19 +11,20 @@ public class EnteredGoalDetector : MonoBehaviour
 
     public delegate void ReachedRequirementEventHandler(EnteredGoalDetector enteredGoalDetector);
     public static event ReachedRequirementEventHandler ReachedRequirement;
-
-    public LevelComponentSettings levelComponentSettings;
-
+    
     [SerializeField] private TextMeshPro textMeshPro;
 
-    private int savedRobots;
-    private bool hasInvokedReachedRequirement = false;
+    public LevelComponentSettings levelComponentSettings;
+ 
     public int requiredRobotsToSave;
 
-    public static Delegate[] GetInvocationList()
-    {
-        return GoalEntered?.GetInvocationList();
-    }
+    private Queue<Collider2D> collidingRobots = new();
+    private Collider2D currentCollidingRobot = null;
+
+    private SpriteRenderer currentCollidingRobotSpriteRenderer = null;
+    private float startDistance;
+    private int savedRobots;
+    private bool hasInvokedReachedRequirement = false;
 
     void Start()
     {
@@ -51,10 +52,52 @@ public class EnteredGoalDetector : MonoBehaviour
         catch { }
     }
 
+    public void Update()
+    {
+        if (currentCollidingRobot != null)
+        {
+            float currentDistance = Vector2.Distance(
+                currentCollidingRobot.gameObject.transform.position,
+                gameObject.transform.position);
+
+            currentCollidingRobotSpriteRenderer.color = new Color(
+                currentCollidingRobotSpriteRenderer.color.r,
+                currentCollidingRobotSpriteRenderer.color.g,
+                currentCollidingRobotSpriteRenderer.color.b,
+                 currentDistance / startDistance);
+
+            if (currentDistance <= 0.2f)
+            {
+                Destroy(currentCollidingRobot.gameObject);
+                currentCollidingRobot = null;
+                savedRobots++;
+                UpdateText();
+                GoalEntered?.Invoke(savedRobots, requiredRobotsToSave);
+                if (!hasInvokedReachedRequirement && savedRobots >= requiredRobotsToSave)
+                {
+                    ReachedRequirement?.Invoke(this);
+                    hasInvokedReachedRequirement = true;
+                }
+            }
+        }
+        else
+            collidingRobots.TryDequeue(out currentCollidingRobot);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Robot")
         {
+            collidingRobots.Enqueue(collision);
+            if (currentCollidingRobot == null)
+            {
+                currentCollidingRobot = collidingRobots.Dequeue();
+                currentCollidingRobotSpriteRenderer = currentCollidingRobot.GetComponent<SpriteRenderer>();
+                startDistance = Vector2.Distance(
+                    currentCollidingRobot.gameObject.transform.position,
+                    gameObject.transform.position);
+            }
+            /*
             Destroy(collision.gameObject);
             savedRobots++;
             UpdateText();
@@ -63,7 +106,7 @@ public class EnteredGoalDetector : MonoBehaviour
             {
                 ReachedRequirement?.Invoke(this);
                 hasInvokedReachedRequirement = true;
-            }
+            }*/
         }
     }
 
