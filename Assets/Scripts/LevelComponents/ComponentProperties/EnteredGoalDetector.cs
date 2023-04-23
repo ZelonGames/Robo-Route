@@ -11,18 +11,18 @@ public class EnteredGoalDetector : MonoBehaviour
 
     public delegate void ReachedRequirementEventHandler(EnteredGoalDetector enteredGoalDetector);
     public static event ReachedRequirementEventHandler ReachedRequirement;
-    
+
     [SerializeField] private TextMeshPro textMeshPro;
 
     public LevelComponentSettings levelComponentSettings;
- 
+
     public int requiredRobotsToSave;
 
     private Queue<Collider2D> collidingRobots = new();
     private Collider2D currentCollidingRobot = null;
 
     private SpriteRenderer currentCollidingRobotSpriteRenderer = null;
-    private float startDistance;
+    private float collidingRobotStartDistance;
     private int savedRobots;
     private bool hasInvokedReachedRequirement = false;
 
@@ -52,7 +52,7 @@ public class EnteredGoalDetector : MonoBehaviour
         catch { }
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
         if (currentCollidingRobot != null)
         {
@@ -64,7 +64,7 @@ public class EnteredGoalDetector : MonoBehaviour
                 currentCollidingRobotSpriteRenderer.color.r,
                 currentCollidingRobotSpriteRenderer.color.g,
                 currentCollidingRobotSpriteRenderer.color.b,
-                 currentDistance / startDistance);
+                 currentDistance / collidingRobotStartDistance);
 
             if (currentDistance <= 0.2f)
             {
@@ -86,27 +86,17 @@ public class EnteredGoalDetector : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Robot")
+        if (collision.CompareTag("Robot"))
         {
             collidingRobots.Enqueue(collision);
             if (currentCollidingRobot == null)
             {
                 currentCollidingRobot = collidingRobots.Dequeue();
                 currentCollidingRobotSpriteRenderer = currentCollidingRobot.GetComponent<SpriteRenderer>();
-                startDistance = Vector2.Distance(
+                collidingRobotStartDistance = Vector2.Distance(
                     currentCollidingRobot.gameObject.transform.position,
                     gameObject.transform.position);
             }
-            /*
-            Destroy(collision.gameObject);
-            savedRobots++;
-            UpdateText();
-            GoalEntered?.Invoke(savedRobots, requiredRobotsToSave);
-            if (!hasInvokedReachedRequirement && savedRobots >= requiredRobotsToSave)
-            {
-                ReachedRequirement?.Invoke(this);
-                hasInvokedReachedRequirement = true;
-            }*/
         }
     }
 

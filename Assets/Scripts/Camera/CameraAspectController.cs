@@ -3,7 +3,7 @@ using UnityEngine;
 public class CameraAspectController : MonoBehaviour
 {
     private Camera cameraComponent;
-    private float fixedAspectRatio = 16f / 9f;
+    private readonly float fixedAspectRatio = 16f / 9f;
 
     private void Awake()
     {

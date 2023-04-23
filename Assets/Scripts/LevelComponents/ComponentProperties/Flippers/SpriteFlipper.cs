@@ -1,9 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class SpriteFlipper : MonoBehaviour
 {
+    public event Action Validated;
+
     public SpriteRenderer spriteRenderer;
     private LevelComponentSettings levelComponentSettings;
 
@@ -11,15 +15,6 @@ public class SpriteFlipper : MonoBehaviour
 
     void Start()
     {
-        levelComponentSettings = gameObject.GetComponent<LevelComponentSettings>();
-        spriteRenderer.flipX = isFlipped;
-
-        if (levelComponentSettings != null)
-        {
-            if (levelComponentSettings.settings.ContainsKey(nameof(isFlipped)))
-                isFlipped = (bool)levelComponentSettings.settings[nameof(isFlipped)];
-            OnValidate();
-        }
     }
 
     private void OnValidate()
@@ -28,5 +23,7 @@ public class SpriteFlipper : MonoBehaviour
 
         if (levelComponentSettings != null)
             levelComponentSettings.UpdateSetting(nameof(isFlipped), isFlipped);
+
+        Validated?.Invoke();
     }
 }
