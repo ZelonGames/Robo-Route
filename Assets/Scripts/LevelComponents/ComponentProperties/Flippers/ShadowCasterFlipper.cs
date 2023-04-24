@@ -31,7 +31,6 @@ public class ShadowCasterFlipper : MonoBehaviour
 
     private void SpriteFlipper_Validated()
     {
-        return;
         for (int i = 0; i < shadowCasterLeft.shapePath.Length; i++)
         {
             shadowCasterLeft.shapePath[i].x *= -1;

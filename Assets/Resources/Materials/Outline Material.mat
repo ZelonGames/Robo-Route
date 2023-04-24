@@ -66,11 +66,11 @@ Material:
     - _BUILTIN_QueueOffset: 0
     - _Height: 0.68
     - _Rotation: 10.08
-    - _Size: 5.32
+    - _Size: 7.81
     - _Width: 0.5
     m_Colors:
     - _Axis: {r: 3.9, g: 1.29, b: 1.17, a: 0}
-    - _Color: {r: 294.06674, g: 7.486543, b: 0, a: 1}
+    - _Color: {r: 103.96829, g: 103.96829, b: 103.96829, a: 1}
     - _In: {r: 1.47, g: 0.93, b: 0.9, a: 0}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Outline_Color: {r: 1, g: 0, b: 0, a: 0}

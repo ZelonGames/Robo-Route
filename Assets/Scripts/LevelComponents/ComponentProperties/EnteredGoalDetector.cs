@@ -18,13 +18,17 @@ public class EnteredGoalDetector : MonoBehaviour
 
     public int requiredRobotsToSave;
 
-    private Queue<Collider2D> collidingRobots = new();
-    private Collider2D currentCollidingRobot = null;
+    private readonly List<CollidingRobots> collidingRobots = new();
 
-    private SpriteRenderer currentCollidingRobotSpriteRenderer = null;
-    private float collidingRobotStartDistance;
     private int savedRobots;
     private bool hasInvokedReachedRequirement = false;
+
+    private class CollidingRobots
+    {
+        public Collider2D collider2D = null;
+        public SpriteRenderer spriteRenderer = null;
+        public float startDistance;
+    }
 
     void Start()
     {
@@ -54,21 +58,24 @@ public class EnteredGoalDetector : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (currentCollidingRobot != null)
+        for (int i = 0; i < collidingRobots.Count; i++)
         {
+            var currentCollidingRobot = collidingRobots[i];
+
             float currentDistance = Vector2.Distance(
-                currentCollidingRobot.gameObject.transform.position,
+                currentCollidingRobot.collider2D.gameObject.transform.position,
                 gameObject.transform.position);
 
-            currentCollidingRobotSpriteRenderer.color = new Color(
-                currentCollidingRobotSpriteRenderer.color.r,
-                currentCollidingRobotSpriteRenderer.color.g,
-                currentCollidingRobotSpriteRenderer.color.b,
-                 currentDistance / collidingRobotStartDistance);
+            currentCollidingRobot.spriteRenderer.color = new Color(
+                currentCollidingRobot.spriteRenderer.color.r,
+                currentCollidingRobot.spriteRenderer.color.g,
+                currentCollidingRobot.spriteRenderer.color.b,
+                 currentDistance / currentCollidingRobot.startDistance);
 
             if (currentDistance <= 0.2f)
             {
-                Destroy(currentCollidingRobot.gameObject);
+                collidingRobots.Remove(currentCollidingRobot);
+                Destroy(currentCollidingRobot.collider2D.gameObject);
                 currentCollidingRobot = null;
                 savedRobots++;
                 UpdateText();
@@ -80,23 +87,18 @@ public class EnteredGoalDetector : MonoBehaviour
                 }
             }
         }
-        else
-            collidingRobots.TryDequeue(out currentCollidingRobot);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Robot"))
         {
-            collidingRobots.Enqueue(collision);
-            if (currentCollidingRobot == null)
+            collidingRobots.Add(new CollidingRobots()
             {
-                currentCollidingRobot = collidingRobots.Dequeue();
-                currentCollidingRobotSpriteRenderer = currentCollidingRobot.GetComponent<SpriteRenderer>();
-                collidingRobotStartDistance = Vector2.Distance(
-                    currentCollidingRobot.gameObject.transform.position,
-                    gameObject.transform.position);
-            }
+                collider2D = collision,
+                spriteRenderer = collision.GetComponent<SpriteRenderer>(),
+                startDistance = Vector2.Distance(collision.gameObject.transform.position, gameObject.transform.position),
+            });
         }
     }
 
