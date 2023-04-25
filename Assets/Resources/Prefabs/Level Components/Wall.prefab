@@ -322,6 +322,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 7227047839969079624}
   collider2D: {fileID: 3781138888097259488}
   textAllowedMovesCount: {fileID: 21129038}
+  highlight: {fileID: 0}
   initialMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   canMoveMaterial: {fileID: 2100000, guid: 93d283e7b17ea25429f0239459b5e1ac, type: 2}
   usingLimitedMoves: 0

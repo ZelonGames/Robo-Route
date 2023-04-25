@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using static UnityEngine.GraphicsBuffer;
 
 public class ItemMover : MonoBehaviour
@@ -17,6 +18,7 @@ public class ItemMover : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private new Collider2D collider2D;
     [SerializeField] private TextMeshPro textAllowedMovesCount;
+    [SerializeField] private Light2D highlight;
 
     public Material initialMaterial;
     public Material canMoveMaterial;
@@ -47,6 +49,9 @@ public class ItemMover : MonoBehaviour
         SpawnPosition = gameObject.transform.position;
         cursorObjectQueue = FindObjectOfType<CursorObjectQueue>();
 
+        if (highlight != null && canMove)
+            highlight.enabled = true;
+
         if (GameController.gameController != null)
             GameController.gameController.StartedLevel += GameController_StartedGame;
     }
@@ -63,7 +68,11 @@ public class ItemMover : MonoBehaviour
         {
             textAllowedMovesCount.text = usingLimitedMoves ? allowedMovesCount.ToString() : "";
             if (allowedMovesCount <= 0)
+            {
                 textAllowedMovesCount.text = "";
+                if (highlight != null)
+                    highlight.enabled = false;
+            }
         }
     }
 
@@ -108,6 +117,9 @@ public class ItemMover : MonoBehaviour
             {
                 if (!usingLimitedMoves || usingLimitedMoves && allowedMovesCount > 0)
                 {
+                    if (highlight != null)
+                        highlight.intensity *= 0.5f;
+
                     IsDragging = isDraggingAnyObject = true;
                     initialMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     initialObjectPos = gameObject.transform.position;
@@ -157,6 +169,8 @@ public class ItemMover : MonoBehaviour
                 spriteRenderer.color.b,
                 0.5f);
 
+
+
             if (canMoveMaterial != null)
             {
                 spriteRenderer.material.SetColor("_SolidOutline", new Color(
@@ -182,6 +196,10 @@ public class ItemMover : MonoBehaviour
                 spriteRenderer.color.g,
                 spriteRenderer.color.b,
                 1);
+
+            if (highlight != null)
+                highlight.intensity /= 0.5f;
+
             if (canMoveMaterial != null)
             {
                 spriteRenderer.material.SetColor("_SolidOutline", new Color(
