@@ -1,7 +1,7 @@
 # Robo-Route
 A realtime puzzle game about Robots trying to reach different locations
 
-Credits:
+**Credits**
 
 Programming: Me
 
@@ -9,15 +9,16 @@ Art/Sound: Ostfralla
 
 Game Design: Me and Ostfralla
 
+**Backstory**
 
-In a distant future, humanity has colonized multiple planets and explored space. Robots have become crucial in extracting resources from these planets and transporting them back to Earth.
+In a distant galaxy, there lay a group of human colonies. These colonies were dependent on the resources produced in each sector and then transported to one another through a system of portals.
 
-But one day, something terrible happens - a massive meteorite storm hits the entire solar system. These meteorites have destroyed much of the transport network, preventing the robots from returning to Earth. The robots that survived the disaster are now without any way to transport the resources to their respective portals.
+But one day, something terrible happened. One of the largest asteroids in the galaxy collided with one of the colonies, creating a massive explosion that caused destruction on a scale never seen before. The roads that led to the portals in several sectors were severely damaged, and the transport of resources between sectors came to a halt.
 
-As one of the few engineers who are still alive, it is up to you to repair the transport network and ensure that the robots can deliver the resources to the right portal.
+You were one of the chief engineers in the colonies, but you were also the only one who survived the catastrophe. You have now been tasked with repairing the roads and restoring the transport network alone. It is an almost impossible task, as each sector has its own challenges and requires different strategies to restore the roads.
 
-Each portal leads to a different planet where the robots need to retrieve specific resources. For example, the green portal leads to a forest world where the robots need to collect trees and other vegetation, while the red portal leads to a mineral-rich planet where the robots need to collect precious gems and metals.
+In each sector, you must find and use the resources available to build new roads and repair the damaged ones. It could be anything from collecting materials from wreckage of destroyed vessels to building new bridges and tunnels through mountain ranges or forests.
 
-But without any roads to transport the resources on, the player must build new roads and transportation mechanisms using various items such as platforms, elevators, slides, and other objects to guide the robots to the right place.
+You will need to be both creative and persevering, finding new ways to solve problems. But you also have your knowledge and experience as an engineer, and your determination to fight for the colonies and restore the transport network.
 
-As the player progresses through different levels, it becomes increasingly difficult to guide the robots correctly and avoid obstacles and hazards on the planets. But if you manage to complete each level, the robots will be able to deliver the valuable resources back to Earth and save humanity's future.
+Although it may feel overwhelming and lonely at times, you have the hope that you will become a hero who saves the colonies and restores peace to the galaxy. Good luck!
