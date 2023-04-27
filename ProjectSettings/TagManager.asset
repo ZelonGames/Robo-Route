@@ -44,6 +44,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 4181770367
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Portal
+    uniqueID: 3965288447
+    locked: 0
+  - name: Robots
+    uniqueID: 1670281985
+    locked: 0
+  - name: Foreground
+    uniqueID: 2868095095
     locked: 0

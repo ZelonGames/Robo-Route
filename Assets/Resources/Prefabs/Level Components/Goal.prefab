@@ -210,8 +210,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1522253921}
-  - {fileID: 4817590488797734585}
   - {fileID: 5886364442911494976}
+  - {fileID: 4817590488797734585}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -253,8 +253,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -329678849
+  m_SortingLayer: 1
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 031a9a6df6d0086428279c21812b7dd1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -436,8 +436,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4550352059321383227}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.44599998, y: -1.325, z: -2.4224155}
-  m_LocalScale: {x: 0.110593244, y: 0.110593244, z: 0.110593244}
+  m_LocalPosition: {x: 0.43, y: -1.23, z: 0}
+  m_LocalScale: {x: 0.110593244, y: 0.1, z: 0.110593244}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2120881935738102052}
@@ -5223,8 +5223,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -329678849
+  m_SortingLayer: 1
   m_SortingOrder: 4
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -5308,7 +5308,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 000000007fc040f9ff7f59ec
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
