@@ -27,6 +27,10 @@ public class WindTrailSpawner : MonoBehaviour
 
         StartCoroutine(SpawnParticle());
     }
+    private void OnDestroy()
+    {
+        StopCoroutine(SpawnParticle());
+    }
 
     IEnumerator SpawnParticle()
     {
