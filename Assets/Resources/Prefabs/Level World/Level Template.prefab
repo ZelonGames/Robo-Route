@@ -27,7 +27,9 @@ Transform:
   m_LocalPosition: {x: 0.8522243, y: 1.9467459, z: 0.19620693}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5252573974844288470}
+  - {fileID: 4602803487065904781}
   m_Father: {fileID: 2693388013827244255}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5238,8 +5240,6 @@ Transform:
   - {fileID: 1545261077780385800}
   - {fileID: 2571251713845273361}
   - {fileID: 8630217607693919740}
-  - {fileID: 5252573974844288470}
-  - {fileID: 4602803487065904781}
   - {fileID: 8287388093183267408}
   - {fileID: 4207133562914607536}
   m_Father: {fileID: 0}
@@ -5317,11 +5317,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2163685149856471917}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.6566565, y: 1.9139117, z: 0.19014871}
+  m_LocalPosition: {x: 0.8044322, y: -0.032834172, z: -0.006058216}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2693388013827244255}
+  m_Father: {fileID: 8630217607693919740}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &5620495208440842435
@@ -5334,9 +5334,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1c8cec2e19e8091468fac7ba0cb4740a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d13c2454f48f5e543b00c8ea72edebf5, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.687
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -10912,11 +10912,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7443448049813848370}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.6566565, y: 1.9139117, z: 0.19014871}
+  m_LocalPosition: {x: 0.8044322, y: -0.032834172, z: -0.006058216}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2693388013827244255}
+  m_Father: {fileID: 8630217607693919740}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &410459519527947351
