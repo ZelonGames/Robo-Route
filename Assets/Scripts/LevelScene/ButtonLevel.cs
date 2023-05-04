@@ -8,8 +8,11 @@ using UnityEngine.SceneManagement;
 
 public class ButtonLevel : MonoBehaviour
 {
+    public delegate void ButtonLevelEventHandler(string levelToLoad);
+
     public static event Action<ButtonLevel> MouseEnter;
     public static event Action<ButtonLevel> StoppedShaking;
+    public static event ButtonLevelEventHandler Clicked;
 
     [SerializeField] private GameObject linePrefab;
     [SerializeField] private TextMeshPro text;
@@ -32,9 +35,11 @@ public class ButtonLevel : MonoBehaviour
     private byte colorChange = 100;
     private bool previousAddLines = false;
     private bool canClick = true;
+    private static bool canClickAnyButton = true;
 
     private void Start()
     {
+        canClickAnyButton = true;
         GameObject.Find("Main Camera").TryGetComponent(out cameraSwipeMove);
         if (cameraSwipeMove != null)
         {
@@ -93,10 +98,12 @@ public class ButtonLevel : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (!unlocked || !canClick)
+        if (!unlocked || !canClick || !canClickAnyButton)
             return;
 
-        SceneManager.LoadScene(gameObject.name);
+        canClickAnyButton = false;
+
+        Clicked?.Invoke(gameObject.name);
 
         if (!File.Exists(LevelLoader.LastPlayedLevelFile))
             File.Create(LevelLoader.LastPlayedLevelFile).Dispose();
@@ -109,7 +116,7 @@ public class ButtonLevel : MonoBehaviour
         spriteRenderer.color = new Color(0.5f, 0.5f, 0.5f);
         text.color = Color.white;
 
-        shaker.enabled = true;
+        shaker.Play();
         verticalFloater.enabled = false;
         horizontalFloater.enabled = false;
 
@@ -123,7 +130,7 @@ public class ButtonLevel : MonoBehaviour
 
         verticalFloater.enabled = true;
         horizontalFloater.enabled = true;
-        shaker.enabled = false;
+        shaker.Stop();
     }
 
     public void Complete()

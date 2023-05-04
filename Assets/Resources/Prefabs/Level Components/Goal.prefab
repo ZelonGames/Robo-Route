@@ -190,6 +190,7 @@ GameObject:
   - component: {fileID: 7007078321167489742}
   - component: {fileID: 8100988891489766555}
   - component: {fileID: 4486479809383400367}
+  - component: {fileID: 7262670456023815963}
   m_Layer: 0
   m_Name: Goal
   m_TagString: Goal
@@ -410,6 +411,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleSystem: {fileID: 5870348400376285552}
+--- !u!114 &7262670456023815963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527861854871762712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c9f6335e4fdcba43983ebfd855c933a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  squashAmount: 0.3
+  squashDuration: 0.1
 --- !u!1 &4550352059321383227
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,7 +474,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1

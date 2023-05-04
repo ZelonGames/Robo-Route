@@ -193,6 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody2D: {fileID: 6135062217073292420}
   boxCollider2D: {fileID: 1423046844}
+  groundTrail: {fileID: 2837142160060177595}
   moveSpeed: 2
 --- !u!114 &-116029863328610589
 MonoBehaviour:
@@ -270,7 +271,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 1
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:

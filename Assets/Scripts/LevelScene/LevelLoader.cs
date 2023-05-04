@@ -11,6 +11,7 @@ using UnityEngine.Video;
 public class LevelLoader : MonoBehaviour
 {
     [SerializeField] private Camera camera;
+    [SerializeField] private SceneFader sceneFaderIn;
     private FinishedLevelInfo finishedLevelInfo = null;
 
     public static string LastPlayedLevelFile => Application.persistentDataPath + "/lastPlayedLevel.txt";
@@ -20,6 +21,8 @@ public class LevelLoader : MonoBehaviour
     {
         if (!File.Exists(GameController.FinishedLevelsFile))
             return;
+
+        ButtonLevel.Clicked += OnLoadLevel;
 
         string data = File.ReadAllText(GameController.FinishedLevelsFile);
         finishedLevelInfo = JsonConvert.DeserializeObject<FinishedLevelInfo>(data);
@@ -41,6 +44,17 @@ public class LevelLoader : MonoBehaviour
         {
 
         }
+    }
+
+    private void OnDestroy()
+    {
+        ButtonLevel.Clicked -= OnLoadLevel;
+    }
+
+    private void OnLoadLevel(string levelToLoad)
+    {
+        sceneFaderIn.sceneName = levelToLoad;
+        sceneFaderIn.Play();
     }
 
     private void UpdateLevelStatusRecursive(ButtonLevel currentButton)

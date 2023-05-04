@@ -18,44 +18,55 @@ public class Shaker : MonoBehaviour
 
     private bool invokedStartedShaking = false;
     private bool invokedStoppedShaking = false;
+    private bool isPlaying = false;
 
     private void Start()
     {
         initialPosition = gameObject.transform.localPosition;
     }
 
-    private void OnEnable()
+    public void Play()
     {
+        isPlaying = true;
         invokedStartedShaking = false;
         invokedStoppedShaking = false;
-        smokeEffect.Play();
+
+        initialPosition = gameObject.transform.localPosition;
+
+        if (smokeEffect != null)
+            smokeEffect.Play();
+        if (!invokedStartedShaking)
+            StartedShaking?.Invoke();
+
         Shake();
     }
 
-    private void OnDisable()
+    public void Stop()
     {
-        gameObject.transform.position = initialPosition;
+        
+        isPlaying = false;
     }
 
     void Update()
     {
+        if (!isPlaying)
+            return;
+
         if (currentShakeDuration > 0)
         {
-            if (!invokedStartedShaking)
-                StartedShaking?.Invoke();
-
             gameObject.transform.localPosition = initialPosition + UnityEngine.Random.insideUnitSphere * shakeMagnitude;
             currentShakeDuration -= Time.deltaTime * shakeSpeed;
             invokedStartedShaking = true;
         }
         else
         {
-            if (!invokedStoppedShaking)
+            if (!invokedStoppedShaking && invokedStartedShaking)
                 StoppedShaking?.Invoke();
 
             currentShakeDuration = 0f;
             gameObject.transform.localPosition = initialPosition;
             invokedStoppedShaking = true;
+            isPlaying = false;
         }
     }
 

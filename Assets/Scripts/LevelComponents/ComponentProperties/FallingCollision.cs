@@ -11,6 +11,7 @@ using UnityEngine;
 public class FallingCollision : MonoBehaviour
 {
     public static event Action RobotLanded;
+    public event Action RobotLandedSelf;
 
     [SerializeField] private BoxCollider2D boxCollider;
     [SerializeField] private float maxHeightDistance = 0.2f;
@@ -31,7 +32,10 @@ public class FallingCollision : MonoBehaviour
             if (robotRigidbody2D.velocity.y <= 0)
             {
                 if (robotRigidbody2D.velocity.y < -10f)
+                {
                     RobotLanded?.Invoke();
+                    RobotLandedSelf?.Invoke();
+                }
                 robotRigidbody2D.velocity.Set(robotRigidbody2D.velocity.x, 0);
 
                 var robotBoxCollider = robotCollider.gameObject.GetComponent<BoxCollider2D>();

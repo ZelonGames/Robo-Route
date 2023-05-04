@@ -46,7 +46,5 @@ public class CameraAspectController : MonoBehaviour
             float yOffset = (1f - newHeight) / 2f;
             cameraComponent.rect = new Rect(0f, yOffset, 1f, newHeight);
         }
-
-        cameraComponent.clearFlags = CameraClearFlags.SolidColor;
     }
 }

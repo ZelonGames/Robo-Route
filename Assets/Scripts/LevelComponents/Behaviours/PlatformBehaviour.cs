@@ -7,8 +7,23 @@ using UnityEngine;
 
 public class PlatformBehaviour : MonoBehaviour
 {
+    [SerializeField] private FallingCollision fallingCollision;
+    [SerializeField] private Shaker shaker;
+
     private void Start()
     {
-        
+        if (shaker != null && fallingCollision != null)
+            fallingCollision.RobotLandedSelf += OnStartShaking;
+    }
+
+    private void OnDestroy()
+    {
+        if (fallingCollision != null)
+            fallingCollision.RobotLandedSelf -= OnStartShaking;
+    }
+
+    private void OnStartShaking()
+    {
+        shaker.Play();
     }
 }

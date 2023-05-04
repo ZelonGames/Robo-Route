@@ -230,6 +230,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 10517686}
   collider2D: {fileID: 10517685}
   textAllowedMovesCount: {fileID: 612076694}
+  highlight: {fileID: 0}
   initialMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   canMoveMaterial: {fileID: 2100000, guid: 93d283e7b17ea25429f0239459b5e1ac, type: 2}
   usingLimitedMoves: 0
@@ -273,7 +274,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8.06, y: 0.86}
+    oldSize: {x: 8.56, y: 1.2}
     newSize: {x: 8.06, y: 0.86}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -441,6 +442,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 152727950}
   collider2D: {fileID: 152727949}
   textAllowedMovesCount: {fileID: 1945391530}
+  highlight: {fileID: 0}
   initialMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   canMoveMaterial: {fileID: 2100000, guid: 93d283e7b17ea25429f0239459b5e1ac, type: 2}
   usingLimitedMoves: 0
@@ -484,7 +486,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8.06, y: 0.86}
+    oldSize: {x: 8.56, y: 1.2}
     newSize: {x: 8.06, y: 0.86}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -735,6 +737,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 584291006}
   collider2D: {fileID: 584291005}
   textAllowedMovesCount: {fileID: 729119082}
+  highlight: {fileID: 0}
   initialMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   canMoveMaterial: {fileID: 2100000, guid: 93d283e7b17ea25429f0239459b5e1ac, type: 2}
   usingLimitedMoves: 0
@@ -778,7 +781,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8.06, y: 0.86}
+    oldSize: {x: 8.56, y: 1.2}
     newSize: {x: 8.06, y: 0.86}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1104,6 +1107,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 727992696}
   collider2D: {fileID: 727992695}
   textAllowedMovesCount: {fileID: 837886795}
+  highlight: {fileID: 0}
   initialMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   canMoveMaterial: {fileID: 2100000, guid: 93d283e7b17ea25429f0239459b5e1ac, type: 2}
   usingLimitedMoves: 0
@@ -1989,6 +1993,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 863928028}
   collider2D: {fileID: 863928027}
   textAllowedMovesCount: {fileID: 1764926518}
+  highlight: {fileID: 0}
   initialMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   canMoveMaterial: {fileID: 2100000, guid: 93d283e7b17ea25429f0239459b5e1ac, type: 2}
   usingLimitedMoves: 0
@@ -2276,6 +2281,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 954623071}
   collider2D: {fileID: 954623070}
   textAllowedMovesCount: {fileID: 854655116}
+  highlight: {fileID: 0}
   initialMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   canMoveMaterial: {fileID: 2100000, guid: 93d283e7b17ea25429f0239459b5e1ac, type: 2}
   usingLimitedMoves: 0
@@ -2319,7 +2325,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8.06, y: 0.86}
+    oldSize: {x: 8.56, y: 1.2}
     newSize: {x: 8.06, y: 0.86}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2487,6 +2493,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1077265174}
   collider2D: {fileID: 1077265173}
   textAllowedMovesCount: {fileID: 782056426}
+  highlight: {fileID: 0}
   initialMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   canMoveMaterial: {fileID: 2100000, guid: 93d283e7b17ea25429f0239459b5e1ac, type: 2}
   usingLimitedMoves: 0
@@ -2530,7 +2537,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8.06, y: 0.86}
+    oldSize: {x: 8.56, y: 1.2}
     newSize: {x: 8.06, y: 0.86}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2698,6 +2705,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1170733698}
   collider2D: {fileID: 1170733697}
   textAllowedMovesCount: {fileID: 1182903050}
+  highlight: {fileID: 0}
   initialMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   canMoveMaterial: {fileID: 2100000, guid: 93d283e7b17ea25429f0239459b5e1ac, type: 2}
   usingLimitedMoves: 0
@@ -2741,7 +2749,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8.06, y: 0.86}
+    oldSize: {x: 8.56, y: 1.2}
     newSize: {x: 8.06, y: 0.86}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -3067,9 +3075,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 13272817934217276, guid: 679d9288ef2de6f4889829828fedb0d2, type: 3}
+      propertyPath: orthographic size
+      value: 3.16
+      objectReference: {fileID: 0}
     - target: {fileID: 1444594175202960742, guid: 679d9288ef2de6f4889829828fedb0d2, type: 3}
       propertyPath: m_Name
       value: Level Template
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352798378258101885, guid: 679d9288ef2de6f4889829828fedb0d2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352798378258101885, guid: 679d9288ef2de6f4889829828fedb0d2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.96
       objectReference: {fileID: 0}
     - target: {fileID: 2693388013827244255, guid: 679d9288ef2de6f4889829828fedb0d2, type: 3}
       propertyPath: m_RootOrder
@@ -3119,6 +3139,10 @@ PrefabInstance:
       propertyPath: gridWorld
       value: 
       objectReference: {fileID: 919353021}
+    - target: {fileID: 4414505551603413582, guid: 679d9288ef2de6f4889829828fedb0d2, type: 3}
+      propertyPath: goalsToReach
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

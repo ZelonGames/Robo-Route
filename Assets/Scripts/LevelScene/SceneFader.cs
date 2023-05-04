@@ -1,0 +1,72 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+public class SceneFader : MonoBehaviour
+{
+    public string sceneName = "LevelWorld";
+    [SerializeField] private RawImage fadeBackground;
+    [SerializeField] private float fadeTime = 2f;
+    [SerializeField] private float waitTime = 0.3f;
+    [SerializeField] private bool fadeIn = true;
+
+    public void Start()
+    {
+        if (!fadeIn)
+        {
+            fadeBackground.gameObject.SetActive(true);
+            StartCoroutine(FadeOut(fadeTime));
+        }
+    }
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
+    }
+
+    public void Play()
+    {
+        if (fadeIn)
+            StartCoroutine(FadeIn(fadeTime));
+    }
+
+    private IEnumerator FadeOut(float duration)
+    {
+        fadeBackground.gameObject.SetActive(true);
+        fadeBackground.color = new Color(0, 0, 0, 1);
+        float elapsedTime = 0;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float alpha = 1 - Mathf.Clamp01(elapsedTime / duration);
+            fadeBackground.color = new Color(0, 0, 0, alpha);
+            yield return null;
+        }
+
+        fadeBackground.gameObject.SetActive(false);
+    }
+
+    private IEnumerator FadeIn(float duration)
+    {
+        fadeBackground.gameObject.SetActive(true);
+        fadeBackground.color = new Color(0, 0, 0, 0);
+        float elapsedTime = 0;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float alpha = Mathf.Clamp01(elapsedTime / duration);
+            fadeBackground.color = new Color(0, 0, 0, alpha);
+            yield return null;
+        }
+
+        if (sceneName != "")
+        {
+            yield return new WaitForSeconds(waitTime);
+            SceneManager.LoadScene(sceneName);
+        }
+    }
+}

@@ -8,6 +8,7 @@ public class EnteredGoalDetector : MonoBehaviour
 {
     public delegate void GoalEnteredEventHandler(int savedRobots, int requiredRobotsToSave);
     public static event GoalEnteredEventHandler GoalEntered;
+    public event Action GoalEnteredSelf;
 
     public delegate void ReachedRequirementEventHandler(EnteredGoalDetector enteredGoalDetector);
     public static event ReachedRequirementEventHandler ReachedRequirement;
@@ -80,6 +81,7 @@ public class EnteredGoalDetector : MonoBehaviour
                 savedRobots++;
                 UpdateText();
                 GoalEntered?.Invoke(savedRobots, requiredRobotsToSave);
+                GoalEnteredSelf?.Invoke();
                 if (!hasInvokedReachedRequirement && savedRobots >= requiredRobotsToSave)
                 {
                     ReachedRequirement?.Invoke(this);

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class GameController : MonoBehaviour
         Finished,
     }
 
+    [SerializeField] private RawImage fadeBackground;
     [SerializeField] private LevelController levelController;
 
     public static string FinishedLevelsFile => Application.persistentDataPath + "/finishedLevels.json";
@@ -21,6 +23,8 @@ public class GameController : MonoBehaviour
     public event Action StoppedLevel;
     public event Action StartedLevel;
     public event Action EditingLevel;
+
+    public SceneFader sceneFader;
 
     public static bool hasStartedGame;
 
@@ -37,6 +41,8 @@ public class GameController : MonoBehaviour
         CurrentLevelState = LevelState.Running;
         levelController.FinishedLevel += LevelController_FinishedLevel;
         levelController.FailedLevel += LevelController_FailedLevel;
+
+        fadeBackground.gameObject.SetActive(false);
     }
 
     private void OnDestroy()
@@ -87,8 +93,9 @@ public class GameController : MonoBehaviour
         data = JsonConvert.SerializeObject(finishedLevelInfo);
         streamWriter.WriteLine(data);
 
-        SceneManager.LoadScene("LevelWorld");
+        sceneFader.Play();
     }
+
 
     public void StartGame()
     {
