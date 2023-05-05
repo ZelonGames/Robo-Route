@@ -11,8 +11,10 @@ using static UnityEngine.GraphicsBuffer;
 public class ItemMover : MonoBehaviour
 {
     public delegate void MovedItemEventHandler(GameObject movedGameObject);
-    public event MovedItemEventHandler FinishedMovingItem;
+    public static event MovedItemEventHandler StartedMovingAnyItem;
     public static event MovedItemEventHandler FinishedMovingAnyItem;
+    public static event Action ChangedPosition;
+    public event MovedItemEventHandler FinishedMovingItem;
     public event MovedItemEventHandler StartedMovingItem;
 
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -34,8 +36,9 @@ public class ItemMover : MonoBehaviour
     private GameObject gridWorld;
     private GameObject movedObjects;
     private LevelComponentSettings levelComponentSettings;
-    private Vector3 initialMousePos;
-    private Vector3 initialObjectPos;
+    private Vector2? previousPosition = null;
+    private Vector2 initialMousePos;
+    private Vector2 initialObjectPos;
 
     private static bool isDraggingAnyObject = false;
 
@@ -123,10 +126,14 @@ public class ItemMover : MonoBehaviour
                     IsDragging = isDraggingAnyObject = true;
                     initialMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     initialObjectPos = gameObject.transform.position;
+                    StartedMovingAnyItem?.Invoke(gameObject);
+
                     if (cursorObjectQueue != null)
                         cursorObjectQueue.AddGameObjectToQueue(gameObject, this, false);
                     else
+                    {
                         StartedMovingItem?.Invoke(gameObject);
+                    }
                 }
             }
         }
@@ -169,8 +176,6 @@ public class ItemMover : MonoBehaviour
                 spriteRenderer.color.b,
                 0.5f);
 
-
-
             if (canMoveMaterial != null)
             {
                 spriteRenderer.material.SetColor("_SolidOutline", new Color(
@@ -186,6 +191,11 @@ public class ItemMover : MonoBehaviour
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3 snappedPosition = GridHelper.SnapToGrid(mousePosition + offset);
             gameObject.transform.position = snappedPosition;
+
+            if (previousPosition.HasValue && previousPosition != gameObject.transform.position)
+                ChangedPosition?.Invoke();
+
+            previousPosition = gameObject.transform.position;
         }
 
         if (Input.GetMouseButtonUp(0) && IsDragging)

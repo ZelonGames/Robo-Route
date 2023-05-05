@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 012bf028a13a0d64ebb386f889cc4005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeBackground: {fileID: 0}
   sceneName: LevelWorld
+  fadeBackground: {fileID: 0}
   fadeTime: 2
   waitTime: 0.3
   fadeIn: 1

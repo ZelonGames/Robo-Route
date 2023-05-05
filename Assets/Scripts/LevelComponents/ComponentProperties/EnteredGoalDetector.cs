@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -19,7 +20,7 @@ public class EnteredGoalDetector : MonoBehaviour
 
     public int requiredRobotsToSave;
 
-    private readonly List<CollidingRobots> collidingRobots = new();
+    private readonly Dictionary<Collider2D, CollidingRobots> collidingRobots = new();
 
     private int savedRobots;
     private bool hasInvokedReachedRequirement = false;
@@ -59,25 +60,22 @@ public class EnteredGoalDetector : MonoBehaviour
 
     public void FixedUpdate()
     {
-        for (int i = 0; i < collidingRobots.Count; i++)
+        foreach (var collidingRobot in collidingRobots.Values.ToList())
         {
-            var currentCollidingRobot = collidingRobots[i];
-
             float currentDistance = Vector2.Distance(
-                currentCollidingRobot.collider2D.gameObject.transform.position,
+                collidingRobot.collider2D.gameObject.transform.position,
                 gameObject.transform.position);
 
-            currentCollidingRobot.spriteRenderer.color = new Color(
-                currentCollidingRobot.spriteRenderer.color.r,
-                currentCollidingRobot.spriteRenderer.color.g,
-                currentCollidingRobot.spriteRenderer.color.b,
-                 currentDistance / currentCollidingRobot.startDistance);
+            collidingRobot.spriteRenderer.color = new Color(
+                collidingRobot.spriteRenderer.color.r,
+                collidingRobot.spriteRenderer.color.g,
+                collidingRobot.spriteRenderer.color.b,
+                currentDistance / collidingRobot.startDistance);
 
             if (currentDistance <= 0.2f)
             {
-                collidingRobots.Remove(currentCollidingRobot);
-                Destroy(currentCollidingRobot.collider2D.gameObject);
-                currentCollidingRobot = null;
+                collidingRobots.Remove(collidingRobot.collider2D);
+                Destroy(collidingRobot.collider2D.gameObject);
                 savedRobots++;
                 UpdateText();
                 GoalEntered?.Invoke(savedRobots, requiredRobotsToSave);
@@ -95,13 +93,19 @@ public class EnteredGoalDetector : MonoBehaviour
     {
         if (collision.CompareTag("Robot"))
         {
-            collidingRobots.Add(new CollidingRobots()
+            collidingRobots.Add(collision, new CollidingRobots()
             {
                 collider2D = collision,
                 spriteRenderer = collision.GetComponent<SpriteRenderer>(),
                 startDistance = Vector2.Distance(collision.gameObject.transform.position, gameObject.transform.position),
             });
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Robot") && collidingRobots.ContainsKey(collision))
+            collidingRobots.Remove(collision);
     }
 
     public void ResetStats()

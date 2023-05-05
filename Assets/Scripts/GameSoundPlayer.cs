@@ -1,31 +1,82 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameSoundPlayer : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip robotLanding;
     [SerializeField] private AudioClip enteringPortal;
+    [SerializeField] private AudioClip clickSound;
+    [SerializeField] private AudioClip clickLowSound;
+    [SerializeField] private AudioSource rain;
+    [SerializeField] private AudioSource wind;
+
+    private bool shouldPlaySounds = true;
+    private float lastPlayTime = 0;
 
     private void Start()
     {
         FallingCollision.RobotLanded += PlayRobotLandingSound;
         EnteredGoalDetector.GoalEntered += PlayEnteringPortal;
+        ItemMiniature.CollectedItem += PlayCollectedItem;
+        ItemMover.ChangedPosition += PlayMovedItem;
+        ItemMover.FinishedMovingAnyItem += PlayClickLowSound;
+        ItemMover.StartedMovingAnyItem += PlayClickSound;
+        SceneFader.Fading += SceneFader_Fading;
     }
-
     private void OnDestroy()
     {
         if (audioSource != null)
             audioSource.Stop();
-        
+
         FallingCollision.RobotLanded -= PlayRobotLandingSound;
         EnteredGoalDetector.GoalEntered -= PlayEnteringPortal;
+        ItemMiniature.CollectedItem -= PlayCollectedItem;
+        ItemMover.ChangedPosition -= PlayMovedItem;
+        ItemMover.FinishedMovingAnyItem -= PlayClickLowSound;
+        ItemMover.StartedMovingAnyItem -= PlayClickSound;
+        SceneFader.Fading -= SceneFader_Fading;
     }
 
-    private void PlaySound(AudioClip audioClip)
+    private void SceneFader_Fading(float volume)
     {
-        audioSource.PlayOneShot(audioClip);
+        shouldPlaySounds = false;
+        rain.volume = volume;
+        wind.volume = volume;
+        if (volume >= 1)
+            shouldPlaySounds = true;
+    }
+
+    private void PlayClickLowSound(GameObject movedGameObject)
+    {
+        PlaySound(clickLowSound, 0.5f);
+    }
+
+    private void PlayClickSound(GameObject movedGameObject)
+    {
+        PlaySound(clickSound);
+    }
+
+    private void PlayMovedItem()
+    {
+        if (Time.time - lastPlayTime > 0.05f)
+        {
+            PlaySound(clickSound, 0.3f);
+            lastPlayTime = Time.time;
+        }
+    }
+
+    private void PlayCollectedItem()
+    {
+        PlaySound(clickSound);
+    }
+
+    private void PlaySound(AudioClip audioClip, float volume = 1f)
+    {
+        if (shouldPlaySounds)
+            audioSource.PlayOneShot(audioClip, volume);
     }
 
     public void PlayRobotLandingSound()

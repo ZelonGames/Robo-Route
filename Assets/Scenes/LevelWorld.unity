@@ -458,9 +458,13 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1946840319246473161, guid: 089f9b2fba87a0949bda3a73df35bb1c, type: 3}
+      propertyPath: waitTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946840319246473161, guid: 089f9b2fba87a0949bda3a73df35bb1c, type: 3}
       propertyPath: fadeBackground
       value: 
-      objectReference: {fileID: 1986719531}
+      objectReference: {fileID: 1986719533}
     - target: {fileID: 6140969258566613919, guid: 089f9b2fba87a0949bda3a73df35bb1c, type: 3}
       propertyPath: m_Name
       value: SceneFader Out
@@ -680,7 +684,7 @@ PrefabInstance:
     - target: {fileID: 1946840319246473161, guid: 089f9b2fba87a0949bda3a73df35bb1c, type: 3}
       propertyPath: fadeBackground
       value: 
-      objectReference: {fileID: 1986719531}
+      objectReference: {fileID: 1986719533}
     - target: {fileID: 6140969258566613919, guid: 089f9b2fba87a0949bda3a73df35bb1c, type: 3}
       propertyPath: m_Name
       value: SceneFader In
@@ -1828,6 +1832,7 @@ GameObject:
   - component: {fileID: 1986719530}
   - component: {fileID: 1986719532}
   - component: {fileID: 1986719531}
+  - component: {fileID: 1986719533}
   m_Layer: 5
   m_Name: Fade Background
   m_TagString: Untagged
@@ -1890,6 +1895,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1986719529}
   m_CullTransparentMesh: 1
+--- !u!225 &1986719533
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986719529}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &2055233512
 PrefabInstance:
   m_ObjectHideFlags: 0

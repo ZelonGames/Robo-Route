@@ -12,8 +12,8 @@ namespace Assets.Scripts
     {
         public static Vector2 SnapToGrid(Vector2 position)
         {
-            float gridWidth = 0.25f;// EditorSnapSettings.scale;
-            float gridHeight = 0.25f;// EditorSnapSettings.scale;
+            float gridWidth = 0.23f;// EditorSnapSettings.scale;
+            float gridHeight = 0.23f;// EditorSnapSettings.scale;
 
             float snappedX = Mathf.Round(position.x / gridWidth) * gridWidth;
             float snappedY = Mathf.Round(position.y / gridHeight) * gridHeight;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,8 +7,10 @@ using UnityEngine.UI;
 
 public class SceneFader : MonoBehaviour
 {
+    public static event Action<float> Fading;
+
     public string sceneName = "LevelWorld";
-    [SerializeField] private RawImage fadeBackground;
+    [SerializeField] private CanvasGroup fadeBackground;
     [SerializeField] private float fadeTime = 2f;
     [SerializeField] private float waitTime = 0.3f;
     [SerializeField] private bool fadeIn = true;
@@ -34,15 +37,18 @@ public class SceneFader : MonoBehaviour
 
     private IEnumerator FadeOut(float duration)
     {
+        yield return new WaitForSeconds(waitTime);
+
         fadeBackground.gameObject.SetActive(true);
-        fadeBackground.color = new Color(0, 0, 0, 1);
+        fadeBackground.alpha = 1;
         float elapsedTime = 0;
 
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
             float alpha = 1 - Mathf.Clamp01(elapsedTime / duration);
-            fadeBackground.color = new Color(0, 0, 0, alpha);
+            fadeBackground.alpha = alpha;
+            Fading?.Invoke(1 - alpha);
             yield return null;
         }
 
@@ -52,14 +58,15 @@ public class SceneFader : MonoBehaviour
     private IEnumerator FadeIn(float duration)
     {
         fadeBackground.gameObject.SetActive(true);
-        fadeBackground.color = new Color(0, 0, 0, 0);
+        fadeBackground.alpha = 0;
         float elapsedTime = 0;
 
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
             float alpha = Mathf.Clamp01(elapsedTime / duration);
-            fadeBackground.color = new Color(0, 0, 0, alpha);
+            fadeBackground.alpha = alpha;
+            Fading?.Invoke(1 - alpha);
             yield return null;
         }
 

@@ -5512,6 +5512,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eee241992f2a7ce488e6716058ac8b95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fallingCollision: {fileID: 0}
+  shaker: {fileID: 0}
 --- !u!114 &-5885904209489738146
 MonoBehaviour:
   m_ObjectHideFlags: 0
