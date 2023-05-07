@@ -294,7 +294,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.67471695}
+  m_Offset: {x: 0, y: 1.1457961}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.27}
@@ -305,7 +305,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.49, y: 3.5183287}
+  m_Size: {x: 1.49, y: 3.5532231}
   m_EdgeRadius: 0
 --- !u!114 &5915876202720100675
 MonoBehaviour:
@@ -324,7 +324,7 @@ MonoBehaviour:
   textAllowedMovesCount: {fileID: 21129038}
   highlight: {fileID: 0}
   initialMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  canMoveMaterial: {fileID: 2100000, guid: 93d283e7b17ea25429f0239459b5e1ac, type: 2}
+  canMoveMaterial: {fileID: 2100000, guid: 9cdc2732b667b9f42a07aed64b715ad8, type: 2}
   usingLimitedMoves: 0
   allowedMovesCount: 0
   initialAllowedMovesCount: 0
@@ -447,7 +447,7 @@ MonoBehaviour:
   - {x: -0.6404543, y: -0.5338365, z: 0}
   m_ShapePathHash: 510989903
   m_Mesh: {fileID: 0}
-  m_InstanceId: 107848
+  m_InstanceId: 46052
   m_LocalBounds:
     m_Center: {x: 0.00081539154, y: 1.1755615, z: 0}
     m_Extent: {x: 1.1737108, y: 1.8032265, z: 0}

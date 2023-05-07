@@ -11,7 +11,7 @@ public class WallBehaviour : MonoBehaviour
 
     private void Start()
     {
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D robotCollider)
@@ -27,10 +27,12 @@ public class WallBehaviour : MonoBehaviour
             bool isRobotMovingLeft = robotRigidbody2D.velocity.x < 0;
             bool isWallToTheLeft = transform.position.x < robotCollider.gameObject.transform.position.x;
 
-            if (isRobotMovingRight && isWallToTheRight ||
-                isRobotMovingLeft && isWallToTheLeft && 
-                robotBoxCollider2D.bounds.GetBottomEdge() < boxCollider2D.bounds.GetTopEdge() &&
-                robotBoxCollider2D.bounds.GetBottomEdge() > boxCollider2D.bounds.GetBottomEdge())
+            if ((isRobotMovingRight && isWallToTheRight ||
+                isRobotMovingLeft && isWallToTheLeft) &&
+                (robotBoxCollider2D.bounds.GetBottomEdge() <= boxCollider2D.bounds.GetTopEdge() &&
+                robotBoxCollider2D.bounds.GetBottomEdge() >= boxCollider2D.bounds.GetBottomEdge() ||
+                robotBoxCollider2D.bounds.GetTopEdge() <= boxCollider2D.bounds.GetTopEdge() &&
+                robotBoxCollider2D.bounds.GetTopEdge() >= boxCollider2D.bounds.GetBottomEdge()))
             {
                 if (isWallToTheRight)
                     robotBoxCollider2D.AlignRightWithLeft(boxCollider2D);
