@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MouseFollower : MonoBehaviour
 {
-    private Camera camera;
+    private new Camera camera;
     private Vector3 position;
 
     void Start()

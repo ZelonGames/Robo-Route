@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 1.086}
   m_SizeDelta: {x: 1.57, y: 1.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &21129039
@@ -447,7 +447,7 @@ MonoBehaviour:
   - {x: -0.6404543, y: -0.5338365, z: 0}
   m_ShapePathHash: 510989903
   m_Mesh: {fileID: 0}
-  m_InstanceId: 46052
+  m_InstanceId: 52236
   m_LocalBounds:
     m_Center: {x: 0.00081539154, y: 1.1755615, z: 0}
     m_Extent: {x: 1.1737108, y: 1.8032265, z: 0}

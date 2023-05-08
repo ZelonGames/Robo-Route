@@ -10,7 +10,7 @@ using UnityEngine.Video;
 
 public class LevelLoader : MonoBehaviour
 {
-    [SerializeField] private Camera camera;
+    [SerializeField] private new Camera camera;
     [SerializeField] private SceneFader sceneFaderIn;
     private FinishedLevelInfo finishedLevelInfo = null;
 
