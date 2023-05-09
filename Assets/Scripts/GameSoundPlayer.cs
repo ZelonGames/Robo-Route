@@ -43,8 +43,8 @@ public class GameSoundPlayer : MonoBehaviour
     private void SceneFader_Fading(float volume)
     {
         shouldPlaySounds = false;
-        rain.volume = volume;
-        wind.volume = volume;
+        rain.volume = volume * 0.4f;
+        wind.volume = volume * 0.4f;
         if (volume >= 1)
             shouldPlaySounds = true;
     }
