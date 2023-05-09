@@ -5425,6 +5425,7 @@ MonoBehaviour:
   shakeSpeed: 0.5
   shakeMagnitude: 0.1
   smokeEffect: {fileID: 930440055695085167}
+  resetStartPosition: 0
 --- !u!1 &8250249828843783671
 GameObject:
   m_ObjectHideFlags: 0

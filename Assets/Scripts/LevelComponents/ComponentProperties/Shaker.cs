@@ -12,6 +12,7 @@ public class Shaker : MonoBehaviour
     public float shakeSpeed = 1f;
     public float shakeMagnitude = 1f;
     [SerializeField] private ParticleSystem smokeEffect;
+    [SerializeField] private bool resetStartPosition = true;
 
     private Vector3 initialPosition;
     private float currentShakeDuration = 0f;
@@ -31,7 +32,8 @@ public class Shaker : MonoBehaviour
         invokedStartedShaking = false;
         invokedStoppedShaking = false;
 
-        initialPosition = gameObject.transform.localPosition;
+        if (resetStartPosition)
+            initialPosition = gameObject.transform.localPosition;
 
         if (smokeEffect != null)
             smokeEffect.Play();
@@ -43,7 +45,7 @@ public class Shaker : MonoBehaviour
 
     public void Stop()
     {
-        
+
         isPlaying = false;
     }
 
