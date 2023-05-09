@@ -5,7 +5,7 @@ A realtime puzzle game about Robots trying to reach different locations
 
 Programming: Me
 
-Art/Sound: Ostfralla
+Art/Sound: Me
 
 Game Design: Me and Ostfralla
 
