@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4005132345611843117}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.86, z: -0.6911341}
+  m_LocalPosition: {x: 0, y: 0.5, z: -0.6911341}
   m_LocalScale: {x: 3.5377734, y: 1.1069676, z: 4.1364703}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -102,11 +102,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03ca97ab1fad1f64094cc2f65dc83af0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  middleCircle: {fileID: 4494360105276964315}
+  topCircle: {fileID: 8646844906143099947}
   itemMover: {fileID: 7139508346768878590}
-  maxJumpForce: 17
-  jumpMultiplier: 2
-  squashAmount: 0.4
-  squashDuration: 0.1
+  launchPower: 18
+  squashDuration: 0.15
 --- !u!61 &2161450306308373625
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -369,6 +369,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2637698394553910415}
   - component: {fileID: 8251807752863440607}
+  - component: {fileID: 1345154716772288357}
   m_Layer: 0
   m_Name: Circle (2)
   m_TagString: Untagged
@@ -443,6 +444,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1345154716772288357
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8646844906143099947}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.23078549}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.538429}
+  m_EdgeRadius: 0
 --- !u!1 &9151501071082894051
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,13 +500,12 @@ GameObject:
   - component: {fileID: 758980238909683728}
   - component: {fileID: 3592120153597998237}
   - component: {fileID: 7139508346768878590}
-  - component: {fileID: 3459659007042958734}
   - component: {fileID: 2810905633868346}
   - component: {fileID: 7886285999267663610}
   - component: {fileID: 504990978603283324}
   m_Layer: 0
   m_Name: Launcher
-  m_TagString: Untagged
+  m_TagString: BouncingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -472,7 +517,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9151501071082894051}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.767, y: 0.018, z: 0}
   m_LocalScale: {x: 0.2978115, y: 0.2978115, z: 0.2978115}
   m_ConstrainProportionsScale: 0
@@ -556,22 +601,6 @@ MonoBehaviour:
   initialAllowedMovesCount: 0
   canMove: 0
   initialCanMove: 0
---- !u!114 &3459659007042958734
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9151501071082894051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e7a99f5dc12d1e46a1097d7264e60d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minDuration: 1
-  maxDuration: 2
-  floatHeight: 0.1
-  direction: 0
 --- !u!114 &2810905633868346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -597,7 +626,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monoBehaviours:
-  - {fileID: 3459659007042958734}
   - {fileID: 4442149139232700677}
   itemMover: {fileID: 7139508346768878590}
 --- !u!61 &504990978603283324

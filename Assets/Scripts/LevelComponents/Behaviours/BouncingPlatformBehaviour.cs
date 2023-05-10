@@ -1,24 +1,36 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BouncingPlatformBehaviour : MonoBehaviour
 {
+    [SerializeField] private GameObject middleCircle;
+    [SerializeField] private GameObject topCircle;
     [SerializeField] private ItemMover itemMover;
 
-    public float maxJumpForce = 10;
-    public float jumpMultiplier = 1.0f;
-    public float squashAmount = 0.2f;
+    public float launchPower = 20;
     public float squashDuration = 0.1f;
+
+    private BoxCollider2D topBoxCollider2D;
+    private readonly HashSet<BoxCollider2D> collidingRobots = new();
+
+    private Vector2 middleHomePosition;
+    private Vector2 topHomePosition;
 
     private Vector3 originalScale;
     private Coroutine squashCoroutine;
 
+    private bool isSquashing = false;
     private bool isMoving = false;
 
     private void Start()
     {
+        topBoxCollider2D = topCircle.GetComponent<BoxCollider2D>();
         originalScale = transform.localScale;
+
+        middleHomePosition = middleCircle.transform.position;
+        topHomePosition = topCircle.transform.position;
 
         itemMover.StartedMovingItem += ItemMover_StartedMovingItem;
         itemMover.FinishedMovingItem += ItemMover_MovedItem;
@@ -42,45 +54,38 @@ public class BouncingPlatformBehaviour : MonoBehaviour
 
         if (other.CompareTag("Robot"))
         {
-            Rigidbody2D otherRigidbody = other.GetComponent<Rigidbody2D>();
-            float jumpForce = -otherRigidbody.velocity.y * jumpMultiplier;
-            jumpForce = Mathf.Min(maxJumpForce, jumpForce);
-            Vector2 velocity = otherRigidbody.velocity;
-            velocity.y = jumpForce;
-            velocity.x = otherRigidbody.velocity.x;
-            otherRigidbody.velocity = velocity;
+            var robotBoxCollider = other.gameObject.GetComponent<BoxCollider2D>();
+            if (collidingRobots.Contains(robotBoxCollider))
+                return;
 
-            if (squashCoroutine != null)
-                StopCoroutine(squashCoroutine);
+            collidingRobots.Add(robotBoxCollider);
 
-            squashCoroutine = StartCoroutine(Squash());
+            var sequence = DOTween.Sequence();
+            sequence.Append(middleCircle.gameObject.transform.DOMoveY(gameObject.transform.position.y, squashDuration))
+                .Append(middleCircle.gameObject.transform.DOMoveY(middleHomePosition.y, squashDuration));
+            sequence.OnUpdate(() =>
+            {
+                other.attachedRigidbody.velocity = new Vector2(other.attachedRigidbody.velocity.x, 0);
+                robotBoxCollider.AlignBottomWithTop(topBoxCollider2D);
+            });
+
+            var sequence2 = DOTween.Sequence();
+            sequence2.Append(topCircle.gameObject.transform.DOMoveY(gameObject.transform.position.y, squashDuration))
+                .Append(topCircle.gameObject.transform.DOMoveY(topHomePosition.y, squashDuration));
+            sequence2.OnComplete(() => 
+            { 
+                collidingRobots.Remove(robotBoxCollider); 
+                LaunchRobot(other);
+            });
         }
     }
 
-    private IEnumerator Squash()
+    private void LaunchRobot(Collider2D robot)
     {
-        float t = 0f;
-
-        while (t < squashDuration)
-        {
-            float squashFactor = Mathf.Lerp(1f, 1f - squashAmount, t / squashDuration);
-            transform.localScale = new Vector3(originalScale.x, squashFactor * originalScale.y, originalScale.z);
-            t += Time.deltaTime;
-            yield return null;
-        }
-
-        t = 0f;
-
-        while (t < squashDuration)
-        {
-            float stretchFactor = Mathf.Lerp(1f - squashAmount, 1f, t / squashDuration);
-            transform.localScale = new Vector3(originalScale.x, stretchFactor * originalScale.y, originalScale.z);
-            t += Time.deltaTime;
-            yield return null;
-        }
-
-        transform.localScale = originalScale;
-        squashCoroutine = null;
+        Vector2 velocity = robot.attachedRigidbody.velocity;
+        velocity.y = launchPower;
+        velocity.x = robot.attachedRigidbody.velocity.x;
+        robot.attachedRigidbody.velocity = velocity;
     }
 }
 
