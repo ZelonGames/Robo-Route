@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 public class GameSoundPlayer : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource rain;
+    [SerializeField] private AudioSource wind;
+    [SerializeField] private AudioClip launchSound;
     [SerializeField] private AudioClip robotLanding;
     [SerializeField] private AudioClip enteringPortal;
     [SerializeField] private AudioClip clickSound;
     [SerializeField] private AudioClip clickLowSound;
-    [SerializeField] private AudioSource rain;
-    [SerializeField] private AudioSource wind;
 
     private bool shouldPlaySounds = true;
     private float lastPlayTime = 0;
@@ -25,7 +26,9 @@ public class GameSoundPlayer : MonoBehaviour
         ItemMover.FinishedMovingAnyItem += PlayClickLowSound;
         ItemMover.StartedMovingAnyItem += PlayClickSound;
         SceneFader.Fading += SceneFader_Fading;
+        BouncingPlatformBehaviour.LaunchedRobot += OnPlayLaunchSound;
     }
+
     private void OnDestroy()
     {
         if (audioSource != null)
@@ -38,6 +41,12 @@ public class GameSoundPlayer : MonoBehaviour
         ItemMover.FinishedMovingAnyItem -= PlayClickLowSound;
         ItemMover.StartedMovingAnyItem -= PlayClickSound;
         SceneFader.Fading -= SceneFader_Fading;
+        BouncingPlatformBehaviour.LaunchedRobot -= OnPlayLaunchSound;
+    }
+
+    private void OnPlayLaunchSound()
+    {
+        PlaySound(launchSound);
     }
 
     private void SceneFader_Fading(float volume)

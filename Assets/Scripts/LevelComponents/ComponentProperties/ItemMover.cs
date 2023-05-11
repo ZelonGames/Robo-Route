@@ -108,7 +108,6 @@ public class ItemMover : MonoBehaviour
     {
         IsDragging = isDraggingAnyObject = false;
     }
-
     private void OnMouseDown()
     {
         if (!GameController.hasStartedGame)

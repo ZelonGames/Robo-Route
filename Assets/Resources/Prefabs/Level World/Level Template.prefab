@@ -5543,7 +5543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 876cde3e033b8194886448c4791c047d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 10
+  scrollSpeed: 8
 --- !u!114 &6523445896693629858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5932,12 +5932,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 8562618720706340292}
+  rain: {fileID: 5620495208440842435}
+  wind: {fileID: 410459519527947351}
+  launchSound: {fileID: 8300000, guid: 1285b22f53534424aa71c81c0165a724, type: 3}
   robotLanding: {fileID: 8300000, guid: cc5670a7ce4ff5b42ad59526d47a34cf, type: 3}
   enteringPortal: {fileID: 8300000, guid: de0bc2221d6d9c94a970826916de1040, type: 3}
   clickSound: {fileID: 8300000, guid: ce2e17a4e779fa04583970391650674b, type: 3}
   clickLowSound: {fileID: 8300000, guid: 8609a1fbfc25b0440badfc53369ae46e, type: 3}
-  rain: {fileID: 5620495208440842435}
-  wind: {fileID: 410459519527947351}
 --- !u!1 &3572465129663089766
 GameObject:
   m_ObjectHideFlags: 0

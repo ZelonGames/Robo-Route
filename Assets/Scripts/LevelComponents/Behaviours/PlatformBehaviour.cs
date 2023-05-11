@@ -22,7 +22,7 @@ public class PlatformBehaviour : MonoBehaviour
             fallingCollision.RobotLandedSelf -= OnStartShaking;
     }
 
-    private void OnStartShaking()
+    private void OnStartShaking(Collider2D other)
     {
         shaker.Play();
     }
