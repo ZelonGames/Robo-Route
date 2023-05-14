@@ -39,6 +39,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Bounce 3.unity
     guid: cac4baf3c356adc49ac3e56a16c3f5ac
   - enabled: 1
+    path: Assets/Scenes/Levels/Bounce 4.unity
+    guid: 803a237cd157a3a4cb2a0c1dc7d4007c
+  - enabled: 1
     path: Assets/Scenes/Levels/Bounce Extra.unity
     guid: 7031c6b22735c4341be650d6b17cbc3c
   m_configObjects: {}

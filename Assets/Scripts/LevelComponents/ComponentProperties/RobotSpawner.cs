@@ -10,14 +10,10 @@ public class RobotSpawner : MonoBehaviour
     [SerializeField] private SpriteFlipper spriteFlipper;
     [SerializeField] private bool testMode = false;
 
-    [HideInInspector]
-    public LevelComponentSettings levelComponentSettings;
-
-    public Spawner spawnerRelation;
-
     public float launchSpeed = 2f;
     public float spawnTimeInSeconds = 1;
     public int robotsToSpawn = 1;
+    public bool isLocked = false;
 
     private LevelController levelController;
     private GameObject robotsGameObject;
@@ -39,18 +35,6 @@ public class RobotSpawner : MonoBehaviour
         if (testMode)
             StartSpawning();
 
-        levelComponentSettings = gameObject.GetComponent<LevelComponentSettings>();
-
-        if (levelComponentSettings != null)
-        {
-            if (levelComponentSettings.settings.ContainsKey(nameof(robotsToSpawn)))
-                robotsToSpawn = Convert.ToInt32(levelComponentSettings.settings[nameof(robotsToSpawn)]);
-            if (levelComponentSettings.settings.ContainsKey(nameof(spawnTimeInSeconds)))
-                spawnTimeInSeconds = Convert.ToSingle(levelComponentSettings.settings[nameof(spawnTimeInSeconds)]);
-
-            OnValidate();
-        }
-
         UpdateText();
     }
 
@@ -66,23 +50,7 @@ public class RobotSpawner : MonoBehaviour
 
     private void OnValidate()
     {
-        try
-        {
-            UpdateText();
-
-            if (spawnerRelation != null)
-            {
-                spawnerRelation.spawnTimeInSeconds = spawnTimeInSeconds;
-                spawnerRelation.robotsToSpawn = robotsToSpawn;
-            }
-
-            if (levelComponentSettings != null)
-            {
-                levelComponentSettings.UpdateSetting(nameof(spawnTimeInSeconds), spawnTimeInSeconds);
-                levelComponentSettings.UpdateSetting(nameof(robotsToSpawn), robotsToSpawn);
-            }
-        }
-        catch { }
+        UpdateText();
     }
 
     private void LevelController_FailedLevel(LevelBase currentLevel)

@@ -117,10 +117,10 @@ public class LevelController : MonoBehaviour
             GameObject levelComponent = Instantiate(child.gameObject);
             levelComponent.transform.SetParent(gridWorld.transform);
             levelComponent.SetActive(true);
-
-            if (levelComponent.TryGetComponent<RobotSpawner>(out var robotSpawner))
-                robotSpawner.StartSpawning();
         }
+
+        foreach (RobotSpawner robotSpawner in FindObjectsOfType<RobotSpawner>())
+            robotSpawner.StartSpawning();
     }
 
     private void ItemAdder_TryAddItem(GameObject addedObject)

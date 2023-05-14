@@ -46,6 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: LevelWorld
   fadeBackground: {fileID: 0}
-  fadeTime: 2
+  fadeTime: 1
   waitTime: 0.3
   fadeIn: 1
