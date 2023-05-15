@@ -36,12 +36,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Bounce 2.unity
     guid: b81bbba62ea6e834fb372836d3c557aa
   - enabled: 1
-    path: Assets/Scenes/Levels/Locked Objects.unity
-    guid: cac4baf3c356adc49ac3e56a16c3f5ac
-  - enabled: 1
-    path: Assets/Scenes/Levels/Bounce 4.unity
+    path: Assets/Scenes/Levels/Bounce 3.unity
     guid: 803a237cd157a3a4cb2a0c1dc7d4007c
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/Levels/Bounce Extra.unity
-    guid: 7031c6b22735c4341be650d6b17cbc3c
+    path: Assets/Scenes/Levels/Locked Objects.unity
+    guid: aeefd52f0bce2bf4a9fbb07bcf33df48
+  - enabled: 1
+    path: Assets/Scenes/Levels/Locked Objects 2.unity
+    guid: cac4baf3c356adc49ac3e56a16c3f5ac
   m_configObjects: {}
