@@ -16,7 +16,7 @@ public class ItemMousePlacer : MonoBehaviour
         itemMover.FinishedMovingItem += ItemMover_FinishedMovingItem;
     }
 
-    private void ItemMover_FinishedMovingItem(GameObject movedGameObject)
+    private void ItemMover_FinishedMovingItem()
     {
         if (!GameHelper.IsUsingMapEditor())
             gameObject.transform.SetParent(GameObject.Find("AddedObjects").transform);

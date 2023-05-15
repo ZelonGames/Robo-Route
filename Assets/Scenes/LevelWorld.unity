@@ -487,7 +487,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7450113458538478688, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
       propertyPath: m_Name
-      value: Bounce 3
+      value: Locked Objects
       objectReference: {fileID: 0}
     - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
       propertyPath: m_RootOrder

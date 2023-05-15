@@ -10,6 +10,7 @@ TagManager:
   - Spawner
   - Robot
   - BouncingPlatform
+  - Key
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - UI
   - Locked
   - Foreground
-  - 
+  - Foreground Items
   - 
   - 
   - 
@@ -58,6 +59,9 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 2868095095
+    locked: 0
+  - name: Foreground Items
+    uniqueID: 2489901821
     locked: 0
   - name: Canvas
     uniqueID: 4037560593

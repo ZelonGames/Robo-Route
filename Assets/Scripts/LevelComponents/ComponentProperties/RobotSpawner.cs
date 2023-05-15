@@ -4,23 +4,21 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+[SerializeField]
 public class RobotSpawner : MonoBehaviour
 {
     [SerializeField] private TextMeshPro textMeshPro;
     [SerializeField] private SpriteFlipper spriteFlipper;
-    [SerializeField] private bool testMode = false;
 
     public float launchSpeed = 2f;
     public float spawnTimeInSeconds = 1;
     public int robotsToSpawn = 1;
-    public bool isLocked = false;
 
     private LevelController levelController;
     private GameObject robotsGameObject;
 
     private readonly List<Robot> spawnedRobots = new List<Robot>();
     private bool startedTimer = false;
-
 
     private void Start()
     {
@@ -31,9 +29,6 @@ public class RobotSpawner : MonoBehaviour
             levelController = levelControllerGameObject.GetComponent<LevelController>();
             levelController.FailedLevel += LevelController_FailedLevel;
         }
-
-        if (testMode)
-            StartSpawning();
 
         UpdateText();
     }
@@ -60,7 +55,7 @@ public class RobotSpawner : MonoBehaviour
 
     public void StartSpawning()
     {
-        if (robotsToSpawn == 0)
+        if (!enabled || robotsToSpawn == 0)
             return;
 
         foreach (var spawnedRobot in spawnedRobots)

@@ -28,12 +28,12 @@ public class ComponentToggler : MonoBehaviour
         }
     }
 
-    private void ItemMover_MovedItem(GameObject movedGameObject)
+    private void ItemMover_MovedItem()
     {
         EnableMonoBehaviours();
     }
 
-    private void ItemMover_StartedMovingItem(GameObject movedGameObject)
+    private void ItemMover_StartedMovingItem()
     {
         DisableMonoBehaviours();
     }

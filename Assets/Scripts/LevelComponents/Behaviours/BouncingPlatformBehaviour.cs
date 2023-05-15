@@ -40,14 +40,14 @@ public class BouncingPlatformBehaviour : MonoBehaviour
 
 
 
-    private void ItemMover_MovedItem(GameObject movedGameObject)
+    private void ItemMover_MovedItem()
     {
         middleHomePosition = middleCircle.transform.position.y;
         topHomePosition = topCircle.transform.position.y;
         isMoving = false;
     }
 
-    private void ItemMover_StartedMovingItem(GameObject movedGameObject)
+    private void ItemMover_StartedMovingItem()
     {
         if (itemMover.canMove)
             isMoving = true;

@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Intensity: 1.7
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 000000007fc040f9
+  m_ApplyToSortingLayers: 000000007fc040f9fde26894
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -142,7 +142,7 @@ Transform:
   m_Children:
   - {fileID: 4269730691515466074}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6048661708430981861
 SpriteRenderer:

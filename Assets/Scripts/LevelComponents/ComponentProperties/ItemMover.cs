@@ -14,8 +14,8 @@ public class ItemMover : MonoBehaviour
     public static event MovedItemEventHandler StartedMovingAnyItem;
     public static event MovedItemEventHandler FinishedMovingAnyItem;
     public static event Action ChangedPosition;
-    public event MovedItemEventHandler FinishedMovingItem;
-    public event MovedItemEventHandler StartedMovingItem;
+    public event Action FinishedMovingItem;
+    public event Action StartedMovingItem;
 
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private new Collider2D collider2D;
@@ -131,7 +131,7 @@ public class ItemMover : MonoBehaviour
                         cursorObjectQueue.AddGameObjectToQueue(gameObject, this, false);
                     else
                     {
-                        StartedMovingItem?.Invoke(gameObject);
+                        StartedMovingItem?.Invoke();
                     }
                 }
             }
@@ -176,12 +176,12 @@ public class ItemMover : MonoBehaviour
                 0.5f);
 
             if (canMoveMaterial != null)
-            {
+            {/*
                 spriteRenderer.material.SetColor("_SolidOutline", new Color(
                     canMoveMaterial.color.r,
                     canMoveMaterial.color.g,
                     canMoveMaterial.color.b,
-                    0.5f));
+                    0.5f));*/
             }
 
             Vector2 offset = initialObjectPos - initialMousePos;
@@ -210,12 +210,12 @@ public class ItemMover : MonoBehaviour
                 highlight.intensity /= 0.5f;
 
             if (canMoveMaterial != null)
-            {
+            {/*
                 spriteRenderer.material.SetColor("_SolidOutline", new Color(
                     canMoveMaterial.color.r,
                     canMoveMaterial.color.g,
                     canMoveMaterial.color.b,
-                    1));
+                    1));*/
             }
 
             IsDragging = isDraggingAnyObject = false;
@@ -224,7 +224,7 @@ public class ItemMover : MonoBehaviour
                 gameObject.transform.SetParent(movedObjects.transform);
 
             DecreaseAllowedMovesCount();
-            FinishedMovingItem?.Invoke(gameObject);
+            FinishedMovingItem?.Invoke();
             FinishedMovingAnyItem?.Invoke(gameObject);
         }
     }
@@ -234,6 +234,6 @@ public class ItemMover : MonoBehaviour
         IsDragging = isDraggingAnyObject = isDragging;
 
         if (IsDragging)
-            StartedMovingItem?.Invoke(gameObject);
+            StartedMovingItem?.Invoke();
     }
 }

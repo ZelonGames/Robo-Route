@@ -55,7 +55,7 @@ public class SidewaysMover : MonoBehaviour
         }
     }
 
-    private void ItemMover_MovedItem(GameObject movedGameObject)
+    private void ItemMover_MovedItem()
     {
         startPosition = transform.position;
     }

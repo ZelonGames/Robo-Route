@@ -96,9 +96,7 @@ public class LevelController : MonoBehaviour
             enteredGoalDetector.ResetStats();
         
         foreach (Transform child in gridWorld.transform)
-        {
             Destroy(child.gameObject);
-        }
 
         foreach (Transform child in cursorObjectQueue.transform)
             Destroy(child.gameObject);
