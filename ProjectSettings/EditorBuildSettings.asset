@@ -23,9 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Wall and Platform 3.unity
     guid: 32d2f2b4a94edae42aac663c1d27a069
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Levels/Wall and Platform Trick.unity
     guid: 7c7a535aad24cfd4a80faf628f795acb
@@ -38,13 +35,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Bounce 3.unity
     guid: 803a237cd157a3a4cb2a0c1dc7d4007c
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Levels/Locked Objects.unity
     guid: aeefd52f0bce2bf4a9fbb07bcf33df48
   - enabled: 1
     path: Assets/Scenes/Levels/Locked Objects 2.unity
     guid: cac4baf3c356adc49ac3e56a16c3f5ac
+  - enabled: 1
+    path: Assets/Scenes/Levels/Locked Objects 3.unity
+    guid: 870bcd051d010b9488f6c1648c55c2a3
   m_configObjects: {}
