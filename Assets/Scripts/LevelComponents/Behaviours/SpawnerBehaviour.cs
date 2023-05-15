@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnerBehaviour : MonoBehaviour
 {
+    [SerializeField] private GameObject padlock;
     private RobotSpawner robotSpawner;
 
     private void Awake()
@@ -27,5 +28,6 @@ public class SpawnerBehaviour : MonoBehaviour
     {
         robotSpawner.enabled = true;
         robotSpawner.StartSpawning();
+        padlock.SetActive(false);
     }
 }
