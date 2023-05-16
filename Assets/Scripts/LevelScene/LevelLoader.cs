@@ -20,7 +20,7 @@ public class LevelLoader : MonoBehaviour
     void Start()
     {
         if (!File.Exists(GameController.FinishedLevelsFile))
-            return;
+            File.Create(GameController.FinishedLevelsFile).Dispose();
 
         ButtonLevel.Clicked += OnLoadLevel;
 
