@@ -22,6 +22,9 @@ public class LevelLoader : MonoBehaviour
         if (!File.Exists(GameController.FinishedLevelsFile))
             File.Create(GameController.FinishedLevelsFile).Dispose();
 
+        if (!File.Exists(GameController.FinishedLevelsFile))
+            return;
+
         ButtonLevel.Clicked += OnLoadLevel;
 
         string data = File.ReadAllText(GameController.FinishedLevelsFile);
@@ -59,8 +62,12 @@ public class LevelLoader : MonoBehaviour
 
     private void UpdateLevelStatusRecursive(ButtonLevel currentButton)
     {
+        if (finishedLevelInfo == null)
+            return;
+
         if (finishedLevelInfo.finishedLevels.TryGetValue(currentButton.gameObject.name, out var levelInfo))
         {
+
             currentButton.Complete();
             foreach (ButtonLevel buttonLevel in currentButton.unlockingLevels)
             {
