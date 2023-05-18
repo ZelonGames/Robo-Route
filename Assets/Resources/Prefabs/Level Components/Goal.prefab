@@ -100,7 +100,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0 / 5
+  m_text: 0 / 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -325,6 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b349be84785466e4b9098b46cbc47bd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  watersplashParticles: {fileID: 5870348400376285552}
 --- !u!114 &-2419309127435844710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,7 +372,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMeshPro: {fileID: 1522253922}
   levelComponentSettings: {fileID: 7007078321167489742}
-  requiredRobotsToSave: 5
+  requiredRobotsToSave: 3
 --- !u!114 &7007078321167489742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -450,14 +451,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4550352059321383227}
-  m_LocalRotation: {x: -0.70507616, y: -0.053550683, z: 0.053550683, w: 0.70507616}
+  m_LocalRotation: {x: -0.81621194, y: -0.02440943, z: 0.034577012, w: 0.57620025}
   m_LocalPosition: {x: 0.45, y: -1.39, z: 0}
   m_LocalScale: {x: 0.110593244, y: 0.1, z: 0.110593244}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2120881935738102052}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: -81.313, y: -90, z: 90}
+  m_LocalEulerAnglesHint: {x: -69.87, y: -165.774, z: 166.611}
 --- !u!198 &5870348400376285552
 ParticleSystem:
   m_ObjectHideFlags: 0

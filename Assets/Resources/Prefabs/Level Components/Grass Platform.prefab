@@ -78,7 +78,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &1917609446
 MonoBehaviour:
@@ -5456,14 +5456,13 @@ MonoBehaviour:
   spriteRenderer: {fileID: 2580592738224044355}
   collider2D: {fileID: 1035007149}
   textAllowedMovesCount: {fileID: 1917609446}
-  highlight: {fileID: 1718044344094317012}
+  highlight: {fileID: 0}
   initialMaterial: {fileID: 2100000, guid: a3d24c9dcc974b2438f123aba57696d7, type: 2}
   canMoveMaterial: {fileID: 2100000, guid: 9cdc2732b667b9f42a07aed64b715ad8, type: 2}
   usingLimitedMoves: 0
   allowedMovesCount: 0
   initialAllowedMovesCount: 0
   canMove: 0
-  initialCanMove: 0
 --- !u!114 &577192974019643483
 MonoBehaviour:
   m_ObjectHideFlags: 0

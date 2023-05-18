@@ -30,7 +30,6 @@ public class ItemMover : MonoBehaviour
     [HideInInspector] public int initialAllowedMovesCount = 0;
 
     public bool canMove = false;
-    public bool initialCanMove = false;
 
     private CursorObjectQueue cursorObjectQueue;
     private GameObject gridWorld;
