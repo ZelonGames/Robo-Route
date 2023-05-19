@@ -36,12 +36,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Bounce 3.unity
     guid: 803a237cd157a3a4cb2a0c1dc7d4007c
   - enabled: 1
-    path: Assets/Scenes/Levels/Locked Objects.unity
+    path: Assets/Scenes/Levels/Locked Spawners.unity
     guid: aeefd52f0bce2bf4a9fbb07bcf33df48
   - enabled: 1
-    path: Assets/Scenes/Levels/Locked Objects 2.unity
+    path: Assets/Scenes/Levels/Locked Spawners 2.unity
     guid: cac4baf3c356adc49ac3e56a16c3f5ac
   - enabled: 1
-    path: Assets/Scenes/Levels/Locked Objects 4.unity
+    path: Assets/Scenes/Levels/Locked Spawners 3.unity
+    guid: 4d4d51c67e010f842a2518156363edfb
+  - enabled: 1
+    path: Assets/Scenes/Levels/Locked Spawners 4.unity
     guid: 870bcd051d010b9488f6c1648c55c2a3
   m_configObjects: {}

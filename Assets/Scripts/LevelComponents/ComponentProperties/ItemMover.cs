@@ -109,7 +109,7 @@ public class ItemMover : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        if (!GameController.hasStartedGame)
+        if (!enabled || !GameController.hasStartedGame)
             return;
 
         if (canMove)

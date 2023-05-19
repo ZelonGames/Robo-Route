@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Unlocker : MonoBehaviour
 {
+    public List<MonoBehaviour> unlocks = new();
+
     public event Action Unlock;
     private Color startColor;
     private SpriteRenderer spriteRenderer;

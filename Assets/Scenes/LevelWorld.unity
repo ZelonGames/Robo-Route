@@ -483,11 +483,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4106388429799843631, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
       propertyPath: m_text
-      value: Locked Objects 3 (1)
+      value: Locked Objects 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106388429799843631, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_fontSize
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106388429799843631, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7450113458538478688, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
       propertyPath: m_Name
-      value: Locked Objects 4
+      value: Locked Spawners 4
       objectReference: {fileID: 0}
     - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
       propertyPath: m_RootOrder
@@ -596,7 +604,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7450113458538478688, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
       propertyPath: m_Name
-      value: Locked Objects
+      value: Locked Spawners
       objectReference: {fileID: 0}
     - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
       propertyPath: m_RootOrder
@@ -1259,19 +1267,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2276664590859242721, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
       propertyPath: unlockingLevels.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2276664590859242721, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
       propertyPath: unlockingLevels.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1403767386}
     - target: {fileID: 4106388429799843631, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
       propertyPath: m_text
-      value: Locked Objects 2 (1)
+      value: Locked Spawners 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106388429799843631, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_fontSize
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106388429799843631, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7450113458538478688, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
       propertyPath: m_Name
-      value: Locked Objects 3
+      value: Locked Spawners 3
       objectReference: {fileID: 0}
     - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
       propertyPath: m_RootOrder
@@ -1334,6 +1350,17 @@ Transform:
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2276664590859242721, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
   m_PrefabInstance: {fileID: 1306089890}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4aa515670f28434db788ef34d44dc0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1403767386 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2276664590859242721, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+  m_PrefabInstance: {fileID: 534093914}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -2527,11 +2554,19 @@ PrefabInstance:
       objectReference: {fileID: 1306089895}
     - target: {fileID: 4106388429799843631, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
       propertyPath: m_text
-      value: Locked Objects (1)
+      value: Locked Spawners 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106388429799843631, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_fontSize
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106388429799843631, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7450113458538478688, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
       propertyPath: m_Name
-      value: Locked Objects 2
+      value: Locked Spawners 2
       objectReference: {fileID: 0}
     - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
       propertyPath: m_RootOrder
