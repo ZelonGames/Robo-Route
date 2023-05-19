@@ -40,7 +40,7 @@ public class KeyBehaviour : MonoBehaviour
         var unlockers = FindObjectsByType<Unlocker>(FindObjectsSortMode.None).Where(x => x.enabled);
         foreach (var unlocker in unlockers)
         {
-            var unlockerCollider = unlocker.gameObject.GetComponent<BoxCollider2D>();
+            var unlockerCollider = unlocker.GetComponent<BoxCollider2D>();
             if (boxCollider2D.IsTouching(unlockerCollider))
             {
                 if (!collisions.ContainsKey(unlockerCollider))
