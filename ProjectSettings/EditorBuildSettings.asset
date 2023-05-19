@@ -47,4 +47,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Locked Spawners 4.unity
     guid: 870bcd051d010b9488f6c1648c55c2a3
+  - enabled: 1
+    path: Assets/Scenes/Levels/Locked Platforms.unity
+    guid: 7fa04b663e6100f41959ae43f124244d
+  - enabled: 1
+    path: Assets/Scenes/Levels/Locked Platforms 2.unity
+    guid: b1ab4745cd643234a82a98b1cf4ce554
   m_configObjects: {}
