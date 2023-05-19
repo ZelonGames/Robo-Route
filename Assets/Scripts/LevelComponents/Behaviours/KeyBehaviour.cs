@@ -28,8 +28,12 @@ public class KeyBehaviour : MonoBehaviour
     {
         if (collisions.Count > 0)
         {
-            UsedAnyKey?.Invoke(GetClosestCollisionUnlocker());
-            Destroy(gameObject);
+            var closestCollision = GetClosestCollisionUnlocker();
+            if (closestCollision != null)
+            {
+                UsedAnyKey?.Invoke(GetClosestCollisionUnlocker());
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -55,7 +59,7 @@ public class KeyBehaviour : MonoBehaviour
     private Unlocker GetClosestCollisionUnlocker()
     {
         BoxCollider2D closestCollision = collisions.Keys.FirstOrDefault();
-        Unlocker closestUnlocker = null;
+        Unlocker closestUnlocker = collisions.Values.FirstOrDefault();
 
         foreach (var collision in collisions)
         {
@@ -63,7 +67,7 @@ public class KeyBehaviour : MonoBehaviour
                 continue;
 
             if (Vector2.Distance(boxCollider2D.bounds.center, closestCollision.bounds.center) >
-                Vector2.Distance(collision.Key.bounds.center, closestCollision.bounds.center))
+                Vector2.Distance(boxCollider2D.bounds.center, collision.Key.bounds.center))
             {
                 closestCollision = collision.Key;
                 closestUnlocker = collision.Value;
