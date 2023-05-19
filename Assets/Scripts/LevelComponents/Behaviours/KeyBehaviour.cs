@@ -13,8 +13,6 @@ public class KeyBehaviour : MonoBehaviour
     private BoxCollider2D boxCollider2D;
     private Dictionary<BoxCollider2D, Unlocker> collisions = new();
 
-    private bool shouldDestroy = false;
-
     void Start()
     {
         boxCollider2D = GetComponent<BoxCollider2D>();
@@ -28,7 +26,7 @@ public class KeyBehaviour : MonoBehaviour
 
     private void ItemMover_FinishedMovingItem()
     {
-        if (shouldDestroy)
+        if (collisions.Count > 0)
         {
             UsedAnyKey?.Invoke(GetClosestCollisionUnlocker());
             Destroy(gameObject);
@@ -45,15 +43,11 @@ public class KeyBehaviour : MonoBehaviour
             {
                 if (!collisions.ContainsKey(unlockerCollider))
                     collisions.Add(unlockerCollider, unlocker);
-
-                shouldDestroy = true;
             }
             else
             {
                 if (collisions.ContainsKey(unlockerCollider))
                     collisions.Remove(unlockerCollider);
-
-                shouldDestroy = false;
             }
         }
     }
