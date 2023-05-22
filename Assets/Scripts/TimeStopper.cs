@@ -5,8 +5,8 @@ using UnityEngine;
 public class TimeStopper : MonoBehaviour
 {
     [SerializeField] private GameObject robots;
-    private Dictionary<GameObject, (RigidbodyConstraints2D constraints, Vector2 velocity)> robotsState = new();
-    private Dictionary<RobotSpawner, bool> spawnersState = new();
+    private readonly Dictionary<GameObject, (RigidbodyConstraints2D constraints, Vector2 velocity)> robotsState = new();
+    private readonly Dictionary<RobotSpawner, bool> spawnersState = new();
 
     private bool isTimeStopped = false;
 
@@ -68,9 +68,6 @@ public class TimeStopper : MonoBehaviour
             rigidBody.velocity = state.Value.velocity;
             rigidBody.constraints = state.Value.constraints;
         }
-
-        robotsState.Clear();
-        spawnersState.Clear();
 
         robotsState.Clear();
         spawnersState.Clear();
