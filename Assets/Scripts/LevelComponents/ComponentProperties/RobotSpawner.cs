@@ -16,8 +16,10 @@ public class RobotSpawner : MonoBehaviour
 
     private LevelController levelController;
     private GameObject robotsGameObject;
-
     private readonly List<Robot> spawnedRobots = new List<Robot>();
+
+    private float lastSpawnedTime;
+    private float? stopTime = null;
     private bool startedTimer = false;
 
     private void Start()
@@ -71,11 +73,29 @@ public class RobotSpawner : MonoBehaviour
         startedTimer = true;
     }
 
+    public void ContinueSpawning()
+    {
+        StartCoroutine(CountTimer());
+    }
+
+    public void StopSpawning()
+    {
+        stopTime = Time.fixedTime;
+        enabled = false;
+    }
+
     private IEnumerator CountTimer()
     {
         while (true)
         {
-            yield return new WaitForSeconds(spawnTimeInSeconds);
+            if (stopTime.HasValue)
+            {
+                yield return new WaitForSeconds(spawnTimeInSeconds - (stopTime.Value - lastSpawnedTime));
+                stopTime = null;
+            }
+            else
+                yield return new WaitForSeconds(spawnTimeInSeconds);
+
             if (spawnedRobots.Count < robotsToSpawn)
                 SpawnRobot();
         }
@@ -92,6 +112,7 @@ public class RobotSpawner : MonoBehaviour
         robot.spawnedGameObject.transform.SetParent(GameObject.Find("Robots").transform);
         spawnedRobots.Add(robot);
         UpdateText();
+        lastSpawnedTime = Time.fixedTime;
     }
 
     private void UpdateText()
