@@ -79,7 +79,6 @@ public class RobotSpawner : MonoBehaviour
     public void ContinueSpawning()
     {
         firstStopTime = (float)DateTime.Now.TimeOfDay.TotalMilliseconds;
-        lastStopTime = (float)DateTime.Now.TimeOfDay.TotalMilliseconds;
         StartCoroutine(CountTimer());
     }
 
