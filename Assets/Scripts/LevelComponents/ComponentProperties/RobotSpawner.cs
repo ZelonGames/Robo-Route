@@ -18,9 +18,12 @@ public class RobotSpawner : MonoBehaviour
     private GameObject robotsGameObject;
     private readonly List<Robot> spawnedRobots = new List<Robot>();
 
-    private float lastSpawnedTime;
-    private float? stopTime = null;
+    private float firstStopTime;
+    private float? lastStopTime = null;
+    private float timePassed = 0;
     private bool startedTimer = false;
+
+    private bool IsStopped => lastStopTime.HasValue;
 
     private void Start()
     {
@@ -75,29 +78,41 @@ public class RobotSpawner : MonoBehaviour
 
     public void ContinueSpawning()
     {
+        firstStopTime = (float)DateTime.Now.TimeOfDay.TotalMilliseconds;
+        lastStopTime = (float)DateTime.Now.TimeOfDay.TotalMilliseconds;
         StartCoroutine(CountTimer());
     }
 
     public void StopSpawning()
     {
-        stopTime = Time.fixedTime;
+        lastStopTime = (float)DateTime.Now.TimeOfDay.TotalMilliseconds;
+        timePassed += (lastStopTime.Value - firstStopTime) / 1000f;
+
+        StopAllCoroutines();
         enabled = false;
     }
 
     private IEnumerator CountTimer()
     {
-        while (true)
+        while (!IsStopped)
         {
-            if (stopTime.HasValue)
-            {
-                yield return new WaitForSeconds(spawnTimeInSeconds - (stopTime.Value - lastSpawnedTime));
-                stopTime = null;
-            }
-            else
-                yield return new WaitForSeconds(spawnTimeInSeconds);
+            yield return new WaitForSeconds(spawnTimeInSeconds);
 
             if (spawnedRobots.Count < robotsToSpawn)
                 SpawnRobot();
+        }
+
+        if (IsStopped)
+        {
+            Debug.Log($"time passed: {timePassed}");
+            yield return new WaitForSeconds(spawnTimeInSeconds - timePassed);
+
+            if (spawnedRobots.Count < robotsToSpawn)
+            {
+                SpawnRobot();
+                lastStopTime = null;
+                StartCoroutine(CountTimer());
+            }
         }
     }
 
@@ -112,7 +127,8 @@ public class RobotSpawner : MonoBehaviour
         robot.spawnedGameObject.transform.SetParent(GameObject.Find("Robots").transform);
         spawnedRobots.Add(robot);
         UpdateText();
-        lastSpawnedTime = Time.fixedTime;
+        firstStopTime = (float)DateTime.Now.TimeOfDay.TotalMilliseconds;
+        timePassed = 0;
     }
 
     private void UpdateText()
