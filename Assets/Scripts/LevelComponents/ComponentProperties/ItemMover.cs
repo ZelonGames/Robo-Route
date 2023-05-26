@@ -109,32 +109,21 @@ public class ItemMover : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        if (!enabled || !GameController.hasStartedGame)
+        if (!enabled || !GameController.hasStartedGame || !canMove || isDraggingAnyObject || IsDragging)
             return;
 
-        if (canMove)
-        {
-            if (!isDraggingAnyObject && !IsDragging)
-            {
-                if (!usingLimitedMoves || usingLimitedMoves && allowedMovesCount > 0)
-                {
-                    if (highlight != null)
-                        highlight.intensity *= 0.5f;
+        if (highlight != null)
+            highlight.intensity *= 0.5f;
 
-                    IsDragging = isDraggingAnyObject = true;
-                    initialMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    initialObjectPos = gameObject.transform.position;
-                    StartedMovingAnyItem?.Invoke(gameObject);
+        IsDragging = isDraggingAnyObject = true;
+        initialMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        initialObjectPos = gameObject.transform.position;
+        StartedMovingAnyItem?.Invoke(gameObject);
 
-                    if (cursorObjectQueue != null)
-                        cursorObjectQueue.AddGameObjectToQueue(gameObject, this, false);
-                    else
-                    {
-                        StartedMovingItem?.Invoke();
-                    }
-                }
-            }
-        }
+        if (cursorObjectQueue != null)
+            cursorObjectQueue.AddGameObjectToQueue(gameObject, this, false);
+        else
+            StartedMovingItem?.Invoke();
     }
 
     public void ResetAllowedMovesCount()

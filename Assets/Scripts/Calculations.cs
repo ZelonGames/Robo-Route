@@ -12,7 +12,7 @@ public static class Calculations
     /// </summary>
     /// <param name="bottomBoxCollider">The gameobject to move</param>
     /// <param name="topBoxCollider"></param>
-    public static void AlignBottomWithTop(this BoxCollider2D bottomBoxCollider, BoxCollider2D topBoxCollider)
+    public static void AlignBottomWithTop(this Collider2D bottomBoxCollider, Collider2D topBoxCollider)
     {
         Bounds bounds = bottomBoxCollider.bounds;
         Vector2 bottomEdge = new Vector2(bounds.center.x, bounds.GetBottomEdge());

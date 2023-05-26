@@ -5499,7 +5499,6 @@ MonoBehaviour:
   allowedMovesCount: 0
   initialAllowedMovesCount: 0
   canMove: 0
-  initialCanMove: 0
 --- !u!114 &577192974019643483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5514,6 +5513,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fallingCollision: {fileID: 0}
   shaker: {fileID: 0}
+  padlock: {fileID: 0}
+  itemMover: {fileID: 0}
 --- !u!114 &-5885904209489738146
 MonoBehaviour:
   m_ObjectHideFlags: 0

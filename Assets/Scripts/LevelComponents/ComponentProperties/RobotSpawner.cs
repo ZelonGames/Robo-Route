@@ -121,8 +121,8 @@ public class RobotSpawner : MonoBehaviour
         robot.spawnedGameObject = Instantiate(robot.Prefab);
         robot.spawnedGameObject.transform.position = gameObject.transform.position;
 
-        robot.spawnedGameObject.GetComponent<Rigidbody2D>().velocity =
-            new Vector2(spriteFlipper.isFlipped ? -launchSpeed : launchSpeed, 0);
+        float velocity = spriteFlipper.isFlipped ? -launchSpeed : launchSpeed;
+        robot.spawnedGameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity, 0);
         robot.spawnedGameObject.transform.SetParent(GameObject.Find("Robots").transform);
         spawnedRobots.Add(robot);
         UpdateText();

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class RobotBehaviour : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D rigidbody2D;
-    [SerializeField] private BoxCollider2D boxCollider2D;
+    [SerializeField] private new Rigidbody2D rigidbody2D;
     [SerializeField] private ParticleSystem groundTrail;
 
     void Start()
@@ -13,6 +12,11 @@ public class RobotBehaviour : MonoBehaviour
     }
 
     public void Update()
+    {
+        UpdateGroundTrail();
+    }
+
+    private void UpdateGroundTrail()
     {
         if ((rigidbody2D.constraints & RigidbodyConstraints2D.FreezePositionY) != 0)
         {

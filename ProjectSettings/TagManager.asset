@@ -11,6 +11,7 @@ TagManager:
   - Robot
   - BouncingPlatform
   - Key
+  - Pushable
   layers:
   - Default
   - TransparentFX
@@ -21,8 +22,8 @@ TagManager:
   - Locked
   - Foreground
   - Foreground Items
-  - 
-  - 
+  - Rigidbody
+  - Robot
   - 
   - 
   - 

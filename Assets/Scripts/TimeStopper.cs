@@ -25,29 +25,29 @@ public class TimeStopper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameController.hasStartedGame && Input.GetMouseButtonUp(1))
+        if (!GameController.hasStartedGame || !Input.GetMouseButtonUp(1))
+            return;
+
+        if (!isTimeStopped)
         {
-            if (!isTimeStopped)
+            var spawners = FindObjectsByType<RobotSpawner>(FindObjectsSortMode.None);
+            foreach (var spawner in spawners)
             {
-                var spawners = FindObjectsByType<RobotSpawner>(FindObjectsSortMode.None);
-                foreach (var spawner in spawners)
-                {
-                    spawnersState.Add(spawner, spawner.enabled);
-                    spawner.StopSpawning();
-                }
-
-                foreach (Transform robot in robots.transform)
-                {
-                    var rigidBody = robot.GetComponent<Rigidbody2D>();
-                    robotsState.Add(robot.gameObject, new(rigidBody.constraints, rigidBody.velocity));
-                    rigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
-                }
-
-                isTimeStopped = true;
+                spawnersState.Add(spawner, spawner.enabled);
+                spawner.StopSpawning();
             }
-            else
-                ResetStates();
+
+            foreach (Transform robot in robots.transform)
+            {
+                var rigidBody = robot.GetComponent<Rigidbody2D>();
+                robotsState.Add(robot.gameObject, new(rigidBody.constraints, rigidBody.velocity));
+                rigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
+            }
+
+            isTimeStopped = true;
         }
+        else
+            ResetStates();
     }
 
     public void ResetStates()

@@ -13,7 +13,7 @@ public class FallingCollision : MonoBehaviour
     public static event Action RobotLanded;
     public event Action<Collider2D> RobotLandedSelf;
 
-    [SerializeField] private BoxCollider2D boxCollider;
+    [SerializeField] private EdgeCollider2D boxCollider;
     [SerializeField] private float maxHeightDistance = 0.2f;
 
     // Keeps track of how many platforms each robot collides with
@@ -21,6 +21,28 @@ public class FallingCollision : MonoBehaviour
 
     private void Start()
     {
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Robot"))
+        {
+            var robotRigidbody2D = collision.gameObject.GetComponent<Rigidbody2D>();
+
+            if (robotRigidbody2D.velocity.y <= 0)
+            {
+                if (robotRigidbody2D.velocity.y < -10f)
+                {
+                    RobotLanded?.Invoke();
+                    RobotLandedSelf?.Invoke(collision.collider);
+                }
+
+                var robotBoxCollider = collision.gameObject.GetComponent<BoxCollider2D>();
+                //robotBoxCollider.AlignBottomWithTop(boxCollider);
+                //robotRigidbody2D.AddConstraint(RigidbodyConstraints2D.FreezePositionY);
+
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D robotCollider)
@@ -45,8 +67,8 @@ public class FallingCollision : MonoBehaviour
                 if (!collidingRobots[robotCollider].Contains(this))
                     collidingRobots[robotCollider].Add(this);
 
-                robotBoxCollider.AlignBottomWithTop(boxCollider);
-                robotRigidbody2D.AddConstraint(RigidbodyConstraints2D.FreezePositionY);
+                //robotBoxCollider.AlignBottomWithTop(boxCollider);
+                //robotRigidbody2D.AddConstraint(RigidbodyConstraints2D.FreezePositionY);
 
             }
         }
@@ -60,7 +82,7 @@ public class FallingCollision : MonoBehaviour
             if (collidingRobots[robotCollider].Count == 0)
             {
                 collidingRobots.Remove(robotCollider);
-                robotCollider.gameObject.GetComponent<Rigidbody2D>().RemoveConstraint(RigidbodyConstraints2D.FreezePositionY);
+                //robotCollider.gameObject.GetComponent<Rigidbody2D>().RemoveConstraint(RigidbodyConstraints2D.FreezePositionY);
             }
         }
     }

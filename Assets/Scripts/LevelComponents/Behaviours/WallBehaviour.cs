@@ -14,17 +14,18 @@ public class WallBehaviour : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D robotCollider)
+    private void OnCollisionEnter2D(Collision2D robotCollider)
     {
-        if (robotCollider.CompareTag("Robot"))
+        if (robotCollider.gameObject.CompareTag("Robot"))
         {
-            var robotRigidbody2D = robotCollider.gameObject.GetComponent<Rigidbody2D>();
+            Debug.Log("Wall");
+            var robotRigidbody2D = robotCollider.collider.attachedRigidbody;
             var robotBoxCollider2D = robotCollider.gameObject.GetComponent<BoxCollider2D>();
 
-            bool isRobotMovingRight = robotRigidbody2D.velocity.x > 0;
+            bool isRobotMovingRight = robotCollider.relativeVelocity.x > 0;
             bool isWallToTheRight = transform.position.x > robotCollider.gameObject.transform.position.x;
 
-            bool isRobotMovingLeft = robotRigidbody2D.velocity.x < 0;
+            bool isRobotMovingLeft = robotCollider.relativeVelocity.x < 0;
             bool isWallToTheLeft = transform.position.x < robotCollider.gameObject.transform.position.x;
 
             if ((isRobotMovingRight && isWallToTheRight ||
@@ -39,7 +40,7 @@ public class WallBehaviour : MonoBehaviour
                 else if (isWallToTheLeft)
                     robotBoxCollider2D.AlignLeftWithRight(boxCollider2D);
 
-                Vector2 velocity = robotRigidbody2D.velocity;
+                Vector2 velocity = robotCollider.relativeVelocity;
                 velocity.x *= -1;
                 robotRigidbody2D.velocity = velocity;
             }

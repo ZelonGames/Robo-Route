@@ -184,9 +184,9 @@ GameObject:
   - component: {fileID: 7227047839969079624}
   - component: {fileID: 3781138888097259488}
   - component: {fileID: 5915876202720100675}
-  - component: {fileID: 3186368360879112559}
   - component: {fileID: -4219866370871642577}
   - component: {fileID: 3724146887583954557}
+  - component: {fileID: 5811727323495179486}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Wall
@@ -291,7 +291,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 1.1457961}
@@ -329,19 +329,6 @@ MonoBehaviour:
   allowedMovesCount: 0
   initialAllowedMovesCount: 0
   canMove: 0
---- !u!114 &3186368360879112559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 778898191387838911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21dc956006702694c8d4d94c37bf7024, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boxCollider2D: {fileID: 3781138888097259488}
 --- !u!114 &-4219866370871642577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -446,7 +433,20 @@ MonoBehaviour:
   - {x: -0.6404543, y: -0.5338365, z: 0}
   m_ShapePathHash: 510989903
   m_Mesh: {fileID: 0}
-  m_InstanceId: 52236
+  m_InstanceId: 53552
   m_LocalBounds:
     m_Center: {x: 0.00081539154, y: 1.1755615, z: 0}
     m_Extent: {x: 1.1737108, y: 1.8032265, z: 0}
+--- !u!114 &5811727323495179486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778898191387838911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21dc956006702694c8d4d94c37bf7024, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxCollider2D: {fileID: 3781138888097259488}
