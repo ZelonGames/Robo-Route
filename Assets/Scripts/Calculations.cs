@@ -12,7 +12,7 @@ public static class Calculations
     /// </summary>
     /// <param name="bottomBoxCollider">The gameobject to move</param>
     /// <param name="topBoxCollider"></param>
-    public static void AlignBottomWithTop(this Collider2D bottomBoxCollider, Collider2D topBoxCollider)
+    public static void AlignBottomWithTop(this Collider2D bottomBoxCollider, Collider2D topBoxCollider, float offset = 0)
     {
         Bounds bounds = bottomBoxCollider.bounds;
         Vector2 bottomEdge = new Vector2(bounds.center.x, bounds.GetBottomEdge());
@@ -23,10 +23,10 @@ public static class Calculations
         float yOffset = topEdge.y - bottomEdge.y;
         bottomBoxCollider.transform.position = new Vector2(
             bottomBoxCollider.transform.position.x, 
-            bottomBoxCollider.transform.position.y + yOffset);
+            bottomBoxCollider.transform.position.y + yOffset + offset);
     }
 
-    public static void AlignLeftWithRight(this BoxCollider2D leftBoxCollider, BoxCollider2D rightBoxCollider)
+    public static void AlignLeftWithRight(this Collider2D leftBoxCollider, Collider2D rightBoxCollider)
     {
         Bounds leftBounds = leftBoxCollider.bounds;
         Vector2 leftEdge = new Vector2(leftBounds.min.x, leftBounds.center.y);
@@ -40,7 +40,7 @@ public static class Calculations
             leftBoxCollider.transform.position.y);
     }
 
-    public static void AlignRightWithLeft(this BoxCollider2D rightBoxCollider, BoxCollider2D leftBoxCollider)
+    public static void AlignRightWithLeft(this Collider2D rightBoxCollider, Collider2D leftBoxCollider)
     {
         Bounds rightBounds = rightBoxCollider.bounds;
         Vector2 rightEdge = new Vector2(rightBounds.GetRightEdge(), rightBounds.center.y);

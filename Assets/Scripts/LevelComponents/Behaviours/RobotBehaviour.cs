@@ -7,12 +7,16 @@ public class RobotBehaviour : MonoBehaviour
     [SerializeField] private new Rigidbody2D rigidbody2D;
     [SerializeField] private ParticleSystem groundTrail;
 
+    public Vector2 Velocity { get; private set; }
+
     void Start()
     {
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
+        Velocity = rigidbody2D.velocity;
+
         UpdateGroundTrail();
     }
 

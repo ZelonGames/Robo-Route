@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class WallBehaviour : MonoBehaviour
 {
-    [SerializeField] private BoxCollider2D boxCollider2D;
+    [SerializeField] private Collider2D boxCollider2D;
 
     private void Start()
     {
@@ -16,34 +16,19 @@ public class WallBehaviour : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D robotCollider)
     {
-        if (robotCollider.gameObject.CompareTag("Robot"))
-        {
-            Debug.Log("Wall");
-            var robotRigidbody2D = robotCollider.collider.attachedRigidbody;
-            var robotBoxCollider2D = robotCollider.gameObject.GetComponent<BoxCollider2D>();
+        if (!robotCollider.gameObject.CompareTag("Robot"))
+            return;
 
-            bool isRobotMovingRight = robotCollider.relativeVelocity.x > 0;
-            bool isWallToTheRight = transform.position.x > robotCollider.gameObject.transform.position.x;
+        Vector2 velocity = robotCollider.gameObject.GetComponent<RobotBehaviour>().Velocity;
+        
+        bool isRobotMovingRight = velocity.x >= 0;
+        bool isWallToTheRight = transform.position.x > robotCollider.gameObject.transform.position.x;
 
-            bool isRobotMovingLeft = robotCollider.relativeVelocity.x < 0;
-            bool isWallToTheLeft = transform.position.x < robotCollider.gameObject.transform.position.x;
+        bool isRobotMovingLeft = velocity.x <= 0;
+        bool isWallToTheLeft = transform.position.x < robotCollider.gameObject.transform.position.x;
 
-            if ((isRobotMovingRight && isWallToTheRight ||
-                isRobotMovingLeft && isWallToTheLeft) &&
-                (robotBoxCollider2D.bounds.GetBottomEdge() <= boxCollider2D.bounds.GetTopEdge() &&
-                robotBoxCollider2D.bounds.GetBottomEdge() >= boxCollider2D.bounds.GetBottomEdge() ||
-                robotBoxCollider2D.bounds.GetTopEdge() <= boxCollider2D.bounds.GetTopEdge() &&
-                robotBoxCollider2D.bounds.GetTopEdge() >= boxCollider2D.bounds.GetBottomEdge()))
-            {
-                if (isWallToTheRight)
-                    robotBoxCollider2D.AlignRightWithLeft(boxCollider2D);
-                else if (isWallToTheLeft)
-                    robotBoxCollider2D.AlignLeftWithRight(boxCollider2D);
-
-                Vector2 velocity = robotCollider.relativeVelocity;
-                velocity.x *= -1;
-                robotRigidbody2D.velocity = velocity;
-            }
-        }
+        if (isRobotMovingRight && isWallToTheRight ||
+            isRobotMovingLeft && isWallToTheLeft)
+            robotCollider.rigidbody.velocity = Vector2.Reflect(velocity, Vector2.right);
     }
 }
