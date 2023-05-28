@@ -210,7 +210,7 @@ Transform:
   - {fileID: 4208545724814173993}
   - {fileID: 8963038681584480202}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7227047839969079624
 SpriteRenderer:
@@ -437,7 +437,7 @@ MonoBehaviour:
   - {x: -0.6404543, y: -0.5338365, z: 0}
   m_ShapePathHash: 510989903
   m_Mesh: {fileID: 0}
-  m_InstanceId: 62114
+  m_InstanceId: -162560
   m_LocalBounds:
     m_Center: {x: 0.00081539154, y: 1.1755615, z: 0}
     m_Extent: {x: 1.1737108, y: 1.8032265, z: 0}

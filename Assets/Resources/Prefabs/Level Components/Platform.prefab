@@ -5543,7 +5543,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxCollider: {fileID: 1035007149}
-  maxHeightDistance: 0.2
 --- !u!114 &8969607896334103042
 MonoBehaviour:
   m_ObjectHideFlags: 0

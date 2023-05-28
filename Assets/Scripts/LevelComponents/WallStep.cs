@@ -24,6 +24,6 @@ public class WallStep : MonoBehaviour
             return;
 
         collision.collider.AlignBottomWithTop(platformCollider, 0.05f);
-        collision.rigidbody.velocity = collision.relativeVelocity;
+        collision.rigidbody.velocity = collision.gameObject.GetComponent<RobotBehaviour>().Velocity;
     }
 }

@@ -22,7 +22,7 @@ public class RobotBehaviour : MonoBehaviour
 
     private void UpdateGroundTrail()
     {
-        if ((rigidbody2D.constraints & RigidbodyConstraints2D.FreezePositionY) != 0)
+        if (Mathf.Abs(rigidbody2D.velocity.y) <= 0.05f)
         {
             if (!groundTrail.isPlaying)
                 groundTrail.Play();

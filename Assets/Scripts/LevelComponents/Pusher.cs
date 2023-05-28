@@ -5,8 +5,8 @@ using UnityEngine;
 public class Pusher : MonoBehaviour
 {
     [SerializeField] private new Rigidbody2D rigidbody2D;
-    private Vector2 velocity;
     public float MaxVelocity { get; private set; }
+    public float acceleration = 0.5f;
 
     void Start()
     {
@@ -16,11 +16,11 @@ public class Pusher : MonoBehaviour
 
     public void Update()
     {
-        velocity.y = rigidbody2D.velocity.y;
         if (Mathf.Abs(rigidbody2D.velocity.x) < MaxVelocity)
         {
-            velocity.x = rigidbody2D.velocity.x < 0 ? -MaxVelocity : MaxVelocity;
-            rigidbody2D.velocity = velocity;
+            Vector2 velocity = rigidbody2D.velocity;
+            velocity.x = velocity.x > 0 ? acceleration : -acceleration;
+            rigidbody2D.AddForce(velocity);
         }
     }
 }
