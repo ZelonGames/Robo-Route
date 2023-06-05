@@ -8,7 +8,7 @@ using UnityEngine;
 public class RobotSpawner : MonoBehaviour
 {
     [SerializeField] private TextMeshPro textMeshPro;
-    [SerializeField] private SpriteFlipper spriteFlipper;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
     public float launchSpeed = 2f;
     public float spawnTimeInSeconds = 1;
@@ -103,7 +103,6 @@ public class RobotSpawner : MonoBehaviour
 
         if (IsStopped)
         {
-            Debug.Log($"time passed: {timePassed}");
             yield return new WaitForSeconds(spawnTimeInSeconds - timePassed);
 
             if (spawnedRobots.Count < robotsToSpawn)
@@ -121,7 +120,7 @@ public class RobotSpawner : MonoBehaviour
         robot.spawnedGameObject = Instantiate(robot.Prefab);
         robot.spawnedGameObject.transform.position = gameObject.transform.position;
 
-        float velocity = spriteFlipper.isFlipped ? -launchSpeed : launchSpeed;
+        float velocity = spriteRenderer.flipX ? -launchSpeed : launchSpeed;
         robot.spawnedGameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity, 0);
         robot.spawnedGameObject.transform.SetParent(GameObject.Find("Robots").transform);
         spawnedRobots.Add(robot);

@@ -41,7 +41,7 @@ public class TimeStopper : MonoBehaviour
             {
                 var rigidBody = robot.GetComponent<Rigidbody2D>();
                 robotsState.Add(robot.gameObject, new(rigidBody.constraints, rigidBody.velocity));
-                rigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
+                rigidBody.AddConstraint(RigidbodyConstraints2D.FreezePositionX);
             }
 
             isTimeStopped = true;

@@ -112,7 +112,6 @@ MonoBehaviour:
   allowedMovesCount: 0
   initialAllowedMovesCount: 0
   canMove: 0
-  initialCanMove: 0
 --- !u!114 &5586999982224581009
 MonoBehaviour:
   m_ObjectHideFlags: 0

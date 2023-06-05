@@ -60,6 +60,12 @@ public class ItemMover : MonoBehaviour
 
     public void UpdateMaterial()
     {
+        if (!canMove)
+        {
+            spriteRenderer.material = initialMaterial;
+            return;
+        }
+
         if (canMoveMaterial != null)
             spriteRenderer.material = canMove ? canMoveMaterial : initialMaterial;
     }
@@ -149,7 +155,8 @@ public class ItemMover : MonoBehaviour
         {
             canMove = false;
             spriteRenderer.material = initialMaterial;
-            textAllowedMovesCount.text = "";
+            if (textAllowedMovesCount != null)
+                textAllowedMovesCount.text = "";
         }
     }
 
@@ -212,6 +219,11 @@ public class ItemMover : MonoBehaviour
                 gameObject.transform.SetParent(movedObjects.transform);
 
             DecreaseAllowedMovesCount();
+
+            // Makes sure you can only move an item once.
+            if (usingLimitedMoves && allowedMovesCount == 0)
+                canMove = false;
+            UpdateMaterial();
             FinishedMovingItem?.Invoke();
             FinishedMovingAnyItem?.Invoke(gameObject);
         }

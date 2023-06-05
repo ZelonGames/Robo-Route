@@ -21,14 +21,15 @@ public class FallingCollision : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //if (!collision.gameObject.CompareTag("Robot"))
-          //  return;
+        if (!collision.gameObject.CompareTag("Robot"))
+            return;
 
         var robotRigidbody2D = collision.rigidbody;
+        Vector2 velocity = collision.gameObject.GetComponent<RobotBehaviour>().Velocity;
 
-        if (robotRigidbody2D.velocity.y <= 0)
+        if (velocity.y <= 0)
         {
-            if (robotRigidbody2D.velocity.y < -10f)
+            if (velocity.y < -10f)
             {
                 RobotLanded?.Invoke();
                 RobotLandedSelf?.Invoke(collision.collider);

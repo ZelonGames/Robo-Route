@@ -187,7 +187,6 @@ GameObject:
   - component: {fileID: 7393739492857440316}
   - component: {fileID: 8634895161584825733}
   - component: {fileID: -629969525729052030}
-  - component: {fileID: 1088019961479509148}
   - component: {fileID: -3533025532641059669}
   m_Layer: 0
   m_Name: Spawner
@@ -324,7 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMeshPro: {fileID: 2045071952}
-  spriteFlipper: {fileID: 1088019961479509148}
+  spriteRenderer: {fileID: 1330962046184369019}
   launchSpeed: 2
   spawnTimeInSeconds: 2
   robotsToSpawn: 10
@@ -373,20 +372,6 @@ MonoBehaviour:
   - {fileID: 7838445433573688156}
   - {fileID: 8634895161584825733}
   itemMover: {fileID: 0}
---- !u!114 &1088019961479509148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 327002563770676291}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2acf84525801d4c4dab4e46515f4bfc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 1330962046184369019}
-  isFlipped: 0
 --- !u!114 &-3533025532641059669
 MonoBehaviour:
   m_ObjectHideFlags: 0

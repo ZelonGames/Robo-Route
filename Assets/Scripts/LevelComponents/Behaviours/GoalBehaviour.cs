@@ -34,4 +34,9 @@ public class GoalBehaviour : MonoBehaviour
     {
         squash.Play();
     }
+
+    private void Update()
+    {
+        
+    }
 }
