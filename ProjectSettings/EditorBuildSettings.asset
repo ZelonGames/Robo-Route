@@ -36,7 +36,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Bounce 3.unity
     guid: 803a237cd157a3a4cb2a0c1dc7d4007c
   - enabled: 1
-    path: Assets/Scenes/Levels/Locked Spawners.unity
+    path: Assets/Scenes/Levels/Locked Spawners Tutorial.unity
     guid: aeefd52f0bce2bf4a9fbb07bcf33df48
   - enabled: 1
     path: Assets/Scenes/Levels/Locked Spawners 2.unity

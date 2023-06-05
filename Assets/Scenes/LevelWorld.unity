@@ -317,7 +317,7 @@ PrefabInstance:
       objectReference: {fileID: 522049355}
     - target: {fileID: 4106388429799843631, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
       propertyPath: m_text
-      value: Locked Spawners 4 (1)
+      value: Locked Platforms
       objectReference: {fileID: 0}
     - target: {fileID: 4106388429799843631, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
       propertyPath: m_fontSize
@@ -595,15 +595,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2276664590859242721, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
       propertyPath: unlockingLevels.Array.size
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2276664590859242721, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
       propertyPath: unlockingLevels.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1705750472}
+    - target: {fileID: 2276664590859242721, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: unlockingLevels.Array.data[1]
+      value: 
+      objectReference: {fileID: 689373118}
     - target: {fileID: 4106388429799843631, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
       propertyPath: m_text
-      value: Locked Platforms (1)
+      value: Locked Platforms 2
       objectReference: {fileID: 0}
     - target: {fileID: 4106388429799843631, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
       propertyPath: m_fontSize
@@ -723,7 +727,7 @@ PrefabInstance:
       objectReference: {fileID: 359636035}
     - target: {fileID: 4106388429799843631, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
       propertyPath: m_text
-      value: Locked Objects 4
+      value: Locked Spawners 4
       objectReference: {fileID: 0}
     - target: {fileID: 4106388429799843631, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
       propertyPath: m_fontSize
@@ -844,7 +848,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7450113458538478688, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
       propertyPath: m_Name
-      value: Locked Spawners
+      value: Locked Spawners Tutorial
       objectReference: {fileID: 0}
     - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
       propertyPath: m_RootOrder
@@ -991,6 +995,126 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 089f9b2fba87a0949bda3a73df35bb1c, type: 3}
+--- !u!1001 &689373116
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1817405255}
+    m_Modifications:
+    - target: {fileID: 504225329744889658, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 504225329744889658, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 504225329744889658, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2276664590859242721, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: addLines
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2276664590859242721, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: unlocked
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2276664590859242721, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: unlockingLevels.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2276664590859242721, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: unlockingLevels.Array.data[0]
+      value: 
+      objectReference: {fileID: 1670026038}
+    - target: {fileID: 4106388429799843631, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_text
+      value: Fallen Robots Tutorial 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106388429799843631, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_fontSize
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106388429799843631, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7450113458538478688, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_Name
+      value: Fallen Robots 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 21.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5436799303989224386, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+--- !u!4 &689373117 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+  m_PrefabInstance: {fileID: 689373116}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &689373118 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2276664590859242721, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+  m_PrefabInstance: {fileID: 689373116}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4aa515670f28434db788ef34d44dc0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &827691046
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1864,6 +1988,246 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4aa515670f28434db788ef34d44dc0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1670026036
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1817405255}
+    m_Modifications:
+    - target: {fileID: 504225329744889658, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 504225329744889658, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 504225329744889658, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2276664590859242721, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: addLines
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2276664590859242721, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: unlocked
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2276664590859242721, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: unlockingLevels.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2276664590859242721, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: unlockingLevels.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106388429799843631, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_text
+      value: Fallen Robots Tutorial 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106388429799843631, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_fontSize
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106388429799843631, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7450113458538478688, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_Name
+      value: Fallen Robots 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 24.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5436799303989224386, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+--- !u!4 &1670026037 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+  m_PrefabInstance: {fileID: 1670026036}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1670026038 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2276664590859242721, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+  m_PrefabInstance: {fileID: 1670026036}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4aa515670f28434db788ef34d44dc0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &1705750470
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1817405255}
+    m_Modifications:
+    - target: {fileID: 504225329744889658, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 504225329744889658, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 504225329744889658, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2276664590859242721, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: addLines
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2276664590859242721, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: unlocked
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2276664590859242721, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: unlockingLevels.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2276664590859242721, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: unlockingLevels.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106388429799843631, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_text
+      value: Fallen Robots Tutorial
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106388429799843631, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_fontSize
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106388429799843631, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7450113458538478688, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_Name
+      value: Fallen Robots Tutorial
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 19.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5436799303989224386, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+--- !u!4 &1705750471 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8420313451388233436, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+  m_PrefabInstance: {fileID: 1705750470}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1705750472 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2276664590859242721, guid: d22f784a8de88ed49bad7bd3cb629bed, type: 3}
+  m_PrefabInstance: {fileID: 1705750470}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4aa515670f28434db788ef34d44dc0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1731771813
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2308,6 +2672,7 @@ MonoBehaviour:
   m_Dithering: 0
   m_ClearDepth: 1
   m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
   m_UseScreenCoordOverride: 0
   m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
   m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
@@ -2363,6 +2728,9 @@ Transform:
   - {fileID: 534093915}
   - {fileID: 359636034}
   - {fileID: 522049354}
+  - {fileID: 1705750471}
+  - {fileID: 689373117}
+  - {fileID: 1670026037}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

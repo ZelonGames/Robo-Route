@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6135062217073292421}
   - component: {fileID: -8842160351325703389}
   - component: {fileID: 6654759524001194525}
-  - component: {fileID: -116029863328610589}
   - component: {fileID: 6472684003073308064}
   - component: {fileID: -1858633030759234391}
   - component: {fileID: 1860835394767304185}
@@ -122,20 +121,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody2D: {fileID: 1860835394767304185}
   groundTrail: {fileID: 2837142160060177595}
---- !u!114 &-116029863328610589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6135062217073292426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2acf84525801d4c4dab4e46515f4bfc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 6135062217073292421}
-  isFlipped: 0
+  initialVelocity: 2
+  useInitialVelocity: 0
 --- !u!114 &6472684003073308064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody2D: {fileID: 1860835394767304185}
+  acceleration: 0.5
 --- !u!50 &1860835394767304185
 Rigidbody2D:
   serializedVersion: 4

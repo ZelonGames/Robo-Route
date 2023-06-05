@@ -37,7 +37,9 @@ public class TimeStopper : MonoBehaviour
                 spawner.StopSpawning();
             }
 
-            foreach (Transform robot in robots.transform)
+            var robots = FindObjectsOfType<RobotBehaviour>();
+
+            foreach (var robot in robots)
             {
                 var rigidBody = robot.GetComponent<Rigidbody2D>();
                 robotsState.Add(robot.gameObject, new(rigidBody.constraints, rigidBody.velocity));
