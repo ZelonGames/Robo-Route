@@ -27,6 +27,8 @@ public class LevelController : MonoBehaviour
     public int goalsToReach = 0;
     public int completedGoals = 0;
 
+    private bool isGameReset = true;
+
     void Start()
     {
         completedGoals = 0;
@@ -94,12 +96,15 @@ public class LevelController : MonoBehaviour
         completedGoals = 0;
         foreach (var enteredGoalDetector in FindObjectsOfType<EnteredGoalDetector>())
             enteredGoalDetector.ResetStats();
-        
+
         foreach (Transform child in gridWorld.transform)
             Destroy(child.gameObject);
 
         foreach (Transform child in cursorObjectQueue.transform)
-            Destroy(child.gameObject);
+        {
+            if (child.gameObject.name != "UI")
+                Destroy(child.gameObject);
+        }
 
         foreach (Transform child in robots.transform)
             Destroy(child.gameObject);
@@ -117,8 +122,17 @@ public class LevelController : MonoBehaviour
             levelComponent.SetActive(true);
         }
 
+        isGameReset = true;
+
+        StartLevel();
+    }
+
+    public void StartLevel()
+    {
         foreach (RobotSpawner robotSpawner in FindObjectsOfType<RobotSpawner>())
             robotSpawner.StartSpawning();
+
+        isGameReset = false;
     }
 
     private void ItemAdder_TryAddItem(GameObject addedObject)

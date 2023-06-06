@@ -39,7 +39,7 @@ public class ItemMover : MonoBehaviour
     private Vector2 initialMousePos;
     private Vector2 initialObjectPos;
 
-    private static bool isDraggingAnyObject = false;
+    public static bool IsDraggingAnyObject { get; private set; }
 
     public Vector2 SpawnPosition { get; private set; }
     public bool IsDragging { get; private set; }
@@ -111,17 +111,17 @@ public class ItemMover : MonoBehaviour
 
     private void GameController_StartedGame()
     {
-        IsDragging = isDraggingAnyObject = false;
+        IsDragging = IsDraggingAnyObject = false;
     }
     private void OnMouseDown()
     {
-        if (!enabled || !GameController.hasStartedGame || !canMove || isDraggingAnyObject || IsDragging)
+        if (!enabled || !GameController.hasStartedGame || !canMove || IsDraggingAnyObject || IsDragging)
             return;
 
         if (highlight != null)
             highlight.intensity *= 0.5f;
 
-        IsDragging = isDraggingAnyObject = true;
+        IsDragging = IsDraggingAnyObject = true;
         initialMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         initialObjectPos = gameObject.transform.position;
         StartedMovingAnyItem?.Invoke(gameObject);
@@ -213,7 +213,7 @@ public class ItemMover : MonoBehaviour
                     1));*/
             }
 
-            IsDragging = isDraggingAnyObject = false;
+            IsDragging = IsDraggingAnyObject = false;
 
             if (movedObjects != null && gameObject.transform.parent == gridWorld.transform)
                 gameObject.transform.SetParent(movedObjects.transform);
@@ -231,7 +231,7 @@ public class ItemMover : MonoBehaviour
 
     public void SetDragging(bool isDragging)
     {
-        IsDragging = isDraggingAnyObject = isDragging;
+        IsDragging = IsDraggingAnyObject = isDragging;
 
         if (IsDragging)
             StartedMovingItem?.Invoke();
