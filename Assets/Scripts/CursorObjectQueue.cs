@@ -24,6 +24,11 @@ public class CursorObjectQueue : MonoBehaviour
         ItemMover.FinishedMovingAnyItem += CursorObjectQueue_FinishedMovingItem;
     }
 
+    private void OnDestroy()
+    {
+        ItemMover.FinishedMovingAnyItem -= CursorObjectQueue_FinishedMovingItem;
+    }
+
     public void Update()
     {
         var mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
@@ -49,6 +54,22 @@ public class CursorObjectQueue : MonoBehaviour
             itemIcons.Skip(i).First().transform.position = 
                 new Vector2(leftEdge + totalItemWidth - itemWidth, transform.position.y - adjustedPivotY);
         }
+    }
+
+    public void Reset()
+    {
+        placingGameObject = null;
+        uiSpriteRenderer.enabled = false;
+
+        foreach (var itemIcon in itemIcons)
+            Destroy(itemIcon);
+
+        foreach (var gameObject in gameObjects)
+            Destroy(gameObject);
+
+        gameObjects.Clear();
+        itemMovers.Clear();
+        itemIcons.Clear();
     }
 
     public void AddGameObjectToQueue(GameObject largeObjectPrefab, ItemMover itemMover, bool instantiate = true)

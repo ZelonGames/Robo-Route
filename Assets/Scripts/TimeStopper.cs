@@ -14,6 +14,12 @@ public class TimeStopper : MonoBehaviour
     {
         GameController.gameController.StoppedLevel += ResetStates;
         GameController.gameController.StartedLevel += ResetStates;
+        RobotBehaviour.DestroyedRobot += RobotBehaviour_DestroyedRobot;
+    }
+
+    private void RobotBehaviour_DestroyedRobot(GameObject obj)
+    {
+        robotsState.Remove(obj);
     }
 
     private void OnDestroy()

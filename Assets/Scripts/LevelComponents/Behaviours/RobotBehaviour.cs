@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -5,6 +6,7 @@ using UnityEngine;
 
 public class RobotBehaviour : MonoBehaviour
 {
+    public static event Action<GameObject> DestroyedRobot;
     [SerializeField] private new Rigidbody2D rigidbody2D;
     [SerializeField] private ParticleSystem groundTrail;
     [SerializeField] private float initialVelocity = 2;
@@ -24,6 +26,11 @@ public class RobotBehaviour : MonoBehaviour
         TryGetComponent<ItemMover>(out itemMover);
 
         UpdateInitialVelocity();
+    }
+
+    private void OnDestroy()
+    {
+        DestroyedRobot?.Invoke(gameObject);
     }
 
     public void FixedUpdate()
