@@ -20,12 +20,15 @@ public class RobotBehaviour : MonoBehaviour
 
     void Start()
     {
-        if (GetComponent<SpriteRenderer>().flipX)
-            initialVelocity *= -1;
+        if (useInitialVelocity)
+        {
+            if (GetComponent<SpriteRenderer>().flipX)
+                initialVelocity *= -1;
+
+            UpdateInitialVelocity();
+        }
 
         TryGetComponent<ItemMover>(out itemMover);
-
-        UpdateInitialVelocity();
     }
 
     private void OnDestroy()
@@ -35,7 +38,6 @@ public class RobotBehaviour : MonoBehaviour
 
     public void FixedUpdate()
     {
-        UpdateInitialVelocity();
         Velocity = rigidbody2D.velocity;
 
         if (itemMover != null)
@@ -44,6 +46,7 @@ public class RobotBehaviour : MonoBehaviour
             {
                 //rigidbody2D.AddConstraint(RigidbodyConstraints2D.FreezePositionX);
                 rigidbody2D.AddConstraint(RigidbodyConstraints2D.FreezePositionY);
+                rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, 0);
             }
             else
             {

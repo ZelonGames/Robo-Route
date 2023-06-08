@@ -187,7 +187,6 @@ GameObject:
   - component: {fileID: -2419309127435844710}
   - component: {fileID: -6289981712131819165}
   - component: {fileID: 5180395388975658759}
-  - component: {fileID: 7007078321167489742}
   - component: {fileID: 7262670456023815963}
   m_Layer: 0
   m_Name: Goal
@@ -370,18 +369,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMeshPro: {fileID: 1522253922}
   requiredRobotsToSave: 3
---- !u!114 &7007078321167489742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1527861854871762712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b9b4873eb9a0424f83fed566f3cb1be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7262670456023815963
 MonoBehaviour:
   m_ObjectHideFlags: 0

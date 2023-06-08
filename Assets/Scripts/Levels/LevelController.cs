@@ -122,7 +122,7 @@ public class LevelController : MonoBehaviour
             levelComponent.SetActive(true);
         }
 
-        FindObjectOfType<TimeStopper>().ResetStates();
+        FindObjectOfType<TimeStopper>()?.ResetStates();
         FindObjectOfType<CursorObjectQueue>().Reset();
 
         isGameReset = true;
