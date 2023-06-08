@@ -53,4 +53,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Locked Platforms 2.unity
     guid: b1ab4745cd643234a82a98b1cf4ce554
+  - enabled: 1
+    path: Assets/Scenes/Levels/Fallen Robots Tutorial.unity
+    guid: 82c3f00af819cbe4c8af2232422add9c
+  - enabled: 1
+    path: Assets/Scenes/Levels/Fallen Robots 2.unity
+    guid: 5dcd801721db9e24582b98b8b9512ed0
+  - enabled: 1
+    path: Assets/Scenes/Levels/Fallen Robots 3.unity
+    guid: 12880021e92ce9847aeee54975446bed
   m_configObjects: {}

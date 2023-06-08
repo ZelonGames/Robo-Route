@@ -16,11 +16,10 @@ public class EnteredGoalDetector : MonoBehaviour
 
     [SerializeField] private TextMeshPro textMeshPro;
 
-    public LevelComponentSettings levelComponentSettings;
-
     public int requiredRobotsToSave;
 
     private readonly Dictionary<Collider2D, CollidingRobots> collidingRobots = new();
+    private SpriteRenderer spriteRenderer;
 
     private int savedRobots;
     private bool hasInvokedReachedRequirement = false;
@@ -34,16 +33,8 @@ public class EnteredGoalDetector : MonoBehaviour
 
     void Start()
     {
-        levelComponentSettings = gameObject.GetComponent<LevelComponentSettings>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         UpdateText();
-
-        if (levelComponentSettings != null)
-        {
-            if (levelComponentSettings.settings.ContainsKey(nameof(requiredRobotsToSave)))
-                requiredRobotsToSave = Convert.ToInt32(levelComponentSettings.settings[nameof(requiredRobotsToSave)]);
-
-            OnValidate();
-        }
     }
 
     private void OnValidate()
@@ -51,9 +42,6 @@ public class EnteredGoalDetector : MonoBehaviour
         try
         {
             UpdateText();
-
-            if (levelComponentSettings != null)
-                levelComponentSettings.UpdateSetting(nameof(requiredRobotsToSave), requiredRobotsToSave);
         }
         catch { }
     }
@@ -72,7 +60,12 @@ public class EnteredGoalDetector : MonoBehaviour
                 collidingRobot.spriteRenderer.color.b,
                 currentDistance / collidingRobot.startDistance);
 
-            if (currentDistance <= 0.2f)
+            var robotBehaviour = collidingRobot.collider2D.gameObject.GetComponent<RobotBehaviour>();
+            bool enteringCorrectSide = 
+                spriteRenderer.flipX && robotBehaviour.Velocity.x > 0 ||
+                !spriteRenderer.flipX && robotBehaviour.Velocity.x < 0;
+
+            if (currentDistance <= 0.2f && enteringCorrectSide)
             {
                 collidingRobots.Remove(collidingRobot.collider2D);
                 Destroy(collidingRobot.collider2D.gameObject);

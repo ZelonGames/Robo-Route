@@ -64,9 +64,6 @@ public class CursorObjectQueue : MonoBehaviour
         foreach (var itemIcon in itemIcons)
             Destroy(itemIcon);
 
-        foreach (var gameObject in gameObjects)
-            Destroy(gameObject);
-
         gameObjects.Clear();
         itemMovers.Clear();
         itemIcons.Clear();
@@ -133,6 +130,7 @@ public class CursorObjectQueue : MonoBehaviour
         itemSprite.sortingOrder = 5;
         var itemMoverSpriteRenderer = collectedObject.GetComponent<SpriteRenderer>();
         itemSprite.sprite = itemMoverSpriteRenderer.sprite;
+        itemSprite.flipX = itemMoverSpriteRenderer.flipX;
         item.transform.localScale = itemMoverSpriteRenderer.transform.localScale;
         itemIcons.Enqueue(item);
     }
@@ -147,19 +145,5 @@ public class CursorObjectQueue : MonoBehaviour
         uiLocalScale.x = totalWidth;
         uiLocalScale.y = itemIcons.Max(x => x.GetComponent<SpriteRenderer>().bounds.size.y);
         uiSpriteRenderer.gameObject.transform.localScale = uiLocalScale;
-    }
-    bool a = true;
-    private void AdjustPivotToCenter(SpriteRenderer spriteRenderer)
-    {
-        if (a && spriteRenderer != null && spriteRenderer.sprite != null)
-        {
-            Bounds spriteBounds = spriteRenderer.sprite.bounds;
-            Transform spriteTransform = spriteRenderer.gameObject.transform;
-            Vector2 spriteCenter = spriteBounds.center;
-            float y = spriteTransform.position.y - spriteCenter.y * spriteTransform.localScale.y;
-            //spriteRenderer.gameObject.transform.position = new Vector2(spriteCenter.x, y);
-            Debug.Log(y);
-            a = false;
-        }
     }
 }

@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 3}
-  m_SizeDelta: {x: 16, y: 2}
+  m_SizeDelta: {x: 7.97, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &1522253923
 MeshRenderer:
@@ -369,7 +369,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMeshPro: {fileID: 1522253922}
-  levelComponentSettings: {fileID: 7007078321167489742}
   requiredRobotsToSave: 3
 --- !u!114 &7007078321167489742
 MonoBehaviour:
